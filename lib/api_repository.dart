@@ -7,12 +7,12 @@ import 'api_provider.dart';
 import 'data/repository/movie_repository_impl.dart';
 import 'domain/repository/movie_repository.dart';
 
-class ApiRepository {
+class ApiRepository  {
   final ApiProvider _apiProvider = ApiProvider();
 
-  // Future<List<MoviesModels>> fetchMovies() {
-  //   return _apiProvider.fetchMovies();
-  // }
+  Future<List<MoviesModels>> fetchMovies() {
+    return _apiProvider.fetchMovies();
+  }
 }
   class NetworkError extends Error{}
 

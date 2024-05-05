@@ -18,13 +18,12 @@ class MovieScreen extends StatefulWidget {
 }
 
 class _MovieScreenState extends State<MovieScreen> {
-  final MoviesRepository _moviesRepository = MoviesRepositoryImpl(PopularMoviesData());
-  late final MovieBloc _movieBloc;
+  // final MoviesRepository _moviesRepository = MoviesRepositoryImpl(PopularMoviesData());
+  late final MovieBloc _movieBloc = MovieBloc();
 
   @override
   void initState() {
-    _movieBloc = MovieBloc(_moviesRepository);
-    _movieBloc.add(LoadingSucessEvent());
+    _movieBloc.add(GetMovieList());
     super.initState();
   }
 

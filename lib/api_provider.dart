@@ -1,21 +1,17 @@
-import 'package:dio/dio.dart';
+import 'package:r6_moovie_app/data/popular_movies_mock/popular_movies_data.dart';
 
 import 'models/movies_model.dart';
 
 class ApiProvider {
-//   Dio dio = Dio();
-// }
-//
-// Future<List<MoviesModels>> fetchMovies() async {
-//   try {
-//     Response response = await dio.get("");
-//     List<dynamic> value = response.data;
-//     return value.map((e) => MoviesModels.fromJson(e).toList();
-//     } catch(e)
-//     {
-//       if (e.toString().contains("other")) {
-//         return [MoviesModels.withError('')];
-//       }
-//       return [MoviesModels.withError(e.String())];
-//     }
+
+  final PopularMoviesData _movieData = PopularMoviesData();
+
+  Future<List<MoviesModels>> fetchMovies() async {
+    try {
+      dynamic movies = _movieData.getMovies();
+      return movies;
+    } catch(error) {
+      rethrow;
+    }
   }
+}

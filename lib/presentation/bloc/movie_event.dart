@@ -12,6 +12,6 @@ abstract class MovieEvent extends Equatable {
 class LoadingSucessEvent extends MovieEvent {
 }
 
-class FetchMoviesEvent extends MovieEvent {}
+class GetMovieList extends MovieEvent {}
 
 class NetworkErrorEvent extends Error {}

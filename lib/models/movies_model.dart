@@ -50,25 +50,23 @@ class MoviesModels {
     };
   }
 
-  factory MoviesModels.fromJson(Map<String, dynamic> json) {
-    return MoviesModels(
-      adult: json['adult'] ?? false,
-      backdropPath: json['backdrop_path'],
-      genreIds: (json['genre_ids'] as List<dynamic>?)
-              ?.map<int>((id) => id as int)
-              .toList() ??
-          [],
-      id: json['id'] ?? 0,
-      originalLanguage: json['original_language'] ?? 'sem info',
-      originalTitle: json['original_title'] ?? 'sem info',
-      overview: json['overview'] ?? 'sem info',
-      popularity: json['popularity']?.toDouble() ?? 0.0,
-      posterPath: json['poster_path'],
-      releaseDate: json['release_date'] ?? 'sem info',
-      title: json['title'] ?? 'sem info',
-      video: json['video'] ?? false,
-      voteAverage: json['vote_average']?.toDouble() ?? 0.0,
-      voteCount: json['vote_count'] ?? 0,
-    );
-  }
+  factory MoviesModels.fromJson(Map<String, dynamic> json) => MoviesModels(
+        adult: json['adult'] ?? false,
+        backdropPath: json['backdrop_path'],
+        genreIds: (json['genre_ids'] as List<dynamic>?)
+                ?.map<int>((id) => id as int)
+                .toList() ??
+            [],
+        id: json['id'] ?? 0,
+        originalLanguage: json['original_language'] ?? 'sem info',
+        originalTitle: json['original_title'] ?? 'sem info',
+        overview: json['overview'] ?? 'sem info',
+        popularity: json['popularity']?.toDouble() ?? 0.0,
+        posterPath: json['poster_path'],
+        releaseDate: json['release_date'] ?? 'sem info',
+        title: json['title'] ?? 'sem info',
+        video: json['video'] ?? false,
+        voteAverage: json['vote_average']?.toDouble() ?? 0.0,
+        voteCount: json['vote_count'] ?? 0,
+      );
 }

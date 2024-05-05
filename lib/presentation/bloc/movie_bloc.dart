@@ -1,17 +1,18 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:r6_moovie_app/api_repository.dart';
 
-import '../../domain/repository/movie_repository.dart';
 import '../../models/movies_model.dart';
 import 'movie_event.dart';
 import 'movie_state.dart';
 
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
-  final MoviesRepository repository;
-  MovieBloc(this.repository) : super(InitialState()) {
-    on<LoadingSucessEvent>((event, emit) async {
+  MovieBloc(): super(InitialState()) {
+    final ApiRepository repository = ApiRepository();
+
+    on<GetMovieList>((event, emit) async {
       try {
         emit(LoadingState());
-        final List<MoviesModels> movies = await repository.getPopularMovies();
+        final List<MoviesModels> movies = await repository.fetchMovies();
         emit(LoadedSuccessState(movies: movies));
       } on NetworkErrorEvent{
          emit(const ErrorState(error: "Failure to get movies. Is your device online?"));
