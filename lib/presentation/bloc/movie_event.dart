@@ -9,9 +9,6 @@ abstract class MovieEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadingSucessEvent extends MovieEvent {
+class LoadingSuccessEvent extends MovieEvent {
 }
-
-class GetMovieList extends MovieEvent {}
-
 class NetworkErrorEvent extends Error {}

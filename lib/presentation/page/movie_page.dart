@@ -1,14 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/models/movies_model.dart';
 import 'package:r6_moovie_app/presentation/bloc/movie_bloc.dart';
 import 'package:r6_moovie_app/presentation/bloc/movie_event.dart';
 import 'package:r6_moovie_app/presentation/bloc/movie_state.dart';
-
-import '../../data/popular_movies_mock/popular_movies_data.dart';
-import '../../data/repository/movie_repository_impl.dart';
-import '../../domain/repository/movie_repository.dart';
 
 class MovieScreen extends StatefulWidget {
   const MovieScreen({super.key});
@@ -23,7 +18,7 @@ class _MovieScreenState extends State<MovieScreen> {
 
   @override
   void initState() {
-    _movieBloc.add(GetMovieList());
+    _movieBloc.add(LoadingSuccessEvent());
     super.initState();
   }
 

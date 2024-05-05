@@ -1,6 +1,6 @@
-import 'package:r6_moovie_app/data/popular_movies_mock/popular_movies_data.dart';
+import 'package:r6_moovie_app/data/provider/popular_movies_data.dart';
 
-import 'models/movies_model.dart';
+import '../../models/movies_model.dart';
 
 class ApiProvider {
 
