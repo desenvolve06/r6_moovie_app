@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/repository/movie_repository_impl.dart';
 import 'package:r6_moovie_app/models/movies_model.dart';
 import 'package:r6_moovie_app/popular_movies_mock/popular_movies_data.dart';
+import 'package:r6_moovie_app/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'KoruFlix',
       theme: ThemeData(
         colorScheme: const ColorScheme.dark(background: Color(0xFF1D2026)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'KoruFlix'),
+      home: SplashScreen(),
     );
   }
 }
