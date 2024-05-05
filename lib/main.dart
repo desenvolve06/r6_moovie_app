@@ -36,6 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 29, 32, 38),
+        iconTheme: const IconThemeData(color: Color.fromARGB(255, 219, 242, 41)),
         title: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -139,27 +141,31 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                   Expanded(
-                      child: Center(
-                        child: SizedBox(
-                          width: 380,
-                          child: TextField(    
+                  Expanded(
+                    child: Center(
+                      child: SizedBox(
+                        width: 380,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30.0),
+                            border: Border.all(color: Color.fromARGB(255, 219, 242, 41)), 
+                          ),
+                          child: const TextField(    
                             decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30.0),
-                                borderSide: const BorderSide(color: Color.fromARGB(255, 219, 242, 41)),
-                              ),
-                              suffixIcon: const Icon(Icons.search),
-                              suffixIconConstraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+                              contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20), 
+                              border: InputBorder.none, 
+                              suffixIcon: Icon(Icons.search, color: Color.fromARGB(255, 219, 242, 41)),
+                              suffixIconConstraints: BoxConstraints(minWidth: 48, minHeight: 48),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  
+                  ),
                 ],
               ),
             ),
+
             
             Expanded(
               child: ListView.separated(
