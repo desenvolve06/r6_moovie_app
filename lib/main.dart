@@ -80,13 +80,20 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       drawer: NavBar(),
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        backgroundColor: const Color(0xFF1D2026),
+        title: Center(
+          child: Image.asset(
+            'assets/logo.png',
+            width: 170,
+            height: 50,
+          ),
+        ),
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (context) => [],
+          ),
+        ],
+        iconTheme: const IconThemeData(color: Color(0xFFDBF228)),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
