@@ -23,50 +23,82 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: const Icon(
               Icons.home,
+              color: Colors.black,
             ),
-            title: const Text(
-              'Home',
-            ),
+            title: const Text('Home',
+                style: TextStyle(
+                  color: Colors.black,
+                )),
             onTap: () {
               // Implementar a ação para a opção 1
             },
           ),
           const Divider(),
           ListTile(
-            leading: const Icon(Icons.person),
-            title: const Text('My Profile'),
+            leading: const Icon(
+              Icons.person,
+              color: Colors.black,
+            ),
+            title: const Text('My Profile',
+                style: TextStyle(
+                  color: Colors.black,
+                )),
             onTap: () {
               // Implementar a ação para a opção 2
             },
           ),
           const Divider(),
           ListTile(
-            leading: const Icon(Icons.download),
-            title: const Text('Downloads'),
+            leading: const Icon(
+              Icons.download,
+              color: Colors.black,
+            ),
+            title: const Text('Downloads',
+                style: TextStyle(
+                  color: Colors.black,
+                )),
             onTap: () {
               // Implementar a ação para a opção 3
             },
           ),
           const Divider(),
           ListTile(
-            leading: const Icon(Icons.trending_up),
-            title: const Text('Popular'),
+            leading: const Icon(
+              Icons.trending_up,
+              color: Colors.black,
+            ),
+            title: const Text('Popular',
+                style: TextStyle(
+                  color: Colors.black,
+                )),
             onTap: () {
               // Implementar a ação para a opção 3
             },
           ),
           const Divider(),
           ListTile(
-            leading: const Icon(Icons.list_alt),
-            title: const Text('Suggestions'),
+            leading: const Icon(
+              Icons.list_alt,
+              color: Colors.black,
+            ),
+            title: const Text('Suggestions',
+                style: TextStyle(
+                  color: Colors.black,
+                )),
             onTap: () {
               // Implementar a ação para a opção 3
             },
           ),
           const Divider(),
           ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Options'),
+            leading: const Icon(
+              Icons.settings,
+              color: Colors.black,
+            ),
+            title: const Text('Options',
+                style: TextStyle(
+                  color: Colors.black,
+                )),
             onTap: () {
               // Implementar a ação para a opção 3
             },
