@@ -13,7 +13,6 @@ class MovieScreen extends StatefulWidget {
 }
 
 class _MovieScreenState extends State<MovieScreen> {
-  // final MoviesRepository _moviesRepository = MoviesRepositoryImpl(PopularMoviesData());
   late final MovieBloc _movieBloc = MovieBloc();
 
   @override
@@ -25,49 +24,72 @@ class _MovieScreenState extends State<MovieScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Bloc Flutter"),
-        backgroundColor: Colors.teal,
-      ),
       body: _buildListMovie(),
     );
   }
 
   Widget _buildListMovie() {
-    return Card(
-      child: Container(
-        padding: const EdgeInsets.all(20.0),
-        child: BlocProvider(
-          create: (context) => _movieBloc,
-          child:BlocBuilder<MovieBloc, MovieState>(
-            builder: (context, state) {
-              if(state is ErrorState) {
-                return Center(
-                  child: Text(
-                      state.error!
-                  ),
-                );
-              } else if(state is InitialState) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if(state is  LoadingState) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if(state is LoadedSuccessState) {
-                return ListView.builder(itemCount: state.movies.length,
-                    itemBuilder: (context, index) {
-                      MoviesModels moviesModels =  state.movies[index];
-                      return ListTile(
-                        title: Text(moviesModels.title.toString()),
-                      );
-                    });
-              } else {
-                return Container();
-              }
-            },
-          ) ,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Container(
+            padding: const EdgeInsets.all(16.0),
+            child: BlocProvider(
+              create: (context) => _movieBloc,
+              child: BlocBuilder<MovieBloc, MovieState>(
+                builder: (context, state) {
+                  if (state is ErrorState) {
+                    return Center(
+                      child: Text(
+                        state.error!,
+                      ),
+                    );
+                  } else if (state is InitialState) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (state is LoadingState) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (state is LoadedSuccessState) {
+                    return ListView.builder(
+                      itemCount: state.movies.length,
+                      itemBuilder: (context, index) {
+                        MoviesModels moviesModels = state.movies[index];
+                        return Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(10.0),
+                              child: Image.network(
+                                "https://image.tmdb.org/t/p/w500${moviesModels.backdropPath}",
+                                height: 200,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              moviesModels.title.toString(),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                            const Divider(),
+                          ],
+                        );
+                      },
+                    );
+                  } else {
+                    return Container();
+                  }
+                },
+              ),
+            ),
+          ),
         ),
       ),
     );
