@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:r6_moovie_app/repository/movie_repository_impl.dart';
 import 'package:r6_moovie_app/models/movies_model.dart';
-import 'package:r6_moovie_app/popular_movies_mock/popular_movies_data.dart';
 import 'package:r6_moovie_app/screens/splash_screen.dart';
+
+import 'data/provider/popular_movies_data.dart';
 
 void main() {
   runApp(const MyApp());
