@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/models/movies_model.dart';
 import 'package:r6_moovie_app/presentation/components/navBar_main.dart';
 import 'package:r6_moovie_app/presentation/components/search_bar_app.dart';
-import 'package:r6_moovie_app/presentation/screens/movie_Screen.dart';
+import 'package:r6_moovie_app/presentation/screens/movie_screen.dart';
 import 'package:r6_moovie_app/presentation/screens/splash_screen.dart';
 import 'data/popular_movies_mock/popular_movies_data.dart';
 
