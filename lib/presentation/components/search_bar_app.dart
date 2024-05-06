@@ -40,8 +40,9 @@ class _SearchBarAppState extends State<SearchBarApp> {
                   onChanged: (_) {
                     controller.openView();
                   },
-                  leading: const Icon(Icons.search,
-                      color: Color.fromARGB(255, 219, 242, 41)),
+                  leading:                 
+                   const Icon(Icons.search,
+                   color: Color.fromARGB(255, 219, 242, 41)),                 
                 ),
               ),
             ),

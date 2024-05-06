@@ -1,8 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:r6_moovie_app/models/movies_model.dart';
-import 'package:r6_moovie_app/models/series_model.dart';
 import 'package:r6_moovie_app/presentation/bloc/series_bloc.dart/series_bloc.dart';
 import '../bloc/movie_bloc/movie_bloc.dart';
 import '../bloc/movie_event/movie_event.dart';
@@ -29,8 +27,7 @@ class _MovieScreenState extends State<MovieScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
         children: [
           const Padding(
             padding: EdgeInsets.all(16.0),
@@ -95,7 +92,7 @@ class _MovieScreenState extends State<MovieScreen> {
                       enlargeCenterPage: true,
                       enableInfiniteScroll: true,
                       scrollDirection: Axis.horizontal,
-                      autoPlay: true,
+                      autoPlay: false,
                     ),
                     items: state.movies?.map((movie) {
                           return Builder(
@@ -109,8 +106,7 @@ class _MovieScreenState extends State<MovieScreen> {
                                       child: Image.network(
                                         "https://image.tmdb.org/t/p/w500${movie.backdropPath}",
                                         height: 150,
-                                        width:
-                                            300, // Largura definida para cada item
+                                        width: MediaQuery.of(context).size.width * 0.8,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -188,7 +184,7 @@ class _MovieScreenState extends State<MovieScreen> {
                                       child: Image.network(
                                         "https://image.tmdb.org/t/p/w500${series.backdropPath}",
                                         height: 150,
-                                        width: 300,
+                                        width: MediaQuery.of(context).size.width * 0.8,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
