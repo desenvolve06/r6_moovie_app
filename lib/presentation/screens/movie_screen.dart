@@ -55,8 +55,7 @@ class _MovieScreenState extends State<MovieScreen> {
             ),
           ),
           Expanded(
-            child:
-                _buildListSeries(), // Adicione o método _buildListSeries() aqui
+            child: _buildListSeries(),
           ),
         ],
       ),
