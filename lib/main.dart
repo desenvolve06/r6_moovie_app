@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/models/movies_model.dart';
 import 'package:r6_moovie_app/presentation/components/navBar_main.dart';
-import 'package:r6_moovie_app/presentation/components/navBar.dart';
 import 'package:r6_moovie_app/presentation/components/search_bar_app.dart';
 import 'package:r6_moovie_app/presentation/screens/movie_screen.dart';
 import 'package:r6_moovie_app/presentation/screens/splash_screen.dart';
@@ -63,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      drawer: NavBar(),
+      drawer: const NavBarMain(),
       body: const Column(
         children: [
           SearchBarApp(
