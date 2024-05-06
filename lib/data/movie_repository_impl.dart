@@ -1,6 +1,6 @@
+import 'package:r6_moovie_app/data/popular_movies_mock/popular_movies_data.dart';
 import '../models/movies_model.dart';
-import '../popular_movies_mock/popular_movies_data.dart';
-import 'movie_repository.dart';
+import '../domain/movie_repository.dart';
 
 class MoviesRepositoryImpl implements MoviesRepository {
   final PopularMoviesData _popularMoviesData;
