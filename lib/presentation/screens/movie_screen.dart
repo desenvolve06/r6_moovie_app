@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/models/movies_model.dart';
@@ -87,33 +88,48 @@ class _MovieScreenState extends State<MovieScreen> {
                     child: CircularProgressIndicator(),
                   );
                 } else if (state is LoadedSuccessState) {
-                  return ListView.builder(
-                    itemCount: state.movies?.length,
-                    itemBuilder: (context, index) {
-                      MoviesModels moviesModels = state.movies![index];
-                      return Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10.0),
-                            child: Image.network(
-                              "https://image.tmdb.org/t/p/w500${moviesModels.backdropPath}",
-                              height: 200,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            moviesModels.title.toString(),
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                          const Divider(),
-                        ],
-                      );
-                    },
+                  return CarouselSlider(
+                    options: CarouselOptions(
+                      height: 300.0,
+                      aspectRatio: 16 / 9,
+                      enlargeCenterPage: true,
+                      enableInfiniteScroll: true,
+                      scrollDirection: Axis.horizontal,
+                      autoPlay: true,
+                    ),
+                    items: state.movies?.map((movie) {
+                          return Builder(
+                            builder: (BuildContext context) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      child: Image.network(
+                                        "https://image.tmdb.org/t/p/w500${movie.backdropPath}",
+                                        height: 150,
+                                        width:
+                                            300, // Largura definida para cada item
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      movie.title.toString(),
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        }).toList() ??
+                        [],
                   );
                 } else {
                   return Container();
@@ -151,34 +167,46 @@ class _MovieScreenState extends State<MovieScreen> {
                     child: CircularProgressIndicator(),
                   );
                 } else if (state is LoadedSuccessState) {
-                  return ListView.builder(
-                    itemCount: state.series?.length,
-                    itemBuilder: (context, index) {
-                      SeriesModels seriesModels = state.series![index];
-
-                      return Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10.0),
-                            child: Image.network(
-                              "https://image.tmdb.org/t/p/w500${seriesModels.backdropPath}",
-                              height: 200,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            seriesModels.name.toString(),
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                          const Divider(),
-                        ],
-                      );
-                    },
+                  return CarouselSlider(
+                    options: CarouselOptions(
+                      height: 300.0,
+                      aspectRatio: 16 / 9,
+                      enlargeCenterPage: true,
+                      enableInfiniteScroll: true,
+                      scrollDirection: Axis.horizontal,
+                      autoPlay: false,
+                    ),
+                    items: state.series?.map((series) {
+                          return Builder(
+                            builder: (BuildContext context) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      child: Image.network(
+                                        "https://image.tmdb.org/t/p/w500${series.backdropPath}",
+                                        height: 150,
+                                        width: 300,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      series.name.toString(),
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        }).toList() ??
+                        [],
                   );
                 } else {
                   return Container();

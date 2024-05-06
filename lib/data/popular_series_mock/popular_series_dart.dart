@@ -13,8 +13,8 @@ class PopularSeriesData {
         numberOfEpisodes: 62,
         genres: ['Crime', 'Drama', 'Thriller'],
         voteAverage: 9.2,
-        posterPath: '/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg',
-        backdropPath: '/suopoADq0k8YZr4dQXcU6pToj6s.jpg',
+        posterPath: '/rYCd6sLam5S4tMUUHdCXEWoBGsf.jpg',
+        backdropPath: '/9faGSFi5jam6pDWGNd0p8JcJgXQ.jpg',
       ),
       SeriesModels(
         id: 2,
@@ -26,8 +26,8 @@ class PopularSeriesData {
         numberOfEpisodes: 34,
         genres: ['Drama', 'Fantasy', 'Horror'],
         voteAverage: 8.7,
-        posterPath: '/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg',
-        backdropPath: '/suopoADq0k8YZr4dQXcU6pToj6s.jpg',
+        posterPath: '/oqkld2D0qcnSNRm15rYV2883JE3.jpg',
+        backdropPath: '/56v2KjBlU4XaOv9rVYEQypROD7P.jpg',
       ),
       SeriesModels(
         id: 3,
@@ -52,8 +52,8 @@ class PopularSeriesData {
         numberOfEpisodes: 40,
         genres: ['Biography', 'Drama', 'History'],
         voteAverage: 8.7,
-        posterPath: '/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg',
-        backdropPath: '/suopoADq0k8YZr4dQXcU6pToj6s.jpg',
+        posterPath: '/4m2JzpWYAeeBtY76o5IfBP0l3JR.jpg',
+        backdropPath: '/8VXhcrl5z2I1zEU9X3pkkNrZlD.jpg',
       ),
       SeriesModels(
         id: 5,
@@ -65,8 +65,8 @@ class PopularSeriesData {
         numberOfEpisodes: 236,
         genres: ['Comedy', 'Romance'],
         voteAverage: 8.4,
-        posterPath: '/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg',
-        backdropPath: '/suopoADq0k8YZr4dQXcU6pToj6s.jpg',
+        posterPath: '/2koX1xLkpTQM4IZebYvKysFW1Nh.jpg',
+        backdropPath: '/o0TYvii1gab1ThmGFegpF4iyDwf.jpg',
       ),
     ];
   }

@@ -28,6 +28,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: SizedBox(
+                height: 40,
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: SearchBar(
                   controller: controller,

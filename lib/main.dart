@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/models/movies_model.dart';
 import 'package:r6_moovie_app/presentation/components/navBar_main.dart';
+import 'package:r6_moovie_app/presentation/components/navBar.dart';
 import 'package:r6_moovie_app/presentation/components/search_bar_app.dart';
 import 'package:r6_moovie_app/presentation/screens/movie_screen.dart';
 import 'package:r6_moovie_app/presentation/screens/splash_screen.dart';
@@ -41,36 +42,36 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 29, 32, 38),
-        iconTheme: const IconThemeData(color: Color.fromARGB(255, 127, 140, 40)),
+        iconTheme:
+            const IconThemeData(color: Color.fromARGB(255, 127, 140, 40)),
         title: const Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.movie,
-          color: Color.fromARGB(255, 127, 140, 40)),
-          Text(
-            'KoruFlix',
-            style: TextStyle(fontSize: 20,
-            color: Color.fromARGB(255, 127, 140, 40)),
-          ),
-        ],
-      ),
-
-      actions: [
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.movie, color: Color.fromARGB(255, 127, 140, 40)),
+            Text(
+              'KoruFlix',
+              style: TextStyle(
+                  fontSize: 20, color: Color.fromARGB(255, 127, 140, 40)),
+            ),
+          ],
+        ),
+        actions: [
           IconButton(
             icon: const Icon(Icons.more_vert,
-            color: Color.fromARGB(255, 127, 148, 40)
-            ),
-            onPressed: () {
-            },
+                color: Color.fromARGB(255, 127, 148, 40)),
+            onPressed: () {},
           ),
         ],
       ),
-      drawer: NavBarMain(),
+      drawer: NavBar(),
       body: const Column(
         children: [
-          SearchBarApp(movies: []),
+          SearchBarApp(
+            movies: [],
+          ),
           Expanded(
-              child: MovieScreen()),
+            child: MovieScreen(),
+          ),
         ],
       ),
     );
