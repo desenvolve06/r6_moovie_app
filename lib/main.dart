@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/presentation/components/appBar_main.dart';
 import 'package:r6_moovie_app/presentation/components/navBar_main.dart';
 import 'package:r6_moovie_app/presentation/components/search_bar_app.dart';
-import 'package:r6_moovie_app/presentation/screens/movie_screen.dart';
+import 'package:r6_moovie_app/presentation/screens/main_screen.dart';
 import 'package:r6_moovie_app/presentation/screens/splash_screen.dart';
 
 void main() {
@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        appBar: AppBarMain(),
+      appBar: AppBarMain(),
       drawer: NavBarMain(),
       body: Column(
         children: [
@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
             movies: [],
           ),
           Expanded(
-            child: MovieScreen(),
+            child: MainScreen(),
           ),
         ],
       ),
