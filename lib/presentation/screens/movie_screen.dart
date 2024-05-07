@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/presentation/bloc/series_bloc.dart/series_bloc.dart';
+import 'package:r6_moovie_app/presentation/screens/movies_details_screen.dart';
 import '../bloc/movie_bloc/movie_bloc.dart';
 import '../bloc/movie_event/movie_event.dart';
 import '../bloc/movie_state/movie_state.dart';
@@ -97,29 +98,37 @@ class _MovieScreenState extends State<MovieScreen> {
                     items: state.movies?.map((movie) {
                           return Builder(
                             builder: (BuildContext context) {
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      child: Image.network(
-                                        "https://image.tmdb.org/t/p/w500${movie.backdropPath}",
-                                        height: 150,
-                                        width: MediaQuery.of(context).size.width * 0.8,
-                                        fit: BoxFit.cover,
-                                      ),
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                           const MovieDetailsScreen(),
                                     ),
-                                    const SizedBox(height: 10),
-                                    Text(
-                                      movie.title.toString(),
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20,
+                                  );
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(10.0),
+                                        child: Image.network("https://image.tmdb.org/t/p/w500${movie.backdropPath}", height: 150, width: MediaQuery.of(context).size.width * 0.8,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ],
+                                      const SizedBox(height: 10),
+                                      Text(
+                                        movie.title.toString(),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               );
                             },
