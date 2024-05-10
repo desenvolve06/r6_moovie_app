@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../models/movies_model.dart';
+import '../../data/models/movies_model.dart';
 
 class SearchBarApp extends StatefulWidget {
   final List<MoviesModels> movies;
@@ -40,9 +40,8 @@ class _SearchBarAppState extends State<SearchBarApp> {
                   onChanged: (_) {
                     controller.openView();
                   },
-                  leading:                 
-                   const Icon(Icons.search,
-                   color: Color.fromARGB(255, 219, 242, 41)),                 
+                  leading: const Icon(Icons.search,
+                      color: Color.fromARGB(255, 219, 242, 41)),
                 ),
               ),
             ),

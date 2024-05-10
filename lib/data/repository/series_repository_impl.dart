@@ -1,5 +1,5 @@
 import 'package:r6_moovie_app/domain/repository/series_repository.dart';
-import 'package:r6_moovie_app/models/series_model.dart';
+import 'package:r6_moovie_app/data/models/series_model.dart';
 
 import '../provider/api_provider.dart';
 
