@@ -1,4 +1,4 @@
-import '../../models/movies_model.dart';
+import '../models/movies_model.dart';
 
 class PopularMoviesData {
   List<MoviesModels> getMovies() {

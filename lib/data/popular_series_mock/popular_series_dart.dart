@@ -1,4 +1,4 @@
-import '../../models/series_model.dart';
+import '../models/series_model.dart';
 
 class PopularSeriesData {
   List<SeriesModels> getSeries() {

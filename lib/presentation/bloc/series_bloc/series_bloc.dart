@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/data/repository/series_repository_impl.dart';
 
-import '../../../models/series_model.dart';
+import '../../../data/models/series_model.dart';
 import '../movie_event/movie_event.dart';
 import '../movie_state/movie_state.dart';
 
