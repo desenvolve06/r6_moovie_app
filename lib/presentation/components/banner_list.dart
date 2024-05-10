@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/data/models/movies_model.dart';
 import 'package:r6_moovie_app/data/models/series_model.dart';
-import 'package:r6_moovie_app/presentation/bloc/movie_bloc/movie_bloc.dart';
-import 'package:r6_moovie_app/presentation/bloc/movie_state/movie_state.dart';
 import 'package:r6_moovie_app/presentation/screens/movies_details_screen.dart';
 
 class BannerList extends StatelessWidget {
