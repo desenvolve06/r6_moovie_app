@@ -5,6 +5,7 @@ import 'package:r6_moovie_app/data/models/series_model.dart';
 class MovieDetailsScreen extends StatelessWidget {
   final dynamic item;
 
+  //TODO NECESSARIO REFATORAR E OBTER OS OUTROS DADOS DO FILME
   const MovieDetailsScreen({Key? key, required this.item}) : super(key: key);
 
   @override
@@ -23,6 +24,7 @@ class MovieDetailsScreen extends StatelessWidget {
     );
   }
 
+  //TALVEZ OBTER ISSO DE UM ARQUIVO CONTROLLER PARA TIRAR A LOGICA DAQUI DE DENTRO
   String _getTitle() {
     try {
       if (item is MoviesModels) {
