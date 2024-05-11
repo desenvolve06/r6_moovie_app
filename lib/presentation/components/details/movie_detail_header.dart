@@ -4,32 +4,43 @@ import 'arch_banner_image.dart';
 
 class MovieDetailHeader extends StatelessWidget {
   const MovieDetailHeader({
-    Key? key,
+    super.key,
     required this.movie,
     required this.height,
     required this.posterUrl,
-  }) : super(key: key);
+  });
 
   final MoviesModels movie;
   final double height;
   final String posterUrl;
 
-  List<Widget> _buildCategoryChips(TextTheme textTheme) {
-    return movie.genreIds!.map((category) {
-      return Padding(
-        padding: const EdgeInsets.only(right: 8.0),
-        child: Chip(
-          label: Text(movie.voteAverage.toString()),
-          labelStyle: textTheme.caption,
-          backgroundColor: Colors.black12,
-        ),
-      );
-    }).toList();
-  }
+  // List<Widget> _buildCategoryChips(TextTheme textTheme) {
+  //   return movie.genreIds!.map((category) {
+  //     return Padding(
+  //       padding: const EdgeInsets.only(right: 8.0),
+  //       child: Chip(
+  //         label: Text(movie.voteAverage.toString()),
+  //         backgroundColor: Colors.black12,
+  //       ),
+  //     );
+  //   }).toList();
+  // }
 
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
+    var movieInformation = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          movie.title!,
+          style: const TextStyle(fontWeight: FontWeight.bold,
+          fontSize: 20),
+        ),
+        // const SizedBox(height: 12.0),
+        // Row(children: _buildCategoryChips(textTheme)),
+      ],
+    );
 
     return Stack(
       children: [
@@ -43,20 +54,17 @@ class MovieDetailHeader extends StatelessWidget {
           right: 16.0,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Expanded(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0), // Define o arredondamento da imagem
-                  child: Image.network(
-                    ("https://image.tmdb.org/t/p/w500${movie.backdropPath}"),
-                    fit: BoxFit.cover,
-                    width: 70,
-                    height: 100,
-                  ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8.0), // Define o arredondamento da imagem
+                child: Image.network(
+                  ("https://image.tmdb.org/t/p/w500${movie.backdropPath}"),
+                  fit: BoxFit.cover,
+                  height: 100,
                 ),
               ),
-              const SizedBox(width: 270),
+              const SizedBox(width: 16.0), // Espaço entre a imagem e as informações do filme
+              Expanded(child: movieInformation), // O título e as categorias ocupam o espaço restante
             ],
           ),
         ),
