@@ -28,7 +28,7 @@ class MovieDetailsScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 20),
-              child: MovieDetailHeader(movie: movie,  height: 60),
+              child: MovieDetailHeader(movie: movie, height: 60),
             ),
             Center(
               child: Padding(
@@ -38,7 +38,8 @@ class MovieDetailsScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       Expanded(
-                        child: _buildInfoItem(Icons.date_range, movie.releaseDate.toString()),
+                        child: _buildInfoItem(
+                            Icons.date_range, movie.releaseDate.toString()),
                       ),
                       _buildDivider(),
                       Expanded(
@@ -46,7 +47,8 @@ class MovieDetailsScreen extends StatelessWidget {
                       ),
                       _buildDivider(),
                       Expanded(
-                        child: _buildInfoItem(Icons.category, movie.genreIds.toString()),
+                        child: _buildInfoItem(
+                            Icons.category, movie.genreIds.toString()),
                       ),
                     ],
                   ),
@@ -102,3 +104,4 @@ class MovieDetailsScreen extends StatelessWidget {
     );
   }
 }
+

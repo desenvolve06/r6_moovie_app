@@ -12,18 +12,6 @@ class MovieDetailHeader extends StatelessWidget {
   final MoviesModels movie;
   final double height;
 
-  // List<Widget> _buildCategoryChips(TextTheme textTheme) {
-  //   return movie.genreIds!.map((category) {
-  //     return Padding(
-  //       padding: const EdgeInsets.only(right: 8.0),
-  //       child: Chip(
-  //         label: Text(movie.voteAverage.toString()),
-  //         backgroundColor: Colors.black12,
-  //       ),
-  //     );
-  //   }).toList();
-  // }
-
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
