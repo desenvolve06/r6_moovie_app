@@ -22,8 +22,7 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.more_vert,
-                color: Color.fromARGB(255, 127, 148, 40)),
+            icon: const Icon(Icons.more_vert),
             onPressed: () {},
           ),
         ],

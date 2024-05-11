@@ -5,13 +5,14 @@ import 'package:r6_moovie_app/presentation/screens/movies_details_screen.dart';
 
 class MediaList extends StatelessWidget {
   final List<dynamic>? mediaList;
+  final List<MoviesModels> movies;
   final String title;
 
   const MediaList({
-    Key? key,
+    super.key,
     required this.mediaList,
-    required this.title,
-  }) : super(key: key);
+    required this.title, required this.movies,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +76,7 @@ class MediaList extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               media is MoviesModels
-                                  ? (media as MoviesModels).title.toString()
+                                  ? (media).title.toString()
                                   : (media as SeriesModels).name.toString(),
                               style: const TextStyle(
                                 color: Colors.white,

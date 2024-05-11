@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/data/models/movies_model.dart';
 import 'package:r6_moovie_app/data/models/series_model.dart';
 import 'package:r6_moovie_app/presentation/screens/movies_details_screen.dart';
+import 'package:r6_moovie_app/presentation/screens/series_details_screen.dart';
 
 class BannerList extends StatelessWidget {
   final List<dynamic>? bannerList;
@@ -40,7 +41,7 @@ class BannerList extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MovieDetailsScreen(item: banner),
+                      builder: (context) => SeriesDetailsScreen(item: banner),
                     ),
                   );
                 },
@@ -67,7 +68,7 @@ class BannerList extends StatelessWidget {
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.black.withOpacity(0.5),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 bottomLeft: Radius.circular(10.0),
                                 bottomRight: Radius.circular(10.0),
                               ),
