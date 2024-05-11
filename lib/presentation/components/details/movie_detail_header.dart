@@ -6,13 +6,11 @@ class MovieDetailHeader extends StatelessWidget {
   const MovieDetailHeader({
     super.key,
     required this.movie,
-    required this.height,
-    required this.posterUrl,
+    required this.height
   });
 
   final MoviesModels movie;
   final double height;
-  final String posterUrl;
 
   // List<Widget> _buildCategoryChips(TextTheme textTheme) {
   //   return movie.genreIds!.map((category) {
@@ -56,15 +54,15 @@ class MovieDetailHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(8.0), // Define o arredondamento da imagem
+                borderRadius: BorderRadius.circular(8.0),
                 child: Image.network(
                   ("https://image.tmdb.org/t/p/w500${movie.backdropPath}"),
                   fit: BoxFit.cover,
                   height: 100,
                 ),
               ),
-              const SizedBox(width: 16.0), // Espaço entre a imagem e as informações do filme
-              Expanded(child: movieInformation), // O título e as categorias ocupam o espaço restante
+              const SizedBox(width: 16.0),
+              Expanded(child: movieInformation),
             ],
           ),
         ),

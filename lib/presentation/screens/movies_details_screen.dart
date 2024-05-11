@@ -27,7 +27,7 @@ class MovieDetailsScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 20.0),
-              child: MovieDetailHeader(movie: movie, posterUrl: '', height: 60),
+              child: MovieDetailHeader(movie: movie, height: 60),
             ),
             Center(
               child: Padding(
