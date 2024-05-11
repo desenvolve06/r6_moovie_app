@@ -1,7 +1,7 @@
 class MoviesModels {
   final bool adult;
   final String? backdropPath;
-  final List<int> genreIds;
+  final List<String> genreIds;
   final int id;
   final String originalLanguage;
   final String originalTitle;
@@ -55,7 +55,7 @@ class MoviesModels {
       adult: json['adult'] ?? false,
       backdropPath: json['backdrop_path'],
       genreIds: (json['genre_ids'] as List<dynamic>?)
-              ?.map<int>((id) => id as int)
+              ?.map<String>((name) => name as String)
               .toList() ??
           [],
       id: json['id'] ?? 0,

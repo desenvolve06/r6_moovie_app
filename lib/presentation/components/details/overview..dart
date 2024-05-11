@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class OverView extends StatelessWidget {
@@ -25,22 +24,6 @@ class OverView extends StatelessWidget {
             color: Colors.white,
             fontSize: 16.0,
           ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(
-              'more',
-              style: textTheme.bodySmall
-                  ?.copyWith(fontSize: 16.0, color: Colors.white),
-            ),
-            const Icon(
-              Icons.keyboard_arrow_down,
-              size: 18.0,
-              color: Colors.white,
-            ),
-          ],
         ),
       ],
     );
