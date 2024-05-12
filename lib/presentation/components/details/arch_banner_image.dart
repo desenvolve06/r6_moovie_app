@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ArcBannerImage extends StatelessWidget {
   final String imageUrl;
 
-  const ArcBannerImage(this.imageUrl, {super.key});
+  const ArcBannerImage(this.imageUrl, {super.key, required double height});
 
   @override
   Widget build(BuildContext context) {

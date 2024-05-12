@@ -7,7 +7,6 @@ import '../components/details/text_list.dart';
 
 class MovieDetailsScreen extends StatelessWidget {
   final dynamic item;
-
   const MovieDetailsScreen({super.key, required this.item});
 
   @override
@@ -56,3 +55,4 @@ class MovieDetailsScreen extends StatelessWidget {
     );
   }
 }
+

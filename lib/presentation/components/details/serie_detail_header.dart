@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:r6_moovie_app/data/models/series_model.dart';
 import '../../../data/models/movies_model.dart';
 import 'arch_banner_image.dart';
 
-class MovieDetailHeader extends StatelessWidget {
-  const MovieDetailHeader({
-    super.key,
-    required this.movie,
-    required this.height
-  });
-
-  final MoviesModels movie;
+class SerieDetailHeader extends StatelessWidget {
+  const SerieDetailHeader({super.key, required this.serie, required this.height});
+  final SeriesModels serie;
   final double height;
 
   @override
@@ -19,9 +15,9 @@ class MovieDetailHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          movie.title,
+          serie.name,
           style: const TextStyle(fontWeight: FontWeight.bold,
-          fontSize: 20),
+              fontSize: 20),
         ),
       ],
     );
@@ -30,7 +26,7 @@ class MovieDetailHeader extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: 30),
-          child: ArcBannerImage("https://image.tmdb.org/t/p/w500${movie.backdropPath}", height: 80),
+          child: ArcBannerImage("https://image.tmdb.org/t/p/w500${serie.posterPath}", height: 80),
         ),
         Positioned(
           bottom: 0.0,
@@ -42,7 +38,7 @@ class MovieDetailHeader extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.network(
-                  ("https://image.tmdb.org/t/p/w500${movie.backdropPath}"),
+                  ("https://image.tmdb.org/t/p/w500${serie.backdropPath}"),
                   fit: BoxFit.cover,
                   height: 100,
                 ),

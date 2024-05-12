@@ -3,15 +3,20 @@ import 'package:r6_moovie_app/data/models/movies_model.dart';
 import 'package:r6_moovie_app/data/models/series_model.dart';
 import 'package:r6_moovie_app/presentation/screens/movies_details_screen.dart';
 
+import '../screens/series_details_screen.dart';
+
 class MediaList extends StatelessWidget {
   final List<dynamic>? mediaList;
   final List<MoviesModels> movies;
+  final List<SeriesModels> series;
   final String title;
 
   const MediaList({
     super.key,
     required this.mediaList,
-    required this.title, required this.movies,
+    required this.title,
+    required this.movies,
+    required this.series,
   });
 
   @override
@@ -38,12 +43,21 @@ class MediaList extends StatelessWidget {
               final media = mediaList![index];
               return GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MovieDetailsScreen(item: media),
-                    ),
-                  );
+                  if (media is MoviesModels) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MovieDetailsScreen(item: media),
+                      ),
+                    );
+                  } else if (media is SeriesModels) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SeriesDetailsScreen(item: media),
+                      ),
+                    );
+                  }
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -76,7 +90,7 @@ class MediaList extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               media is MoviesModels
-                                  ? (media).title.toString()
+                                  ? (media as MoviesModels).title.toString()
                                   : (media as SeriesModels).name.toString(),
                               style: const TextStyle(
                                 color: Colors.white,

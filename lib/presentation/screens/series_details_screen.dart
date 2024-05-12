@@ -1,7 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../data/models/series_model.dart';
+import 'package:r6_moovie_app/data/models/series_model.dart';
+import 'package:r6_moovie_app/presentation/components/details/serie_detail_header.dart';
+import '../components/details/info_row.dart';
+import '../components/details/overview..dart';
+import '../components/details/text_list.dart';
 
 class SeriesDetailsScreen extends StatelessWidget {
   final dynamic item;
@@ -10,30 +12,44 @@ class SeriesDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Extrai os detalhes do filme do argumento item
-    final SeriesModels serie = item;
+    final SeriesModels series = item;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Details')),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.network('https://image.tmdb.org/t/p/w500${serie.posterPath}'),
-              Text('Título: ${serie.name}'),
-              Text('Resumo: ${serie.overview}'),
-              Text('Data de Lançamento: ${serie.firstAirDate}'),
-              Text('Número de episódios: ${serie.numberOfEpisodes.toInt()}'),
-              Text('Númeo de seasons: ${serie.numberOfSeasons}'),
-              Text('Avaliação: ${serie.genres}'),
-              Text('Total de Votos: ${serie.voteAverage}'),
-              Text('Gêneros: ${serie.genres}'),
-              // Substitua 'src' pela URL do pôster do filme
-
-            ],
+      appBar: AppBar(
+        title: const Text('Details'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.bookmark_sharp),
+            onPressed: () {},
           ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: SerieDetailHeader(serie: series, height: 60),
+            ),
+            InfoRow(
+              releaseDate: series.firstAirDate,
+              duration: series.numberOfSeasons.toString(),
+              genreIds: series.numberOfEpisodes.toString(),
+            ),
+            const SizedBox(height: 10),
+            const TextList(items: ["About Series", "Review", "Cast"]),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: OverView(series.overview),
+            ),
+          ],
         ),
       ),
     );
