@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/data/models/series_model.dart';
-import 'package:r6_moovie_app/presentation/components/details/serie_detail_header.dart';
+import 'package:r6_moovie_app/presentation/components/details/header/serie_detail_header.dart';
 import '../components/details/info_row.dart';
 import '../components/details/overview..dart';
 import '../components/details/text_list.dart';

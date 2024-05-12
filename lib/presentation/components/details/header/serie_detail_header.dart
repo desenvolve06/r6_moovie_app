@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/data/models/series_model.dart';
-import '../../../data/models/movies_model.dart';
-import 'arch_banner_image.dart';
+import '../../../../data/models/movies_model.dart';
+import '../arch_banner_image.dart';
 
 class SerieDetailHeader extends StatelessWidget {
   const SerieDetailHeader({super.key, required this.serie, required this.height});

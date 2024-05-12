@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../data/models/movies_model.dart';
-import 'arch_banner_image.dart';
+import '../../../../data/models/movies_model.dart';
+import '../arch_banner_image.dart';
 
 class MovieDetailHeader extends StatelessWidget {
   const MovieDetailHeader({

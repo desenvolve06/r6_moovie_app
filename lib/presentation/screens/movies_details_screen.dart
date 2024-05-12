@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/presentation/components/details/info_row.dart';
 import '../../data/models/movies_model.dart';
-import '../components/details/movie_detail_header.dart';
+import '../components/details/header/movie_detail_header.dart';
 import '../components/details/overview..dart';
 import '../components/details/text_list.dart';
 
