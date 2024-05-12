@@ -3,15 +3,21 @@ import 'package:r6_moovie_app/data/models/movies_model.dart';
 import 'package:r6_moovie_app/data/models/series_model.dart';
 import 'package:r6_moovie_app/presentation/screens/movies_details_screen.dart';
 
+import '../screens/series_details_screen.dart';
+
 class MediaList extends StatelessWidget {
   final List<dynamic>? mediaList;
+  final List<MoviesModels> movies;
+  final List<SeriesModels> series;
   final String title;
 
   const MediaList({
-    Key? key,
+    super.key,
     required this.mediaList,
     required this.title,
-  }) : super(key: key);
+    required this.movies,
+    required this.series,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +43,21 @@ class MediaList extends StatelessWidget {
               final media = mediaList![index];
               return GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MovieDetailsScreen(item: media),
-                    ),
-                  );
+                  if (media is MoviesModels) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MovieDetailsScreen(item: media),
+                      ),
+                    );
+                  } else if (media is SeriesModels) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SeriesDetailsScreen(item: media),
+                      ),
+                    );
+                  }
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -67,7 +82,7 @@ class MediaList extends StatelessWidget {
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.black.withOpacity(0.5),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 bottomLeft: Radius.circular(10.0),
                                 bottomRight: Radius.circular(10.0),
                               ),
