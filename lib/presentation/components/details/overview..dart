@@ -12,11 +12,6 @@ class OverView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Overview',
-          style: textTheme.titleMedium
-              ?.copyWith(fontSize: 18.0),
-        ),
         const SizedBox(height: 8.0),
         Text(
           overview,
