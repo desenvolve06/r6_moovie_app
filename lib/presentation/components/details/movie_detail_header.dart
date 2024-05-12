@@ -19,12 +19,10 @@ class MovieDetailHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          movie.title!,
+          movie.title,
           style: const TextStyle(fontWeight: FontWeight.bold,
           fontSize: 20),
         ),
-        // const SizedBox(height: 12.0),
-        // Row(children: _buildCategoryChips(textTheme)),
       ],
     );
 
