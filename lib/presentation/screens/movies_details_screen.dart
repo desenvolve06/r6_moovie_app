@@ -1,41 +1,62 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:r6_moovie_app/data/models/movies_model.dart';
-import 'package:r6_moovie_app/data/models/series_model.dart';
+import 'package:r6_moovie_app/presentation/components/details/media_detail_header.dart';
+
+import '../../data/models/movies_model.dart';
+import '../components/details/info_row.dart';
+import '../components/details/overview.dart';
+import '../components/details/text_list.dart';
 
 class MovieDetailsScreen extends StatelessWidget {
   final dynamic item;
-
-  //TODO NECESSARIO REFATORAR E OBTER OS OUTROS DADOS DO FILME
-  const MovieDetailsScreen({Key? key, required this.item}) : super(key: key);
+  const MovieDetailsScreen({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
-    String title = _getTitle();
+    final MoviesModels movie = item;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: const Text('Details'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.bookmark_sharp),
+            onPressed: () {},
+          ),
+        ],
       ),
-      body: Center(
-        child: Text(
-          'Detalhes do item aqui $title',
-          style: TextStyle(fontSize: 20),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child:MediaDetailHeader(media: movie, height: 60),
+            ),
+            InfoRow(
+                releaseDate: movie.releaseDate,
+                duration: '120 min',
+                genreIds: movie.genreIds.toString()
+            ),
+            const SizedBox(height: 10),
+            const TextList(items: ["About Movie", "Review", "Cast"],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: OverView(movie.overview),
+            ),
+          ],
         ),
       ),
     );
   }
+}
 
-  //TALVEZ OBTER ISSO DE UM ARQUIVO CONTROLLER PARA TIRAR A LOGICA DAQUI DE DENTRO
-  String _getTitle() {
-    try {
-      if (item is MoviesModels) {
-        return item.title.toString();
-      } else if (item is SeriesModels) {
-        return item.name.toString();
-      }
-    } catch (e) {
-      return '';
-    }
-
-    return '';
-  }
+class MovieDetailHeader {
 }
