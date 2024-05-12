@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/data/models/movies_model.dart';
 import 'package:r6_moovie_app/data/models/series_model.dart';
-import 'package:r6_moovie_app/presentation/screens/movies_details_screen.dart';
+import 'package:r6_moovie_app/presentation/screens/series_details_screen.dart';
 
 class BannerList extends StatelessWidget {
   final List<dynamic>? bannerList;
   final String title;
 
   const BannerList({
-    Key? key,
+    super.key,
     required this.bannerList,
     required this.title,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class BannerList extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 200, // Altura dos banners
+          height: 200,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: bannerList?.length ?? 0,
@@ -40,15 +40,15 @@ class BannerList extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MovieDetailsScreen(item: banner),
+                      builder: (context) => SeriesDetailsScreen(item: banner),
                     ),
                   );
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SizedBox(
-                    height: 200, // Altura dos banners
-                    width: 400, // Largura dos banners
+                    height: 200,
+                    width: 400,
                     child: Stack(
                       children: [
                         ClipRRect(
@@ -67,7 +67,7 @@ class BannerList extends StatelessWidget {
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.black.withOpacity(0.5),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 bottomLeft: Radius.circular(10.0),
                                 bottomRight: Radius.circular(10.0),
                               ),
