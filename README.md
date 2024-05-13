@@ -112,8 +112,10 @@ A utilização do padrão BLoC ajuda a separar a lógica de negócio da interfac
 código mais modular e fácil de testar.
 
 ## Screenshot
-<img src = "images/splash_1.png" width ="280" height="600">   <img src = "images/splash_2.png.png" width ="280" height="600">
-<img src = "images/screenshot_0.png" width ="280" height="600">   <img src = "images/screenshot_1.png" width ="280" height="600"> 
+<img src = "images/splash_1.png" width ="280" height="600">  
+<img src = "images/splash_2.png" width ="280" height="600">
+<img src = "images/screenshot_0.png" width ="280" height="600">  
+<img src = "images/screenshot_1.png" width ="280" height="600"> 
 <img src = "images/screenshot_2.png" width ="280" height="600"> 
 <img src = "images/screenshot_3.png" width ="280" height="600"> 
 
