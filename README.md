@@ -112,6 +112,7 @@ A utilização do padrão BLoC ajuda a separar a lógica de negócio da interfac
 código mais modular e fácil de testar.
 
 ## Screenshot
+<img src = "https://github.com/desenvolve06/r6_moovie_app/assets/101668192/61e05bbd-5082-45f7-a5c8-59b87dcf385f" width ="280" height="600"> 
 <img src = "images/screenshot_1.png" width ="280" height="600"> 
 <img src = "images/screenshot_2.png" width ="280" height="600"> 
 <img src = "images/screenshot_3.png" width ="280" height="600"> 
