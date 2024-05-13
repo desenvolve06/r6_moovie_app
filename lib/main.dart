@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:r6_moovie_app/presentation/components/appBar_main.dart';
-import 'package:r6_moovie_app/presentation/components/navBar_main.dart';
-import 'package:r6_moovie_app/presentation/components/search_bar_app.dart';
-import 'package:r6_moovie_app/presentation/screens/main_screen.dart';
-import 'package:r6_moovie_app/presentation/screens/splash_screen.dart';
+import 'package:r6_moovie_app/presentation/components/home/appBar_main.dart';
+import 'package:r6_moovie_app/presentation/components/home/navBar_main.dart';
+import 'package:r6_moovie_app/presentation/components/home/search_bar_app.dart';
+import 'package:r6_moovie_app/presentation/pages/main_screen.dart';
+import 'package:r6_moovie_app/presentation/pages/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: [
           SearchBarApp(
-            movies: [],
+            movies:[],
           ),
           Expanded(
             child: MainScreen(),

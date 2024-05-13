@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:r6_moovie_app/data/models/series_model.dart';
-import '../../../data/models/movies_model.dart';
 
 @immutable
 abstract class SeriesState extends Equatable {

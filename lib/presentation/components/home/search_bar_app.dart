@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../data/models/movies_model.dart';
+import '../../../data/models/movies_model.dart';
 
 class SearchBarApp extends StatefulWidget {
   final List<MoviesModels> movies;
