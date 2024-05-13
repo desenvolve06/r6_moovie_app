@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/data/models/movies_model.dart';
 import 'package:r6_moovie_app/data/models/series_model.dart';
@@ -53,11 +54,13 @@ class BannerList extends StatelessWidget {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(10.0),
-                          child: Image.network(
+                          child: CachedNetworkImage(imageUrl:
                             "https://image.tmdb.org/t/p/w500${banner.backdropPath}",
                             fit: BoxFit.cover,
                             height: double.infinity,
                             width: double.infinity,
+                            placeholder: (context, url) => const CircularProgressIndicator(),
+                            errorWidget: (context, url, error) => Icon(Icons.error),
                           ),
                         ),
                         Positioned(

@@ -15,10 +15,10 @@ class InitialState extends MovieState {}
 class LoadingState extends MovieState {}
 
 class LoadedSuccessState extends MovieState {
-  final List<SeriesModels>? series;
+
   final List<MoviesModels>? movies;
 
-  const LoadedSuccessState({this.movies, this.series});
+  const LoadedSuccessState({this.movies});
 }
 
 class ErrorState extends MovieState {

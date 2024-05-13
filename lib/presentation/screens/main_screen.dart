@@ -6,22 +6,27 @@ import 'package:r6_moovie_app/presentation/bloc/movie_state/movie_state.dart';
 import 'package:r6_moovie_app/presentation/bloc/series_bloc/series_bloc.dart';
 import 'package:r6_moovie_app/presentation/components/banner_list.dart';
 import 'package:r6_moovie_app/presentation/components/media_list.dart';
+import '../bloc/movie_event/series_event.dart';
+import '../bloc/movie_state/series_state.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  const MainScreen({super.key});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
+
 }
 
 class _MainScreenState extends State<MainScreen> {
   late final MovieBloc _movieBloc = MovieBloc();
-  late final SerieBloc _serieBloc = SerieBloc();
+  late final SeriesBloc _seriesBloc = SeriesBloc();
 
   @override
   void initState() {
+    MovieBloc();
+    SeriesBloc();
     _movieBloc.add(LoadingSuccessEvent());
-    _serieBloc.add(LoadingSuccessEvent());
+    _seriesBloc.add(LoadingSeriesSuccessEvent());
     super.initState();
   }
 
@@ -33,11 +38,14 @@ class _MainScreenState extends State<MainScreen> {
           BlocBuilder<MovieBloc, MovieState>(
             bloc: _movieBloc,
             builder: (context, movieState) {
-              return BlocBuilder<SerieBloc, MovieState>(
-                bloc: _serieBloc,
+              return BlocBuilder<SeriesBloc, SeriesState>(
+                bloc: _seriesBloc,
                 builder: (context, serieState) {
-                  if (movieState is LoadedSuccessState &&
-                      serieState is LoadedSuccessState) {
+                  if (movieState is LoadingState || serieState is LoadingSeriesState) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (movieState is LoadedSuccessState && serieState is LoadedSeriesSuccessState) {
                     return Column(
                       children: [
                         BannerList(
@@ -47,12 +55,12 @@ class _MainScreenState extends State<MainScreen> {
                         const Padding(padding: EdgeInsets.all(6.0)),
                         MediaList(
                           title: "Recomendados",
-                          mediaList: movieState.movies, movies: [], series: [],
+                          mediaList: movieState.movies ?? [], movies: [], series: [],
                         ),
                         const Padding(padding: EdgeInsets.all(6.0)),
                         MediaList(
                           title: "Series",
-                          mediaList: serieState.series, movies: [], series: [],
+                          mediaList: serieState.series ?? [], movies: [], series: [],
                         ),
                       ],
                     );
@@ -67,4 +75,5 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
+
 }
