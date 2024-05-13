@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:r6_moovie_app/resources/app_values.dart';
 import '../../../../data/models/movies_model.dart';
 import '../../../../data/models/series_model.dart';
 import 'arch_banner_image.dart';
@@ -26,7 +27,7 @@ class MediaDetailHeader<T> extends StatelessWidget {
           title,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 20,
+            fontSize: AppSize.s20,
           ),
         ),
       ],

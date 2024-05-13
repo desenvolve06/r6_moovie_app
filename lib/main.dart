@@ -4,6 +4,8 @@ import 'package:r6_moovie_app/presentation/components/home/navBar_main.dart';
 import 'package:r6_moovie_app/presentation/components/home/search_bar_app.dart';
 import 'package:r6_moovie_app/presentation/pages/main_screen.dart';
 import 'package:r6_moovie_app/presentation/pages/splash_screen.dart';
+import 'package:r6_moovie_app/resources/app_colors.dart';
+import 'package:r6_moovie_app/resources/app_strings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +17,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'KoruFlix',
+      title: AppStrings.appTitle,
       theme: ThemeData(
-        colorScheme: const ColorScheme.dark(background: Color(0xFF1D2026)),
+        colorScheme: const ColorScheme.dark(background: AppColors.primaryBackgroundColor),
         useMaterial3: true,
       ),
       home: SplashScreen(),

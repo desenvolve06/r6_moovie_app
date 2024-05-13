@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/data/models/series_model.dart';
 import 'package:r6_moovie_app/presentation/components/details/media_detail_header.dart';
+import 'package:r6_moovie_app/resources/app_strings.dart';
+
 import '../components/details/info_row.dart';
 import '../components/details/overview.dart';
 import '../components/details/text_list.dart';
@@ -16,7 +18,7 @@ class SeriesDetailsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Details'),
+        title: const Text(AppStrings.details),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
@@ -44,7 +46,11 @@ class SeriesDetailsScreen extends StatelessWidget {
               genreIds: series.numberOfEpisodes.toString(),
             ),
             const SizedBox(height: 10),
-            const TextList(items: ["About Series", "Review", "Cast"]),
+            const TextList(items: [
+              AppStrings.aboutSerie,
+              AppStrings.reviews,
+              AppStrings.cast
+            ]),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: OverView(series.overview),
@@ -55,4 +61,3 @@ class SeriesDetailsScreen extends StatelessWidget {
     );
   }
 }
-

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:r6_moovie_app/resources/app_colors.dart';
+import 'package:r6_moovie_app/resources/app_strings.dart';
+import 'package:r6_moovie_app/resources/app_values.dart';
 
 class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
   const AppBarMain({super.key});
@@ -6,29 +9,27 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        backgroundColor: const Color.fromARGB(255, 29, 32, 38),
-        iconTheme:
-            const IconThemeData(color: Color.fromARGB(255, 127, 140, 40)),
-        title: const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.movie, color: Color.fromARGB(255, 127, 140, 40)),
-            Text(
-              'KoruFlix',
-              style: TextStyle(
-                  fontSize: 20, color: Color.fromARGB(255, 127, 140, 40)),
+      backgroundColor: AppColors.primaryBackgroundColor,
+      iconTheme: const IconThemeData(color: AppColors.primaryColorDark),
+      title: const Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.movie, color: AppColors.primaryColorLight),
+          Text(
+            AppStrings.appTitle,
+            style: TextStyle(
+              fontSize: AppSize.s20,
+              color: AppColors.primaryColor,
             ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.more_vert,
-                color: Color.fromARGB(255, 127, 148, 40)),
-            onPressed: () {},
           ),
         ],
-
-
+      ),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.more_vert, color: AppColors.primaryColorDark),
+          onPressed: () {},
+        ),
+      ],
     );
   }
 

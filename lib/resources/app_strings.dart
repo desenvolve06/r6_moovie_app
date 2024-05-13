@@ -1,6 +1,9 @@
 class AppStrings {
   static const String appTitle = 'KoruFlix';
   static const String details = 'Detalhes';
+  static const String popular = 'Popular';
+  static const String options = 'Opções';
+  static const String suggestions = 'Sugestões';
   static const String seeAll = 'Ver todos';
   static const String popularMovies = 'Filmes populares';
   static const String topRatedMovies = 'Top Filmes avaliados';
@@ -34,5 +37,9 @@ class AppStrings {
   static const String errorMessage = 'Algo está errado.';
   static const String tryAgain = 'tente novamente';
   static const String noResults = 'Sem resultados';
+  static const String noReviews = 'Sem reviews';
   static const String aboutSerie = 'Sobre a série';
+  static const String aboutMovie = 'Sobre o filme';
+  static const String myProfile = 'Meu Perfil';
+  static const String downloads = 'Downloads';
 }
