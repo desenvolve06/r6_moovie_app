@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:r6_moovie_app/presentation/bloc/movie_bloc/movie_bloc.dart';
-import 'package:r6_moovie_app/presentation/bloc/movie_event/movie_event.dart';
-import 'package:r6_moovie_app/presentation/bloc/movie_state/movie_state.dart';
-import 'package:r6_moovie_app/presentation/bloc/series_bloc/series_bloc.dart';
-import 'package:r6_moovie_app/presentation/components/banner_list.dart';
-import 'package:r6_moovie_app/presentation/components/media_list.dart';
-import '../bloc/movie_event/series_event.dart';
-import '../bloc/movie_state/series_state.dart';
+import 'package:r6_moovie_app/presentation/bloc/series/series_bloc.dart';
+import 'package:r6_moovie_app/presentation/components/home/banner_list.dart';
+import '../bloc/movies/movie_bloc.dart';
+import '../bloc/movies/movie_event.dart';
+import '../bloc/movies/movie_state.dart';
+import '../bloc/series/series_event.dart';
+import '../bloc/series/series_state.dart';
+import '../components/home/media_list.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
