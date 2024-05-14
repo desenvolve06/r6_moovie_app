@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:r6_moovie_app/resources/app_colors.dart';
+import 'package:r6_moovie_app/resources/app_strings.dart';
+import 'package:r6_moovie_app/resources/app_values.dart';
 
 class NavBarMain extends StatelessWidget {
   const NavBarMain({super.key});
@@ -6,7 +9,7 @@ class NavBarMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: const Color.fromARGB(255, 219, 242, 41),
+      backgroundColor: AppColors.secondaryBackgroundColor,
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
@@ -15,58 +18,59 @@ class NavBarMain extends StatelessWidget {
             title: const Text(
               'Home',
               style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.black,
+                  fontSize: AppSize.s30,
+                  color: AppColors.primaryColor,
                   fontWeight: FontWeight.bold),
             ),
             onTap: () {},
           ),
           ListTile(
             title: const Text(
-              'My Profile',
+              // 'My Profile',
+              AppStrings.myProfile,
               style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.black,
+                  fontSize: AppSize.s30,
+                  color: AppColors.primaryColor,
                   fontWeight: FontWeight.bold),
             ),
             onTap: () {},
           ),
           ListTile(
             title: const Text(
-              'Downloads',
+              AppStrings.downloads,
               style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.black,
+                  fontSize: AppSize.s30,
+                  color: AppColors.primaryColor,
                   fontWeight: FontWeight.bold),
             ),
             onTap: () {},
           ),
           ListTile(
             title: const Text(
-              'Popular',
+              AppStrings.popular,
               style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.black,
+                  fontSize: AppSize.s30,
+                  color: AppColors.primaryColor,
                   fontWeight: FontWeight.bold),
             ),
             onTap: () {},
           ),
           ListTile(
             title: const Text(
-              'Suggestions',
+              AppStrings.suggestions,
               style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.black,
+                  fontSize: AppSize.s30,
+                  color: AppColors.primaryColor,
                   fontWeight: FontWeight.bold),
             ),
             onTap: () {},
           ),
           ListTile(
             title: const Text(
-              'Options',
+              AppStrings.options,
               style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.black,
+                  fontSize: AppSize.s30,
+                  color: AppColors.primaryColor,
                   fontWeight: FontWeight.bold),
             ),
             onTap: () {},

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:r6_moovie_app/resources/app_colors.dart';
+
 import '../../../data/models/movies_model.dart';
 
 class SearchBarApp extends StatefulWidget {
@@ -21,8 +23,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
         builder: (BuildContext context, SearchController controller) {
           return Container(
             decoration: BoxDecoration(
-              border:
-                  Border.all(color: const Color.fromARGB(255, 219, 242, 41)),
+              border: Border.all(color: AppColors.primaryColorLight),
               borderRadius: BorderRadius.circular(30),
             ),
             child: Padding(
@@ -41,7 +42,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
                     controller.openView();
                   },
                   leading: const Icon(Icons.search,
-                      color: Color.fromARGB(255, 219, 242, 41)),
+                      color: AppColors.primaryColorLight),
                 ),
               ),
             ),

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/data/models/movies_model.dart';
 import 'package:r6_moovie_app/data/models/series_model.dart';
+import 'package:r6_moovie_app/resources/app_values.dart';
 
 import '../../pages/series_details_screen.dart';
 
@@ -25,7 +26,7 @@ class BannerList extends StatelessWidget {
           child: Text(
             title,
             style: const TextStyle(
-              fontSize: 24,
+              fontSize: AppSize.s20,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -55,13 +56,16 @@ class BannerList extends StatelessWidget {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(10.0),
-                          child: CachedNetworkImage(imageUrl:
-                            "https://image.tmdb.org/t/p/w500${banner.backdropPath}",
+                          child: CachedNetworkImage(
+                            imageUrl:
+                                "https://image.tmdb.org/t/p/w500${banner.backdropPath}",
                             fit: BoxFit.cover,
                             height: double.infinity,
                             width: double.infinity,
-                            placeholder: (context, url) => const CircularProgressIndicator(),
-                            errorWidget: (context, url, error) => Icon(Icons.error),
+                            placeholder: (context, url) =>
+                                const CircularProgressIndicator(),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
                           ),
                         ),
                         Positioned(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/data/models/movies_model.dart';
 import 'package:r6_moovie_app/data/models/series_model.dart';
 import 'package:r6_moovie_app/presentation/pages/movies_details_screen.dart';
+import 'package:r6_moovie_app/resources/app_values.dart';
 import '../../pages/series_details_screen.dart';
 
 class MediaList extends StatelessWidget {
@@ -29,7 +30,7 @@ class MediaList extends StatelessWidget {
           child: Text(
             title,
             style: const TextStyle(
-              fontSize: 24,
+              fontSize: AppSize.s24,
               fontWeight: FontWeight.bold,
             ),
           ),

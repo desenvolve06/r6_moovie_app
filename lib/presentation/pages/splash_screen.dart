@@ -4,6 +4,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/main.dart';
+import 'package:r6_moovie_app/resources/app_colors.dart';
+import 'package:r6_moovie_app/resources/app_strings.dart';
 
 // ignore: use_key_in_widget_constructors
 class SplashScreen extends StatefulWidget {
@@ -20,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) => const MyHomePage(title: 'KoruFlix')),
+            builder: (context) => const MyHomePage(title: AppStrings.appTitle)),
       ),
     );
   }
@@ -28,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 31, 40, 51),
+      backgroundColor: AppColors.primaryBackgroundColor,
       body: Center(
         child: Image.asset(
           'assets/splash_image6.png',
