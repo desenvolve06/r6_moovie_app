@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import '../../../domain/entities/series.dart';
+
 class SeriesModels {
   final int id;
   final String name;
@@ -74,6 +76,21 @@ class SeriesModels {
       voteAverage: json['vote_average'].toDouble(),
       posterPath: json['poster_path'],
       backdropPath: json['backdrop_path'],
+    );
+  }
+
+  Series toEntity() {
+    return Series(
+      id: id,
+      name: name,
+      overview: overview,
+      firstAirDate: firstAirDate,
+      numberOfEpisodes: numberOfEpisodes,
+      numberOfSeasons: numberOfSeasons,
+      genres: genres,
+      backdropPath: backdropPath,
+      posterPath: posterPath,
+      voteAverage: voteAverage,
     );
   }
 }
