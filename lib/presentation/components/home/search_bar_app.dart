@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
-
-import '../../../data/models/movies_model.dart';
+import '../../../data/models/movies_models.dart';
 
 class SearchBarApp extends StatefulWidget {
   final List<MoviesModels> movies;

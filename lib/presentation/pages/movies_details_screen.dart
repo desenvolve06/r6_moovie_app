@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/presentation/components/details/media_detail_header.dart';
-
-import '../../data/models/movies_model.dart';
+import '../../domain/entities/movies.dart';
 import '../components/details/info_row.dart';
 import '../components/details/overview.dart';
 import '../components/details/text_list.dart';
@@ -13,8 +11,7 @@ class MovieDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MoviesModels movie = item;
-
+    final Movies movie = item;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Details'),
@@ -40,9 +37,9 @@ class MovieDetailsScreen extends StatelessWidget {
               child:MediaDetailHeader(media: movie, height: 60),
             ),
             InfoRow(
-                releaseDate: movie.releaseDate,
-                duration: '120 min',
-                genreIds: movie.genreIds.toString()
+                releaseDate: movie.releaseDate.toString(),
+                vote: movie.voteCount.toString(),
+                popularity: movie.popularity.toString(),
             ),
             const SizedBox(height: 10),
             const TextList(items: ["About Movie", "Review", "Cast"],

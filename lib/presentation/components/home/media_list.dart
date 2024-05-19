@@ -1,14 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:r6_moovie_app/data/models/movies_model.dart';
 import 'package:r6_moovie_app/data/models/series_model.dart';
 import 'package:r6_moovie_app/presentation/pages/movies_details_screen.dart';
 import 'package:r6_moovie_app/resources/app_values.dart';
+import '../../../domain/entities/movies.dart';
 import '../../pages/series_details_screen.dart';
 
 class MediaList extends StatelessWidget {
   final List<dynamic>? mediaList;
-  final List<MoviesModels> movies;
+  final List<Movies> movies;
   final List<SeriesModels> series;
   final String title;
 
@@ -44,7 +44,7 @@ class MediaList extends StatelessWidget {
               final media = mediaList![index];
               return GestureDetector(
                 onTap: () {
-                  if (media is MoviesModels) {
+                  if (media is Movies) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -92,8 +92,8 @@ class MediaList extends StatelessWidget {
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              media is MoviesModels
-                                  ? (media as MoviesModels).title.toString()
+                              media is Movies
+                                  ? (media as Movies).title.toString()
                                   : (media as SeriesModels).name.toString(),
                               style: const TextStyle(
                                 color: Colors.white,

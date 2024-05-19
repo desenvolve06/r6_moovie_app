@@ -42,8 +42,8 @@ class SeriesDetailsScreen extends StatelessWidget {
             ),
             InfoRow(
               releaseDate: series.firstAirDate,
-              duration: series.numberOfSeasons.toString(),
-              genreIds: series.numberOfEpisodes.toString(),
+              vote: series.numberOfSeasons.toString(),
+              popularity: series.numberOfEpisodes.toString(),
             ),
             const SizedBox(height: 10),
             const TextList(items: [

@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+import '../../domain/entities/movies.dart';
+
+@JsonSerializable()
 class MoviesModels {
   final bool adult;
   final String? backdropPath;
@@ -69,6 +74,29 @@ class MoviesModels {
       video: json['video'] ?? false,
       voteAverage: json['vote_average']?.toDouble() ?? 0.0,
       voteCount: json['vote_count'] ?? 0,
+    );
+  }
+
+
+  //No modelo de dados (MoviesModels),adicionei um método para converter o
+  // modelo para a entidade do domínio (Movies).
+
+  Movies toEntity() {
+    return Movies(
+        adult: adult,
+        backdropPath: backdropPath,
+        genreIds: genreIds,
+        id: id,
+        originalLanguage: originalLanguage,
+        originalTitle: originalTitle,
+        overview: overview,
+        popularity: popularity,
+        posterPath: posterPath,
+        releaseDate: releaseDate,
+        title: title,
+        video: video,
+        voteAverage: voteAverage,
+        voteCount: voteCount,
     );
   }
 }

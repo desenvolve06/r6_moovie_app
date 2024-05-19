@@ -1,4 +1,4 @@
-class MoviesModels {
+class Movies {
   final bool adult;
   final String? backdropPath;
   final List<int> genreIds;
@@ -14,7 +14,7 @@ class MoviesModels {
   final double voteAverage;
   final int voteCount;
 
-  MoviesModels(
+  Movies(
       {required this.adult,
       required this.backdropPath,
       required this.genreIds,

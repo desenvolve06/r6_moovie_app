@@ -30,19 +30,29 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    
 
-
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   flutter_bloc: ^8.1.5
   equatable: ^2.0.5
-  flutter_native_splash: ^2.3.9
-  cached_network_image: ^3.2.0
-  
+  flutter_native_splash: ^2.4.0
+  cached_network_image: ^3.3.1
+  get_it: ^7.7.0
+  get: ^4.6.6
+  dio: ^5.4.3+1
+  retrofit: ^4.1.0
+  built_value: ^8.9.2
+  json_annotation: ^4.9.0
+  json_serializable: ^6.8.0
+  bloc_provider: ^1.0.0
+  tmdb_api: ^2.2.0
+  flutter_dotenv: ^5.1.0
+
+
+  #  retrofit_generator: ^8.1.0
+  build_runner: ^2.4.10
+  bloc: ^8.1.4
+#  json_serializable: ^6.8.0
+#  built_value_generator: ^8.9.2
 
 flutter_native_splash:
   color: '#1F2833'
@@ -54,12 +64,14 @@ flutter_native_splash:
     color: '#1F2833'
     android_gravity: fill
     fullscreen: true
-    
-  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  retrofit_generator: ^8.1.0
+  build_runner: ^2.4.10
+  json_serializable: ^6.8.0
+  built_value_generator: ^8.9.2
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -83,6 +95,7 @@ flutter:
   assets:
      - assets/assets.json
      - assets/splash_image6.png
+     - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
