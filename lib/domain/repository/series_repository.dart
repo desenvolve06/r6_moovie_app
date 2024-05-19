@@ -1,5 +1,6 @@
-import 'package:r6_moovie_app/data/models/series_model.dart';
+import '../entities/series.dart';
 
 abstract class SeriesRepository {
-  Future<List<SeriesModels>> getPopularSeries();
+  Future<List<Series>> getPopularSeries();
 }
+
