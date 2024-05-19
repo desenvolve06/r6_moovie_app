@@ -1,12 +1,12 @@
-import 'package:r6_moovie_app/data/popular_movies_mock/popular_movies_data.dart';
-import '../models/movies_model.dart';
+import '../../domain/entities/movie.dart';
 import '../../domain/repository/movie_repository.dart';
-import '../provider/api_provider.dart';
+import '../source/movie_data_source.dart';
 
 class MoviesRepositoryImpl implements MoviesRepository {
-  final ApiProvider _apiProvider = ApiProvider();
+  final MovieDataSource moviesDataSource;
+
+  MoviesRepositoryImpl(this.moviesDataSource);
   @override
-  Future<List<MoviesModels>> getPopularMovies() {
-    return _apiProvider.fetchMovies();
-  }
+  Future<List<Movie>> getPopularMovies() => moviesDataSource.getPopularMovies();
 }
+

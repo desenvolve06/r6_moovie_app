@@ -1,3 +1,5 @@
+import '../../domain/entities/movie.dart';
+
 class MoviesModels {
   final bool adult;
   final String? backdropPath;
@@ -69,6 +71,25 @@ class MoviesModels {
       video: json['video'] ?? false,
       voteAverage: json['vote_average']?.toDouble() ?? 0.0,
       voteCount: json['vote_count'] ?? 0,
+    );
+  }
+
+  Movie toEntity() {
+    return Movie(
+      adult: adult,
+      backdropPath: backdropPath,
+      genreIds: genreIds,
+      id: id,
+      originalLanguage: originalLanguage,
+      originalTitle: originalTitle,
+      overview: overview,
+      popularity: popularity,
+      posterPath: posterPath,
+      releaseDate: releaseDate,
+      title: title,
+      video: video,
+      voteAverage: voteAverage,
+      voteCount: voteCount,
     );
   }
 }

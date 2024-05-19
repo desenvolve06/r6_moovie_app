@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/data/models/series_model.dart';
 import 'package:r6_moovie_app/presentation/components/details/media_detail_header.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
-
 import '../components/details/info_row.dart';
 import '../components/details/overview.dart';
 import '../components/details/text_list.dart';
@@ -42,8 +41,8 @@ class SeriesDetailsScreen extends StatelessWidget {
             ),
             InfoRow(
               releaseDate: series.firstAirDate,
-              duration: series.numberOfSeasons.toString(),
-              genreIds: series.numberOfEpisodes.toString(),
+              vote: series.numberOfSeasons.toString(),
+              popularity: series.numberOfEpisodes.toString(),
             ),
             const SizedBox(height: 10),
             const TextList(items: [
