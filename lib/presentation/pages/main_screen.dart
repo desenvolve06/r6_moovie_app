@@ -18,12 +18,13 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  late final MovieBloc _movieBloc = MovieBloc();
+  late final MovieBloc _movieBloc;
+
   late final SeriesBloc _seriesBloc = SeriesBloc();
 
   @override
   void initState() {
-    MovieBloc();
+    _movieBloc = BlocProvider.of<MovieBloc>(context);
     SeriesBloc();
     _movieBloc.add(LoadingSuccessEvent());
     _seriesBloc.add(LoadingSeriesSuccessEvent());

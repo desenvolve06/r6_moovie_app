@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class InfoRow extends StatelessWidget {
   final String releaseDate;
-  final String duration;
-  final String genreIds;
+  final String vote;
+  final String popularity;
 
   const InfoRow({
     super.key,
     required this.releaseDate,
-    required this.duration,
-    required this.genreIds,
+    required this.vote,
+    required this.popularity,
   });
 
   @override
@@ -26,11 +26,11 @@ class InfoRow extends StatelessWidget {
               ),
               _buildDivider(),
               Expanded(
-                child: _buildInfoItem(Icons.access_time, duration),
+                child: _buildInfoItem(Icons.star, vote),
               ),
               _buildDivider(),
               Expanded(
-                child: _buildInfoItem(Icons.category, genreIds),
+                child: _buildInfoItem(Icons.bar_chart, popularity),
               ),
             ],
           ),

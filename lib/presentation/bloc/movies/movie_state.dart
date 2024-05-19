@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
-
-import '../../../../data/models/movies_model.dart';
+import '../../../domain/entities/movie.dart';
 
 @immutable
 abstract class MovieState extends Equatable {
@@ -16,7 +15,7 @@ class LoadingState extends MovieState {}
 
 class LoadedSuccessState extends MovieState {
 
-  final List<MoviesModels>? movies;
+  final List<Movie>? movies;
 
   const LoadedSuccessState({this.movies});
 }
