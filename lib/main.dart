@@ -49,9 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
       drawer: NavBarMain(),
       body: Column(
         children: [
-          SearchBarApp(
-            movies:[],
-          ),
+          SearchBarApp(),
           Expanded(
             child: MainScreen(),
           ),
