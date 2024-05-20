@@ -53,6 +53,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
               'media_type': result['media_type'],
               'popularity': result['popularity'],
               'overview': result['overview'],
+              result.containsKey('title') ? 'title': 'name': result.containsKey('title') ? result['title'] : result['name'],
             });
 
             if (tempSearchResult.length > 5) {
@@ -133,7 +134,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
                       ? Image.network(
                           'https://image.tmdb.org/t/p/w92${result['poster_path']}',
                           width: 100,
-                          height: 150,
+                          height: 100,
                           fit: BoxFit.cover,
                         )
                       : const SizedBox(
@@ -144,9 +145,11 @@ class _SearchBarAppState extends State<SearchBarApp> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        result.containsKey('title') ? result['title'] : result['name'] ?? '',      
+                        result.containsKey('title') ? result['title'] : result['name'] ?? '',    
+                          
                         style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
+                      
                       Text(
                         'Rating: ${result['vote_average'].toStringAsFixed(1)}',
                         style: const TextStyle(fontSize: 14),
@@ -161,5 +164,4 @@ class _SearchBarAppState extends State<SearchBarApp> {
       ),
     );
   }
-
 }
