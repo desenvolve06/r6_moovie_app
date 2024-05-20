@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:r6_moovie_app/data/models/series_model.dart';
+import '../../../domain/entities/series.dart';
 
 @immutable
 abstract class SeriesState extends Equatable {
@@ -14,7 +14,7 @@ class InitialSeriesState extends SeriesState {}
 class LoadingSeriesState extends SeriesState {}
 
 class LoadedSeriesSuccessState extends SeriesState {
-  final List<SeriesModels>? series;
+  final List<Series>? series;
 
   const LoadedSeriesSuccessState(this.series);
 

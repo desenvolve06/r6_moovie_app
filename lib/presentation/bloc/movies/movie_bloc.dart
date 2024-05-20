@@ -5,9 +5,7 @@ import 'movie_event.dart';
 import 'movie_state.dart';
 
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
-
   final GetPopularMoviesUseCase getPopularMoviesUseCase;
-
   MovieBloc(this. getPopularMoviesUseCase) : super(InitialState()) {
 
     on<LoadingSuccessEvent>((event, emit) async {
