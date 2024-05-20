@@ -1,13 +1,9 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/main.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
 
-// ignore: use_key_in_widget_constructors
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -19,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
       const Duration(seconds: 4),
-      () => Navigator.pushReplacement(
+          () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
             builder: (context) => const MyHomePage(title: AppStrings.appTitle)),
@@ -39,3 +35,4 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+
