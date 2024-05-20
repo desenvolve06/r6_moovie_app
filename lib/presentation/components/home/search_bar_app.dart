@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
+import 'package:r6_moovie_app/data/network/api_client.dart';
 
 class SearchBarApp extends StatefulWidget {
   const SearchBarApp({super.key});
-
+  
   @override
   State<SearchBarApp> createState() => _SearchBarAppState();
 }
@@ -16,9 +17,9 @@ class _SearchBarAppState extends State<SearchBarApp> {
   Future<void> searchListFunction(String val) async {
 
     List<Map<String, dynamic>> tempSearchResult = [];
-
+    
     var dio = Dio();
-    var apiKey = '25ee91b6dd4371ce80b786d934a8925b';
+    var apiKey = 'inserir a chave aqui';
     var searchUrl =
         'https://api.themoviedb.org/3/search/multi?api_key=$apiKey&query=$val';
     try {
