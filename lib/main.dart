@@ -21,19 +21,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: [
-      BlocProvider(create: (context) => getIt<MovieBloc>()),
-      BlocProvider(create: (context) => getIt<SeriesBloc>()),
-    ],
-    child: MaterialApp(
-      title: AppStrings.appTitle,
-      theme: ThemeData(
-        colorScheme: const ColorScheme.dark(background: AppColors.primaryBackgroundColor),
-        useMaterial3: true,
-      ),
-      home: SplashScreen(),
-      )
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => getIt<MovieBloc>()),
+          BlocProvider(create: (context) => getIt<SeriesBloc>()),
+        ],
+        child: MaterialApp(
+          title: AppStrings.appTitle,
+          theme: ThemeData(
+            colorScheme: const ColorScheme.dark(
+                background: AppColors.primaryBackgroundColor),
+            useMaterial3: true,
+          ),
+          home: SplashScreen(),
+        ));
   }
 }
 
@@ -53,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: [
           SearchBarApp(
-            movies:[],
+            movies: [],
           ),
           Expanded(
             child: MainScreen(),
