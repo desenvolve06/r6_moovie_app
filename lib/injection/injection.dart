@@ -50,8 +50,9 @@ void setupSeriesDependencies() {
   getIt.registerFactory(() => SeriesBloc(getIt<GetPopularSeriesUseCase>()));
 }
 
-void setupDependencies() {
-  getIt.registerSingleton<Dio>(ApiClient.getDio());
+void setupDependencies() async {
+  final dio = await ApiClient.getDio();
+  getIt.registerSingleton<Dio>(dio); // Register the resolved Dio instance
   setupMoviesDependencies();
   setupSeriesDependencies();
 }
