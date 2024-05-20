@@ -24,28 +24,20 @@ class _SearchBarAppState extends State<SearchBarApp> {
         'https://api.themoviedb.org/3/search/multi?api_key=$apiKey&query=$val';
     try {
     var searchResponse = await dio.get(searchUrl);
-    print('Response: $searchResponse\n'); 
     if (searchResponse.statusCode == 200) {
       var tempData = searchResponse.data;
-      print('Temp Data: $tempData\n'); 
       var searchJson = tempData['results'];
-      print('Search JSON: $searchJson\n'); 
 
       var filteredResults = searchJson.where((result) => result['media_type'] != 'person').toList();
 
       for (var result in filteredResults) {
 
-          print('ID: ${result['id']}');
-          print('Poster Path: ${result['poster_path']}');
-          print('Vote Average: ${result['vote_average']}');
-          print('Media Type: ${result['media_type']}');
 
         if (result['id'] != null &&
             result['poster_path'] != null &&
             result['vote_average'] != null &&
             result['media_type'] != null && 
             result['media_type'] != 'person') {
-              print('passa aqui');
           setState(() {
             tempSearchResult.add({
               'id': result['id'],
@@ -76,7 +68,6 @@ class _SearchBarAppState extends State<SearchBarApp> {
       print('Error: $e');
     }
 
-      print('Search Result: $searchResult');
   }
 
   final TextEditingController searchText = TextEditingController();
