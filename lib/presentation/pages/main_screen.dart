@@ -40,12 +40,7 @@ class _MainScreenState extends State<MainScreen> {
               return BlocBuilder<SeriesBloc, SeriesState>(
                 bloc: _seriesBloc,
                 builder: (context, serieState) {
-                  if (movieState is LoadingState ||
-                      serieState is LoadingSeriesState) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if (movieState is LoadedSuccessState &&
+                  if (movieState is LoadedSuccessState &&
                       serieState is LoadedSeriesSuccessState) {
                     return Column(
                       children: [
@@ -70,7 +65,9 @@ class _MainScreenState extends State<MainScreen> {
                       ],
                     );
                   } else {
-                    return const CircularProgressIndicator();
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
                   }
                 },
               );

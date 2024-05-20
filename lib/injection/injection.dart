@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-
 import '../data/network/api_client.dart';
 import '../data/repository/movie_repository_impl.dart';
 import '../data/service/movie_service_api.dart';
@@ -37,8 +36,6 @@ void setupMoviesDependencies() {
 }
 
 void setupSeriesDependencies() {
-  // getIt.registerSingleton<Dio>(ApiClient.getDio());
-
   getIt.registerSingleton<SeriesServiceApi>(SeriesServiceApi(getIt<Dio>()));
 
   getIt.registerSingleton<SeriesDatasource>(
