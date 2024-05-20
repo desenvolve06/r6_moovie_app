@@ -1,12 +1,10 @@
-import 'package:r6_moovie_app/domain/repository/series_repository.dart';
-import 'package:r6_moovie_app/data/models/series_model.dart';
-
-import '../provider/api_provider.dart';
+import 'package:r6_moovie_app/data/source/series_data_source.dart';
+import '../../domain/entities/series.dart';
+import '../../domain/repository/series_repository.dart';
 
 class SeriesRepositoryImpl implements SeriesRepository {
-  final ApiProvider _apiProvider = ApiProvider();
+  final SeriesDatasource seriesDatasource;
+  SeriesRepositoryImpl(this.seriesDatasource);
   @override
-  Future<List<SeriesModels>> getPopularSeries() {
-    return _apiProvider.fetchSeries();
-  }
+  Future<List<Series>> getPopularSeries() => seriesDatasource.getPopularMSeries();
 }

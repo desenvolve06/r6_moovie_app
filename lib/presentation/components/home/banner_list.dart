@@ -1,9 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:r6_moovie_app/data/models/movies_model.dart';
-import 'package:r6_moovie_app/data/models/series_model.dart';
+import 'package:r6_moovie_app/domain/entities/movie.dart';
 import 'package:r6_moovie_app/resources/app_values.dart';
-
+import '../../../domain/entities/series.dart';
 import '../../pages/series_details_screen.dart';
 
 class BannerList extends StatelessWidget {
@@ -82,9 +81,9 @@ class BannerList extends StatelessWidget {
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              banner is MoviesModels
-                                  ? (banner as MoviesModels).title.toString()
-                                  : (banner as SeriesModels).name.toString(),
+                              banner is Movie
+                                  ? (banner as Movie).title.toString()
+                                  : (banner as Series).name.toString(),
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,

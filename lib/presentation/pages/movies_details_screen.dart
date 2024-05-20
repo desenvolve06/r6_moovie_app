@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:r6_moovie_app/presentation/components/details/media_detail_header.dart';
 import '../../domain/entities/movie.dart';
-import '../components/details/info_row.dart';
-import '../components/details/overview.dart';
-import '../components/details/text_list.dart';
-
+import '../details/info_row.dart';
+import '../details/media_detail_header.dart';
+import '../details/overview.dart';
+import '../details/text_list.dart';
 class MovieDetailsScreen extends StatelessWidget {
   final dynamic item;
   const MovieDetailsScreen({super.key, required this.item});
