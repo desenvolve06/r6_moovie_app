@@ -55,8 +55,8 @@ class _SearchBarAppState extends State<SearchBarApp> {
               'overview': result['overview'],
             });
 
-            if (tempSearchResult.length > 20) {
-              tempSearchResult.removeRange(20, tempSearchResult.length);
+            if (tempSearchResult.length > 5) {
+              tempSearchResult.removeRange(5, tempSearchResult.length);
             }
           });
         } else {
@@ -91,46 +91,38 @@ class _SearchBarAppState extends State<SearchBarApp> {
               onTap: () {
                 FocusManager.instance.primaryFocus?.unfocus();
               },
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.primaryColorLight),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: SizedBox(
-                    height: 40,
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: Row(
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(left: 8.0),
-                          child: Icon(
-                            Icons.search,
-                            color: AppColors.primaryColorLight,
-                          ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: SizedBox(
+                  height: 40,
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: Row(
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(left: 8.0),
+                      ),
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                          border: Border.all(color: AppColors.primaryColorLight),
+                          borderRadius: BorderRadius.circular(30),
                         ),
-                        Expanded(
-                          child: TextField(
-                            controller: searchText,
-                            decoration: const InputDecoration(
-                              hintText: 'Search',
-                              border: InputBorder.none,
-                            ),
-                            onSubmitted: (value) {
+                          child: SearchBar(
+                            hintText: 'Search',
+                            onChanged: (value) {
                               searchListFunction(value);
                             },
+                            leading: const Icon(Icons.search,
+                            color: AppColors.primaryColorLight),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 16), 
-
-            
+            const SizedBox(height: 16),
             ListView.builder(
               shrinkWrap: true,
               itemCount: searchResult.length,
@@ -144,19 +136,26 @@ class _SearchBarAppState extends State<SearchBarApp> {
                           height: 150,
                           fit: BoxFit.cover,
                         )
-                      : Container(
+                      : const SizedBox(
                           width: 100,
                           height: 100,
-                          color: Colors.grey,
                         ),
-                  title: Text(result['title'] ?? result['name'] ?? ''),
-                  subtitle: Text( result['vote_average'].toStringAsFixed(1),
-                              style: const TextStyle(fontSize: 14),
-                   )
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        result.containsKey('title') ? result['title'] : result['name'] ?? '',      
+                        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        'Rating: ${result['vote_average'].toStringAsFixed(1)}',
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
                 );
               },
             ),
-
           ],
         ),
       ),
