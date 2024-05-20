@@ -1,15 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
-import '../../../domain/entities/series.dart';
+import '../../domain/entities/series.dart';
 
 class SeriesModels {
   final int id;
   final String name;
   final String overview;
   final String firstAirDate;
-  final int numberOfSeasons;
-  final int numberOfEpisodes;
-  final List<String> genres;
   final double voteAverage;
   final String? posterPath;
   final String? backdropPath;
@@ -19,9 +14,6 @@ class SeriesModels {
     required this.name,
     required this.overview,
     required this.firstAirDate,
-    required this.numberOfSeasons,
-    required this.numberOfEpisodes,
-    required this.genres,
     required this.voteAverage,
     this.posterPath,
     this.backdropPath,
@@ -32,20 +24,18 @@ class SeriesModels {
     String? name,
     String? overview,
     String? firstAirDate,
-    int? numberOfSeasons,
-    int? numberOfEpisodes,
-    List<String>? genres,
     double? voteAverage,
+    String? posterPath,
+    String? backdropPath,
   }) {
     return SeriesModels(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      overview: overview ?? this.overview,
-      firstAirDate: firstAirDate ?? this.firstAirDate,
-      numberOfSeasons: numberOfSeasons ?? this.numberOfSeasons,
-      numberOfEpisodes: numberOfEpisodes ?? this.numberOfEpisodes,
-      genres: genres ?? this.genres,
-      voteAverage: voteAverage ?? this.voteAverage,
+        id: id ?? this.id,
+        name: name ?? this.name,
+        overview: overview ?? this.overview,
+        firstAirDate: firstAirDate ?? this.firstAirDate,
+        voteAverage: voteAverage ?? this.voteAverage,
+        posterPath: posterPath ?? this.posterPath,
+        backdropPath: backdropPath ?? this.backdropPath
     );
   }
 
@@ -55,9 +45,6 @@ class SeriesModels {
       'name': name,
       'overview': overview,
       'firstAirDate': firstAirDate,
-      'numberOfSeasons': numberOfSeasons,
-      'numberOfEpisodes': numberOfEpisodes,
-      'genres': genres,
       'voteAverage': voteAverage,
       'posterPath': posterPath,
       'backdropPath': backdropPath,
@@ -70,9 +57,6 @@ class SeriesModels {
       name: json['name'],
       overview: json['overview'],
       firstAirDate: json['first_air_date'],
-      numberOfSeasons: json['number_of_seasons'],
-      numberOfEpisodes: json['number_of_episodes'],
-      genres: List<String>.from(json['genres'].map((genre) => genre['name'])),
       voteAverage: json['vote_average'].toDouble(),
       posterPath: json['poster_path'],
       backdropPath: json['backdrop_path'],
@@ -85,12 +69,10 @@ class SeriesModels {
       name: name,
       overview: overview,
       firstAirDate: firstAirDate,
-      numberOfEpisodes: numberOfEpisodes,
-      numberOfSeasons: numberOfSeasons,
-      genres: genres,
-      backdropPath: backdropPath,
-      posterPath: posterPath,
       voteAverage: voteAverage,
+      posterPath: posterPath,
+      backdropPath: backdropPath,
     );
   }
 }
+

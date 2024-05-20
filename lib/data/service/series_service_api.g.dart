@@ -34,7 +34,7 @@ class _SeriesServiceApi implements SeriesServiceApi {
     )
             .compose(
               _dio.options,
-              'tv/popular',
+              '/tv/popular',
               queryParameters: queryParameters,
               data: _data,
             )

@@ -1,6 +1,6 @@
 import 'package:r6_moovie_app/data/source/series_data_source.dart';
-import 'package:r6_moovie_app/domain/repository/series_repository.dart';
 import '../../domain/entities/series.dart';
+import '../../domain/repository/series_repository.dart';
 
 class SeriesRepositoryImpl implements SeriesRepository {
   final SeriesDatasource seriesDatasource;

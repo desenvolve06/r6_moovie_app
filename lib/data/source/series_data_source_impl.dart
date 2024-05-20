@@ -1,6 +1,6 @@
-import 'package:r6_moovie_app/data/service/series/series_service_api.dart';
 import 'package:r6_moovie_app/data/source/series_data_source.dart';
 import '../../domain/entities/series.dart';
+import '../service/series_service_api.dart';
 class SeriesDataSourceImpl extends SeriesDatasource {
   final SeriesServiceApi _seriesServiceApi;
 
