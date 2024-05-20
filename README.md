@@ -1,17 +1,25 @@
-# r6_moovie_app
+<h1 align="center" style="font-weight: bold;">KorúFlix</h1>
+
+<h1 align="center">
+    <img alt="KoruFlix Logo" src="./src/assets/splash_image6.png" />
+    </br>
+</h1> 
+
+![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
+![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
+
+---
+[![support](https://img.shields.io/badge/plateform-flutter%7Candroid%20studio-9cf?style=plastic&logo=appveyor)](https://github.com/desenvolve06/r6_moovie_app)
 
 
+## Vídeo-Apresentação do projeto
 https://github.com/desenvolve06/r6_moovie_app/assets/101668192/df5753b5-768b-4dde-8e64-409ee6fa1717
 
 
-# Movie Search App
 
-## Escopo do Projeto
+## :pushpin:  Sobre o Projeto
 
-Este é um projeto de prova de conceito (POC) desenvolvido em Dart Flutter, que utiliza a API de 
-busca de filmes para obter dados estáticos sobre filmes. O objetivo principal deste projeto é 
-demonstrar a aplicação dos princípios SOLID e Clean na codificação do código e na organização do 
-projeto, além de implementar uma arquitetura de software intencionada.
+O KoruFlux é um aplicativo desenvolvido em Dart e Flutter, que consume os dados fornecido pela API de busca de filmes e séties do site [TMDB(The Movies Database)](https://www.themoviedb.org/), explorando milhares de diferentes filmes. Ele utiliza esses dados estáticos para visualizar várias propriedades associadas aos filmes, identificando padrões nos dados e respondendo a perguntas-chave. O projeto tem como objetivo principal demonstrar a aplicação dos princípios SOLID e Clean na codificação e organização, além de implementar uma arquitetura de software sólida e robusta.
 
 ## Telas do aplicativo
 1. Tela de início do app;
@@ -25,10 +33,12 @@ título, categoria.
 - Pesquisa de filmes por titulo.
 - Detalhes  de Filmes e Series Populares:.
 
-## Tecnologias Utilizadas
 
-- Dart
-- Flutter
+## :rocket: Tecnologias Utilizadas
+
+- [Dart](https://dart.dev/)
+- [Flutter](https://flutter.dev/)
+
 
 ## Arquitetura
 
@@ -100,20 +110,34 @@ Windows_NT x64 10.0.22631
 
 ---
 ## Como Executar o Projeto
+Para executar o projeto, é necessário ter o [Git](https://git-scm.com) e [Flutter](https://flutter.dev/docs/get-started/install) instalados em seu ambiente. Após execute os seguintes comandos:
 
-1. Certifique-se de ter o Flutter instalado em sua máquina.
-2. Clone este repositório.
-3. Abra o projeto em seu editor de código favorito.
-4. Execute `flutter pub get` para instalar as dependências do projeto.
-5. Conecte um dispositivo físico ou inicie um emulador.
-6. Execute `flutter run` para iniciar o aplicativo.
+```bash
+# Clonar esse repositório
+$ git clone https://github.com/desenvolve06/r6_moovie_app.git
+
+# Entrar no diretório do projeto
+$ cd r6_moovie_app
+```
+
+Criar uma API Key no [TMDB](https://www.themoviedb.org/documentation/api). Depois é necessário criar um arquivo `.env` na raíz do projeto. Siga o exemplo do arquivo  `.env.example`.
+```bash
+$ API_KEY=Insira o número de sua API Key
+```
+
+Instalar as dependências e executar o projeto após a atualização.
+```bash
+# Instalar as dependências
+$ flutter pub get
+
+# Executar o app
+$ flutter run
+```
+
 
 ## Conclusão
 
-Este projeto serve como uma prova de conceito para demonstrar a aplicação de alguns princípios SOLID e 
-Clean na codificação do código e na organização do projeto.
-A utilização do padrão BLoC ajuda a separar a lógica de negócio da interface do usuário, tornando o 
-código mais modular e fácil de testar.
+O KoruFlix é uma prova de conceito que demonstra a aplicação eficaz dos princípios SOLID e Clean na codificação e organização de um aplicativo Dart Flutter. A implementação do padrão BLoC contribui para a separação da lógica de negócio da interface do usuário, resultando em um código mais modular e testável. Este projeto exemplifica como a adoção desses princípios e padrões pode levar a um software robusto e eficiente.
 
 ## Screenshot
 <img src = "https://github.com/desenvolve06/r6_moovie_app/assets/101668192/61e05bbd-5082-45f7-a5c8-59b87dcf385f" width ="280" height="600"> 
@@ -121,3 +145,80 @@ código mais modular e fácil de testar.
 <img src = "images/screenshot_2.png" width ="280" height="600"> 
 <img src = "images/screenshot_3.png" width ="280" height="600"> 
 
+
+<h2 id="colab">🤝 Colaboradores</h2>
+
+Todas as pessoas envolvidas no projeto.
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/162641327?v=4" width="100px;" alt="Arlan Nunes Profile Picture"/><br>
+        <sub>
+          <b>Arlan Nunes</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/53567018?v=4" width="100px;" alt="Carlos Eduardo Profile Picture"/><br>
+        <sub>
+          <b>Carlos Eduardo</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/101668192?v=4" width="100px;" alt="Davi Roque Profile Picture"/><br>
+        <sub>
+          <b>Davi Roque</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/63366380?v=4" width="100px;" alt="Luciana Cabral Profile Picture"/><br>
+        <sub>
+          <b>Luciana Cabral</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/29042923?v=4" width="100px;" alt="Mauricio Muniz Profile Picture"/><br>
+        <sub>
+          <b>Mauricio Muniz</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/16404725?v=4" width="100px;" alt="Patrick Garcia Profile Picture"/><br>
+        <sub>
+          <b>Patrick Garcia</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/118363325?v=4" width="100px;" alt="Vinicius Rodrigues Muller Profile Picture"/><br>
+        <sub>
+          <b>Vinicius Rodrigues Muller</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
+
+
+
+## License
+---
+MIT License
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+
+---
+
+Made with ♥ by [Desenvolve R6 - Korú](https://github.com/desenvolve06)
