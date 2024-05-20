@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:r6_moovie_app/data/models/series_model.dart';
-import 'package:r6_moovie_app/presentation/components/details/media_detail_header.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
-import '../components/details/info_row.dart';
-import '../components/details/overview.dart';
-import '../components/details/text_list.dart';
+import '../../domain/entities/series.dart';
+import '../details/info_row.dart';
+import '../details/media_detail_header.dart';
+import '../details/overview.dart';
+import '../details/text_list.dart';
 
 class SeriesDetailsScreen extends StatelessWidget {
   final dynamic item;
@@ -13,7 +13,7 @@ class SeriesDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SeriesModels series = item;
+    final Series series = item;
 
     return Scaffold(
       appBar: AppBar(
@@ -41,8 +41,8 @@ class SeriesDetailsScreen extends StatelessWidget {
             ),
             InfoRow(
               releaseDate: series.firstAirDate,
-              vote: series.numberOfSeasons.toString(),
-              popularity: series.numberOfEpisodes.toString(),
+              vote: series.name,
+              popularity: series.name,
             ),
             const SizedBox(height: 10),
             const TextList(items: [

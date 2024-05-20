@@ -1,15 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:r6_moovie_app/data/models/series_model.dart';
 import 'package:r6_moovie_app/presentation/pages/movies_details_screen.dart';
 import 'package:r6_moovie_app/resources/app_values.dart';
 import '../../../domain/entities/movie.dart';
+import '../../../domain/entities/series.dart';
 import '../../pages/series_details_screen.dart';
 
 class MediaList extends StatelessWidget {
   final List<dynamic>? mediaList;
   final List<Movie> movies;
-  final List<SeriesModels> series;
+  final List<Series> series;
   final String title;
 
   const MediaList({
@@ -51,7 +51,7 @@ class MediaList extends StatelessWidget {
                         builder: (context) => MovieDetailsScreen(item: media),
                       ),
                     );
-                  } else if (media is SeriesModels) {
+                  } else if (media is Series) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -94,7 +94,7 @@ class MediaList extends StatelessWidget {
                             child: Text(
                               media is Movie
                                   ? (media as Movie).title.toString()
-                                  : (media as SeriesModels).name.toString(),
+                                  : (media as Series).name.toString(),
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,

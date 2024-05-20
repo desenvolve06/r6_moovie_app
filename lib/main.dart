@@ -8,20 +8,23 @@ import 'package:r6_moovie_app/presentation/pages/splash_screen.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'injection/movie_injection.dart';
+import 'package:r6_moovie_app/presentation/bloc/series/series_bloc.dart';
+import 'injection/injection.dart';
 
 void main() {
-  setupMoviesDependencies();
+  setupDependencies();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context) => getIt<MovieBloc>(),
+    return MultiBlocProvider(providers: [
+      BlocProvider(create: (context) => getIt<MovieBloc>()),
+      BlocProvider(create: (context) => getIt<SeriesBloc>()),
+    ],
     child: MaterialApp(
       title: AppStrings.appTitle,
       theme: ThemeData(

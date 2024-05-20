@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/resources/app_values.dart';
-import '../../../../data/models/movies_model.dart';
-import '../../../../data/models/series_model.dart';
-import '../../../domain/entities/movie.dart';
+import '../../../../domain/entities/movie.dart';
+import '../../../../domain/entities/series.dart';
 import 'arch_banner_image.dart';
 
 class MediaDetailHeader<T> extends StatelessWidget {
@@ -18,8 +17,8 @@ class MediaDetailHeader<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
-    var title = media is Movie ? (media as Movie).title : (media as SeriesModels).name;
-    var backdropPath = media is Movie ? (media as Movie).backdropPath : (media as SeriesModels).backdropPath;
+    var title = media is Movie ? (media as Movie).title : (media as Series).name;
+    var backdropPath = media is Movie ? (media as Movie).backdropPath : (media as Series).backdropPath;
 
     var mediaInformation = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
