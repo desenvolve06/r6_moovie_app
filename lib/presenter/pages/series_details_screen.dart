@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
 import '../../domain/entities/series.dart';
-import '../details/info_row.dart';
-import '../details/media_detail_header.dart';
-import '../details/overview.dart';
-import '../details/text_list.dart';
+import '../widgets/details/info_row.dart';
+import '../widgets/details/media_detail_header.dart';
+import '../widgets/details/overview.dart';
+import '../widgets/details/text_list.dart';
 
 class SeriesDetailsScreen extends StatelessWidget {
   final dynamic item;

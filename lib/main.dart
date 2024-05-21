@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:r6_moovie_app/presentation/bloc/movies/movie_bloc.dart';
-import 'package:r6_moovie_app/presentation/components/home/appBar_main.dart';
-import 'package:r6_moovie_app/presentation/components/home/navBar_main.dart';
-import 'package:r6_moovie_app/presentation/components/home/search_bar_app.dart';
-import 'package:r6_moovie_app/presentation/pages/main_screen.dart';
-import 'package:r6_moovie_app/presentation/pages/splash_screen.dart';
+import 'package:r6_moovie_app/presenter/bloc/movies/movie_bloc.dart';
+import 'package:r6_moovie_app/presenter/bloc/series/series_bloc.dart';
+import 'package:r6_moovie_app/presenter/pages/main_screen.dart';
+import 'package:r6_moovie_app/presenter/pages/splash_screen.dart';
+import 'package:r6_moovie_app/presenter/widgets/home/appBar_main.dart';
+import 'package:r6_moovie_app/presenter/widgets/home/navBar_main.dart';
+import 'package:r6_moovie_app/presenter/widgets/home/search_bar_app.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:r6_moovie_app/presentation/bloc/series/series_bloc.dart';
-import 'injection/injection.dart';
+import 'di/injection.dart';
 
 void main() {
   setupDependencies();
