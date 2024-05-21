@@ -8,13 +8,13 @@ import '../data/source/movie_data_source.dart';
 import '../data/source/movie_data_source_impl.dart';
 import '../domain/repository/movie_repository.dart';
 import '../domain/usecase/get_popular_movie_use_case.dart';
-import '../presentation/bloc/movies/movie_bloc.dart';
 import '../data/repository/series_repository_impl.dart';
 import '../data/source/series_data_source.dart';
 import '../data/source/series_data_source_impl.dart';
 import '../domain/repository/series_repository.dart';
 import '../domain/usecase/get_popular_series_use_case.dart';
-import '../presentation/bloc/series/series_bloc.dart';
+import '../presenter/bloc/movies/movie_bloc.dart';
+import '../presenter/bloc/series/series_bloc.dart';
 
 final getIt = GetIt.instance;
 
@@ -52,7 +52,7 @@ void setupSeriesDependencies() {
 
 void setupDependencies() async {
   final dio = await ApiClient.getDio();
-  getIt.registerSingleton<Dio>(dio); // Register the resolved Dio instance
+  getIt.registerSingleton<Dio>(dio);
   setupMoviesDependencies();
   setupSeriesDependencies();
 }
