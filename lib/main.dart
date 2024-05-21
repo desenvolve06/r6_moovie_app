@@ -9,7 +9,8 @@ import 'package:r6_moovie_app/resources/app_colors.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/presentation/bloc/series/series_bloc.dart';
-import 'injection/injection.dart';
+
+import 'di/injection.dart';
 
 void main() {
   setupDependencies();
