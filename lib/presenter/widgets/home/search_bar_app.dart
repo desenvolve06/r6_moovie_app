@@ -3,8 +3,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
 
-
-
 class SearchBarApp extends StatefulWidget {
   const SearchBarApp({super.key});
   

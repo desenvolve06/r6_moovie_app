@@ -5,6 +5,7 @@ import '../../../domain/entities/movie.dart';
 import '../../../domain/entities/series.dart';
 import '../../pages/movies_details_screen.dart';
 import '../../pages/series_details_screen.dart';
+import 'favorite_button.dart';
 
 class MediaList extends StatelessWidget {
   final List<dynamic>? mediaList;
@@ -70,12 +71,21 @@ class MediaList extends StatelessWidget {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(10.0),
                           child: CachedNetworkImage(imageUrl:
-                            "https://image.tmdb.org/t/p/w500${media.backdropPath}",
+                          "https://image.tmdb.org/t/p/w500${media.backdropPath}",
                             fit: BoxFit.cover,
                             height: double.infinity,
                             width: double.infinity,
                             placeholder: (context, url) => const CircularProgressIndicator(),
-                            errorWidget: (context, url, error) => Icon(Icons.error),
+                            errorWidget: (context, url, error) => const Icon(Icons.error),
+                          ),
+                        ),
+                        Positioned(
+                          top: 8,
+                          right: 8,
+                          child: FavoriteButton(
+                            isFavorite: false,
+                            onChanged: (bool isFavorite) {
+                            },
                           ),
                         ),
                         Positioned(
@@ -116,4 +126,3 @@ class MediaList extends StatelessWidget {
     );
   }
 }
-

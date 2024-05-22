@@ -1,10 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:r6_moovie_app/data/local/local_data_source.dart';
-import 'package:r6_moovie_app/domain/usecase/get_favorite_list_movies.dart';
-import 'package:r6_moovie_app/domain/usecase/is_favorite_movie.dart';
-import 'package:r6_moovie_app/domain/usecase/remove_favorite_movie.dart';
-import 'package:r6_moovie_app/domain/usecase/save_favorite_movie.dart';
 import '../data/network/api_client.dart';
 import '../data/repository/movie_repository_impl.dart';
 import '../data/service/movie_service_api.dart';
@@ -30,15 +26,17 @@ void setupMoviesDependencies() {
       MovieDataSourceImpl(getIt<MovieServiceApi>()));
 
   getIt.registerSingleton<MoviesRepository>(
-      MoviesRepositoryImpl(getIt<MovieDataSource>(), getIt<LocalDataSource>()));
+      MoviesRepositoryImpl(getIt<MovieDataSource>()));
 
   getIt.registerSingleton<GetPopularMoviesUseCase>(
       GetPopularMoviesUseCase(getIt<MoviesRepository>()));
 
+  getIt.registerSingleton<LocalDataSource>;
+
+  // getIt.registerFactory<SharedPreferences>;
+
   getIt.registerFactory<MovieBloc>(
-    () => MovieBloc(getIt<GetPopularMoviesUseCase>(),
-    getIt<GetFavoriteListMovies>(), getIt<IsFavoriteMovie>(),
-        getIt<SaveFavoriteMovie>(), getIt<RemoveFavoriteMovie>()),
+    () => MovieBloc(getIt<GetPopularMoviesUseCase>()),
   );
 }
 
