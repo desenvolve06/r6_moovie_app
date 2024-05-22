@@ -8,6 +8,15 @@ abstract class MovieEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadingSuccessEvent extends MovieEvent {
-}
+class LoadingSuccessEvent extends MovieEvent {}
+
 class NetworkErrorEvent extends Error {}
+
+class ToggleFavoriteEvent extends MovieEvent {
+  final int movieId;
+
+  const ToggleFavoriteEvent(this.movieId);
+
+  @override
+  List<Object> get props => [];
+}
