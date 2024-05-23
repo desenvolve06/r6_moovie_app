@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:r6_moovie_app/presenter/widgets/home/toogle_favorite.dart';
 import 'package:r6_moovie_app/resources/app_values.dart';
 import '../../../domain/entities/movie.dart';
 import '../../../domain/entities/series.dart';
@@ -82,7 +83,7 @@ class MediaList extends StatelessWidget {
                         Positioned(
                           top: 8,
                           right: 8,
-                          child: FavoriteButton(
+                          child: FavoriteToggleButton(
                             isFavorite: false,
                             onChanged: (bool isFavorite) {
                             },
@@ -126,3 +127,4 @@ class MediaList extends StatelessWidget {
     );
   }
 }
+

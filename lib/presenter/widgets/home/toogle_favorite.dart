@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class ToogleFavorite extends StatefulWidget {
+class FavoriteToggleButton extends StatefulWidget {
   final bool isFavorite;
   final ValueChanged<bool> onChanged;
 
-  const ToogleFavorite({
+  const FavoriteToggleButton({
     super.key,
     required this.isFavorite,
     required this.onChanged,
   });
 
   @override
-  _ToogleFavoriteState createState() => _ToogleFavoriteState();
+  _ToggleFavoriteState createState() => _ToggleFavoriteState();
 }
 
-class _ToogleFavoriteState extends State<ToogleFavorite> {
+class _ToggleFavoriteState extends State<FavoriteToggleButton> {
   late bool _isFavorite;
 
   @override
