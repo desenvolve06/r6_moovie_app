@@ -1,5 +1,21 @@
-class FavoriteEvent {
-  final bool isFavorite;
+abstract class FavoriteEvent {}
 
-  FavoriteEvent(this.isFavorite);
+class AddToFavoritesEvent extends FavoriteEvent {
+  final int movieId;
+
+  AddToFavoritesEvent(this.movieId);
 }
+
+class RemoveFromFavoritesEvent extends FavoriteEvent {
+  final int movieId;
+
+  RemoveFromFavoritesEvent(this.movieId);
+}
+
+class CheckIfFavoriteEvent extends FavoriteEvent {
+  final int movieId;
+
+  CheckIfFavoriteEvent(this.movieId);
+}
+
+class GetFavoritesEvent extends FavoriteEvent {}
