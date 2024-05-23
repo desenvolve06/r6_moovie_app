@@ -1,39 +1,14 @@
-import 'package:shared_preferences/shared_preferences.dart';
+abstract class LocalDataSource {
+  /// Este método deve retornar uma lista de IDs que representam os itens favoritos.*
 
-class LocalDataSource {
-  // final SharedPreferences _sharedPreferences;
-  // static const String _listKey = 'favourites';
+      Future<List<int>> getFavourites();
 
-  // LocalDataSource(this._sharedPreferences);
+///Este método deve salvar um ID na lista de favoritos e retornar um Future<bool> indicando se a operação foi bem-sucedida.
+      Future<void> addToFavorites(int id);
 
-  // List<int> getFavouritesList() {
-  //   final stringList = _sharedPreferences.getStringList(_listKey) ?? [];
-  //   return stringList.map(int.parse).toList();
-  // }
-  //
-  // Future<bool> saveToFavouritesList(int id) async {
-  //   final favourites = getFavouritesList();
-  //   if (!favourites.contains(id)) {
-  //     favourites.add(id);
-  //     return await _updateFavourites(favourites);
-  //   }
-  //   return false;
-  // }
-  //
-  // bool isFavourite(int id) {
-  //   return getFavouritesList().contains(id);
-  // }
-  //
-  // Future<bool> removeFromFavourites(int id) async {
-  //   final favourites = getFavouritesList();
-  //   if (favourites.remove(id)) {
-  //     return await _updateFavourites(favourites);
-  //   }
-  //   return false;
-  // }
-  //
-  // Future<bool> _updateFavourites(List<int> favourites) async {
-  //   final stringList = favourites.map((id) => id.toString()).toList();
-  //   return await _sharedPreferences.setStringList(_listKey, stringList);
-  // }
-}
+      ///Este método deve verificar se um determinado ID está na lista de favoritos e retornar um bool
+      Future<bool> isFavourite(int id);
+
+      /// Este método deve remover um ID da lista de favoritos e retornar um Future<bool> indicando se a operação foi bem-sucedida.
+      Future<void> removeFromFavorites(int id);
+ }
