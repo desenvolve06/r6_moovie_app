@@ -3,8 +3,10 @@ import 'package:r6_moovie_app/resources/app_colors.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
 import 'package:r6_moovie_app/resources/app_values.dart';
 
+import '../../pages/favorites_screen.dart';
+
 class NavBarMain extends StatelessWidget {
-  const NavBarMain({super.key});
+  const NavBarMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,20 +20,21 @@ class NavBarMain extends StatelessWidget {
             title: const Text(
               'Home',
               style: TextStyle(
-                  fontSize: AppSize.s30,
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.bold),
+                fontSize: AppSize.s30,
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             onTap: () {},
           ),
           ListTile(
             title: const Text(
-              // 'My Profile',
               AppStrings.myProfile,
               style: TextStyle(
-                  fontSize: AppSize.s30,
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.bold),
+                fontSize: AppSize.s30,
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             onTap: () {},
           ),
@@ -39,19 +42,26 @@ class NavBarMain extends StatelessWidget {
             title: const Text(
               AppStrings.downloads,
               style: TextStyle(
-                  fontSize: AppSize.s30,
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.bold),
+                fontSize: AppSize.s30,
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FavoritesScreen()),
+              );
+            },
           ),
           ListTile(
             title: const Text(
               AppStrings.popular,
               style: TextStyle(
-                  fontSize: AppSize.s30,
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.bold),
+                fontSize: AppSize.s30,
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             onTap: () {},
           ),
@@ -59,21 +69,33 @@ class NavBarMain extends StatelessWidget {
             title: const Text(
               AppStrings.suggestions,
               style: TextStyle(
-                  fontSize: AppSize.s30,
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.bold),
+                fontSize: AppSize.s30,
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>  FavoritesScreen()),
+              );
+            },
           ),
           ListTile(
             title: const Text(
               AppStrings.options,
               style: TextStyle(
-                  fontSize: AppSize.s30,
-                  color: AppColors.primaryColor,
-                  fontWeight: FontWeight.bold),
+                fontSize: AppSize.s30,
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>  FavoritesScreen()),
+              );
+            },
           ),
         ],
       ),

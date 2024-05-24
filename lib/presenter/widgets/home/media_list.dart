@@ -1,12 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/presenter/widgets/home/toogle_favorite.dart';
-import 'package:r6_moovie_app/resources/app_values.dart';
 import '../../../domain/entities/movie.dart';
 import '../../../domain/entities/series.dart';
+import '../../../resources/app_values.dart';
+import '../../bloc/favorites/favorite_bloc.dart';
+import '../../bloc/favorites/favorite_event.dart';
+import '../../bloc/favorites/favorite_state.dart';
 import '../../pages/movies_details_screen.dart';
 import '../../pages/series_details_screen.dart';
-import 'favorite_button.dart';
 
 class MediaList extends StatelessWidget {
   final List<dynamic>? mediaList;
@@ -24,6 +28,8 @@ class MediaList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<FavoriteBloc>().add(GetFavoritesEvent());
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -71,8 +77,8 @@ class MediaList extends StatelessWidget {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(10.0),
-                          child: CachedNetworkImage(imageUrl:
-                          "https://image.tmdb.org/t/p/w500${media.backdropPath}",
+                          child: CachedNetworkImage(
+                            imageUrl: "https://image.tmdb.org/t/p/w500${media.backdropPath}",
                             fit: BoxFit.cover,
                             height: double.infinity,
                             width: double.infinity,
@@ -83,9 +89,18 @@ class MediaList extends StatelessWidget {
                         Positioned(
                           top: 8,
                           right: 8,
-                          child: FavoriteToggleButton(
-                            isFavorite: false,
-                            onChanged: (bool isFavorite) {
+                          child: BlocBuilder<FavoriteBloc, FavoriteState>(
+                            builder: (context, state) {
+                              bool isFavorite = false;
+                              if (state is FavoritesLoadedState) {
+                                isFavorite = state.favoriteMovieIds.contains(media.id);
+                              }
+                              return FavoriteToggleButton(
+                                isFavorite: isFavorite,
+                                onChanged: (bool isFavorite) {
+                                  _toggleFavorite(media, isFavorite, context);
+                                },
+                              );
                             },
                           ),
                         ),
@@ -103,9 +118,7 @@ class MediaList extends StatelessWidget {
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              media is Movie
-                                  ? (media as Movie).title.toString()
-                                  : (media as Series).name.toString(),
+                              media is Movie ? media.title.toString() : (media as Series).name.toString(),
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -126,5 +139,13 @@ class MediaList extends StatelessWidget {
       ],
     );
   }
-}
 
+  void _toggleFavorite(Movie movie, bool isFavorite, BuildContext context) {
+    final favoriteBloc = BlocProvider.of<FavoriteBloc>(context);
+    if (isFavorite) {
+      favoriteBloc.add(RemoveFromFavoritesEvent(movie.id));
+    } else {
+      favoriteBloc.add(AddToFavoritesEvent(movie.id));
+    }
+  }
+}

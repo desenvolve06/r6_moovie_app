@@ -5,16 +5,16 @@ class FavoriteToggleButton extends StatefulWidget {
   final ValueChanged<bool> onChanged;
 
   const FavoriteToggleButton({
-    super.key,
+    Key? key,
     required this.isFavorite,
     required this.onChanged,
-  });
+  }) : super(key: key);
 
   @override
-  _ToggleFavoriteState createState() => _ToggleFavoriteState();
+  _FavoriteToggleButtonState createState() => _FavoriteToggleButtonState();
 }
 
-class _ToggleFavoriteState extends State<FavoriteToggleButton> {
+class _FavoriteToggleButtonState extends State<FavoriteToggleButton> {
   late bool _isFavorite;
 
   @override

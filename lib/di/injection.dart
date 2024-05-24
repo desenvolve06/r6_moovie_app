@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:r6_moovie_app/data/local/local_data_source.dart';
-import 'package:r6_moovie_app/presenter/bloc/favorites/FavoriteBloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/local/local_data_source_impl.dart';
 import '../data/network/api_client.dart';
@@ -21,6 +20,7 @@ import '../domain/usecase/get_popular_movie_use_case.dart';
 import '../domain/usecase/get_popular_series_use_case.dart';
 import '../domain/usecase/is_favorite_use_case.dart';
 import '../domain/usecase/remove_from_favorite_use_case.dart';
+import '../presenter/bloc/favorites/favorite_bloc.dart';
 import '../presenter/bloc/movies/movie_bloc.dart';
 import '../presenter/bloc/series/series_bloc.dart';
 
@@ -43,11 +43,18 @@ void setupMoviesDependencies() {
 }
 
 void setupFavoritesDependencies() {
+  getIt.registerSingleton<GetFavoritesUseCase>(GetFavoritesUseCase(getIt<MoviesRepository>()));
+  getIt.registerSingleton<IsFavoriteUseCase>(IsFavoriteUseCase(getIt<MoviesRepository>()));
+  getIt.registerSingleton<AddToFavoritesUseCase>(AddToFavoritesUseCase(getIt<MoviesRepository>()));
+  getIt.registerSingleton<RemoveFromFavoriteUseCase>(RemoveFromFavoriteUseCase(getIt<MoviesRepository>()));
+
   getIt.registerFactory<FavoriteBloc>(() => FavoriteBloc(
       getIt<AddToFavoritesUseCase>(),
       getIt<RemoveFromFavoriteUseCase>(),
       getIt<IsFavoriteUseCase>(),
-      getIt<GetFavoritesUseCase>()));
+      getIt<GetFavoritesUseCase>()
+  )
+  );
 }
 
 void setupSeriesDependencies() {
@@ -75,4 +82,5 @@ void setupDependencies() async {
 
   setupMoviesDependencies();
   setupSeriesDependencies();
+  setupFavoritesDependencies();
 }

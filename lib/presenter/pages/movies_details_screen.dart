@@ -4,6 +4,7 @@ import '../widgets/details/info_row.dart';
 import '../widgets/details/media_detail_header.dart';
 import '../widgets/details/overview.dart';
 import '../widgets/details/text_list.dart';
+import 'favorites_screen.dart';
 class MovieDetailsScreen extends StatelessWidget {
   final dynamic item;
   const MovieDetailsScreen({super.key, required this.item});
@@ -23,7 +24,12 @@ class MovieDetailsScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.bookmark_sharp),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>  FavoritesScreen()),
+              );
+            },
           ),
         ],
       ),
@@ -33,12 +39,12 @@ class MovieDetailsScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 20),
-              child:MediaDetailHeader(media: movie, height: 60),
+              child: MediaDetailHeader(media: movie, height: 60),
             ),
             InfoRow(
-                releaseDate: movie.releaseDate.toString(),
-                vote: movie.voteCount.toString(),
-                popularity: movie.popularity.toString(),
+              releaseDate: movie.releaseDate.toString(),
+              vote: movie.voteCount.toString(),
+              popularity: movie.popularity.toString(),
             ),
             const SizedBox(height: 10),
             const TextList(items: ["About Movie", "Review", "Cast"],
@@ -52,7 +58,4 @@ class MovieDetailsScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-class MovieDetailHeader {
 }

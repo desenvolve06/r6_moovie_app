@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/domain/usecase/add_to_favorites_use_case.dart';
 import 'package:r6_moovie_app/domain/usecase/is_favorite_use_case.dart';
 import 'package:r6_moovie_app/domain/usecase/get_favorites_use_case.dart';
+import 'package:r6_moovie_app/resources/app_strings.dart';
 import '../../../domain/usecase/remove_from_favorite_use_case.dart';
 import 'favorite_event.dart';
 import 'favorite_state.dart';
@@ -44,7 +45,7 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
         final isFavorite = await isFavoriteUseCase.isFavorite(event.movieId);
         emit(FavoriteCheckState(isFavorite));
       } catch (e) {
-        emit(FavoriteErrorState(e.toString()));
+        emit(FavoriteErrorState(AppStrings.errorMessage));
       }
     });
 
@@ -54,7 +55,7 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
         final favoriteMovieIds = await getFavoritesUseCase.getFavorites();
         emit(FavoritesLoadedState(favoriteMovieIds));
       } catch (e) {
-        emit(FavoriteErrorState(e.toString()));
+        emit(FavoriteErrorState(AppStrings.errorMessage));
       }
     });
   }
