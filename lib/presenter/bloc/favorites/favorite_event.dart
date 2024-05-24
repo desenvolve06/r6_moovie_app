@@ -19,3 +19,8 @@ class CheckIfFavoriteEvent extends FavoriteEvent {
 }
 
 class GetFavoritesEvent extends FavoriteEvent {}
+
+class ToggleFavorite extends FavoriteEvent {
+  final int movieId;
+  ToggleFavorite(this.movieId);
+}

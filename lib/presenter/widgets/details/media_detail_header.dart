@@ -9,10 +9,12 @@ class MediaDetailHeader<T> extends StatelessWidget {
     super.key,
     required this.media,
     required this.height,
+    this.action,
   });
 
   final T media;
   final double height;
+  final Widget? action;
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +60,11 @@ class MediaDetailHeader<T> extends StatelessWidget {
               Expanded(child: mediaInformation),
             ],
           ),
+        ),
+        Positioned(
+          top: 8,
+          right: 8,
+          child: action ?? Container(),
         ),
       ],
     );
