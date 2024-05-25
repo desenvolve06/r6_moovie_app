@@ -3,7 +3,7 @@ abstract class LocalDataSource {
 
       Future<List<int>> getFavourites();
 
-///Este método deve salvar um ID na lista de favoritos e retornar um Future<bool> indicando se a operação foi bem-sucedida.
+  ///Este método deve salvar um ID na lista de favoritos e retornar um Future<bool> indicando se a operação foi bem-sucedida.
       Future<void> addToFavorites(int id);
 
       ///Este método deve verificar se um determinado ID está na lista de favoritos e retornar um bool

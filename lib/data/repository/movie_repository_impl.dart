@@ -25,9 +25,8 @@ class MoviesRepositoryImpl implements MoviesRepository {
   }
 
   @override
-  Future<bool> isFavourite(int id) {
-    // TODO: implement isFavourite
-    throw UnimplementedError();
+  Future<bool> isFavourite(int id) async {
+    return await localDataSource.isFavourite(id);
   }
 
   @override

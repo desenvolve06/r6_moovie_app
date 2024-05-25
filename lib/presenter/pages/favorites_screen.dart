@@ -30,7 +30,7 @@ class FavoritesScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Image.network(
-                        'https://image.tmdb.org/t/p/w500${state.favoriteMovieIds}',
+                        'https://image.tmdb.org/t/p/w500${movie.toString()}',
                         height: 150,
                         width: 200,
                         fit: BoxFit.cover,

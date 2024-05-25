@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:r6_moovie_app/presenter/widgets/home/toogle_favorite.dart';
 import '../../../domain/entities/movie.dart';
 import '../../../domain/entities/series.dart';
 import '../../../resources/app_values.dart';
@@ -11,6 +10,7 @@ import '../../bloc/favorites/favorite_event.dart';
 import '../../bloc/favorites/favorite_state.dart';
 import '../../pages/movies_details_screen.dart';
 import '../../pages/series_details_screen.dart';
+import 'favorite_toggle_button.dart';
 
 class MediaList extends StatelessWidget {
   final List<dynamic>? mediaList;

@@ -8,7 +8,7 @@ import '../widgets/details/info_row.dart';
 import '../widgets/details/media_detail_header.dart';
 import '../widgets/details/overview.dart';
 import '../widgets/details/text_list.dart';
-import '../widgets/home/toogle_favorite.dart';
+import '../widgets/home/favorite_toggle_button.dart';
 import 'favorites_screen.dart';
 
 class MovieDetailsScreen extends StatelessWidget {

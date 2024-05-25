@@ -8,33 +8,41 @@ class LocalDataSourceImpl implements LocalDataSource {
 
   @override
   Future<void> addToFavorites(int movieId) async {
-    List<int> favorites = await getFavourites();
-    favorites.add(movieId);
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    String jsonFavorites = jsonEncode(favorites);
-    await prefs.setString(_favouritesKey, jsonFavorites);
+    List<int> favorites = await getFavourites();
+    if (!favorites.contains(movieId)) {
+      favorites.add(movieId);
+      String jsonFavorites = jsonEncode(favorites);
+      await prefs.setString(_favouritesKey, jsonFavorites);
+      print('adicionou no favorito $movieId');
+    }
   }
 
   @override
   Future<void> removeFromFavorites(int movieId) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
     List<int> favorites = await getFavourites();
     favorites.remove(movieId);
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
     String jsonFavorites = jsonEncode(favorites);
     await prefs.setString(_favouritesKey, jsonFavorites);
   }
 
   @override
   Future<bool> isFavourite(int id) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    Set<String> favorites = prefs.getStringList(_favouritesKey)?.toSet() ?? {};
-    return favorites.contains(id.toString());
+    List<int> favorites = await getFavourites();
+    print('è favorito $id');
+    return favorites.contains(id);
+
   }
 
   @override
   Future<List<int>> getFavourites() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String>? favorites = prefs.getStringList(_favouritesKey);
-    return favorites?.map((id) => int.parse(id)).toList() ?? [];
+    String? jsonFavorites = prefs.getString(_favouritesKey);
+    if (jsonFavorites != null) {
+      List<int> favoriteIds = List<int>.from(jsonDecode(jsonFavorites));
+      return favoriteIds;
+    }
+    return [];
   }
 }
