@@ -99,7 +99,8 @@ flutter:
   assets:
      - assets/assets.json
      - assets/splash_image6.png
-     - .env
+     - assets/logoKoruFlix.png
+     - .env.dart
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

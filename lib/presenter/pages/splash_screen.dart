@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:r6_moovie_app/main.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
-import 'package:r6_moovie_app/resources/app_strings.dart';
+import 'login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -18,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
           () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) => const MyHomePage(title: AppStrings.appTitle)),
+            builder: (context) => LoginPage()),
       ),
     );
   }
