@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Login'),
+          backgroundColor: AppColors.primaryBackgroundColor,
         ),
         body: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -41,8 +41,13 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 20.0),
               TextField(
                 decoration: InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(color: AppColors.primaryColor),
+                  ),
                   contentPadding: const EdgeInsets.all(10.0),
                   border: OutlineInputBorder(
+                    borderSide: const BorderSide(color: AppColors.primaryColor),
                     borderRadius: BorderRadius.circular(15.0),
                   ),
                   hintText: 'Email',
@@ -52,9 +57,17 @@ class _LoginPageState extends State<LoginPage> {
               TextField(
                 obscureText: _obscureText,
                 decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                        borderSide:
+                            const BorderSide(color: AppColors.primaryColor)),
                     contentPadding: const EdgeInsets.all(10.0),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.0)),
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide:
+                          const BorderSide(color: AppColors.primaryColor),
+                    ),
+                    focusColor: AppColors.primaryColorDark,
                     hintText: 'Senha',
                     suffixIcon: IconButton(
                       icon: Icon(_obscureText
