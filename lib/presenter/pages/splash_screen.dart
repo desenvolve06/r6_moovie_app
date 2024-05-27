@@ -1,6 +1,9 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
+import 'package:r6_moovie_app/resources/asset_path.dart';
+
 import 'login_page.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,10 +17,9 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
       const Duration(seconds: 4),
-          () => Navigator.pushReplacement(
+      () => Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-            builder: (context) => LoginPage()),
+        MaterialPageRoute(builder: (context) => LoginPage()),
       ),
     );
   }
@@ -28,10 +30,9 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: AppColors.primaryBackgroundColor,
       body: Center(
         child: Image.asset(
-          'assets/splash_image6.png',
+          AssetPath.logoKoruFlix,
         ),
       ),
     );
   }
 }
-

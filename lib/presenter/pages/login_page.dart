@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:r6_moovie_app/resources/app_values.dart';
+import 'package:r6_moovie_app/resources/asset_path.dart';
+
 import '../../main.dart';
 import '../../resources/app_colors.dart';
 import '../../resources/app_strings.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  Color textColor = Colors.blue;
+  Color textColor = AppColors.linkColor;
   bool _obscureText = true;
 
   void _togglePasswordVisibility() {
@@ -35,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               Image.asset(
                 alignment: Alignment.topCenter,
-                'assets/logoKoruFlix.png',
+                AssetPath.logoKoruFlix,
                 scale: 2.0,
               ),
               const SizedBox(height: 20.0),
@@ -50,10 +53,10 @@ class _LoginPageState extends State<LoginPage> {
                     borderSide: const BorderSide(color: AppColors.primaryColor),
                     borderRadius: BorderRadius.circular(15.0),
                   ),
-                  hintText: 'Email',
+                  hintText: AppStrings.email,
                 ),
               ),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: AppSize.s20),
               TextField(
                 obscureText: _obscureText,
                 decoration: InputDecoration(
@@ -68,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                           const BorderSide(color: AppColors.primaryColor),
                     ),
                     focusColor: AppColors.primaryColorDark,
-                    hintText: 'Senha',
+                    hintText: AppStrings.password,
                     suffixIcon: IconButton(
                       icon: Icon(_obscureText
                           ? Icons.visibility_off
@@ -79,10 +82,10 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 10.0),
               GestureDetector(
                 onTap: () {},
-                child: const Text('Esqueceu a senha?',
+                child: const Text(AppStrings.forgotPassword,
                     textAlign: TextAlign.end,
                     style: TextStyle(
-                      color: Colors.blue,
+                      color: AppColors.linkColor,
                     )),
               ),
               const SizedBox(height: 16.0),
@@ -100,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                   );
                 },
                 child: const Text(
-                  'Login',
+                  AppStrings.login,
                   style: TextStyle(color: AppColors.primaryText),
                 ),
               ),
@@ -136,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: Image.asset(
                       scale: 1.5,
-                      'assets/icon_face.png',
+                      AssetPath.iconFacebookWhiteBordered,
                       width: 50.0,
                       height: 50.0,
                     ),
@@ -148,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: Image.asset(
                       scale: 1.5,
-                      'assets/icon_google.png',
+                      AssetPath.iconGoogleWhiteBordered,
                       width: 50.0,
                       height: 50.0,
                     ),
@@ -160,16 +163,16 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'Não tem uma conta?',
+                    AppStrings.noAccount,
                     textAlign: TextAlign.center,
                   ),
                   const Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
                   GestureDetector(
                       onTap: () {},
                       child: const Text(
-                        'Cadastre-se',
+                        AppStrings.signUp,
                         textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.blue),
+                        style: TextStyle(color: AppColors.linkColor),
                       )),
                 ],
               ),

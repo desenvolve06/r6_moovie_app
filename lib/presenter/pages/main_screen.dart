@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/series/series_bloc.dart';
+import 'package:r6_moovie_app/resources/app_strings.dart';
+
 import '../bloc/movies/movie_bloc.dart';
 import '../bloc/movies/movie_event.dart';
 import '../bloc/movies/movie_state.dart';
+import '../bloc/series/series_bloc.dart';
 import '../bloc/series/series_event.dart';
 import '../bloc/series/series_state.dart';
 import '../widgets/home/banner_list.dart';
@@ -22,11 +24,15 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void initState() {
+    super.initState();
+    _initializeBlocs();
+  }
+
+  void _initializeBlocs() {
     _movieBloc = BlocProvider.of<MovieBloc>(context);
     _seriesBloc = BlocProvider.of<SeriesBloc>(context);
     _movieBloc.add(LoadingSuccessEvent());
     _seriesBloc.add(LoadingSeriesSuccessEvent());
-    super.initState();
   }
 
   @override
@@ -45,22 +51,22 @@ class _MainScreenState extends State<MainScreen> {
                     return Column(
                       children: [
                         BannerList(
-                          title: "Series pop",
+                          title: AppStrings.populars,
                           bannerList: serieState.series,
                         ),
                         const Padding(padding: EdgeInsets.all(6.0)),
                         MediaList(
-                          title: "Recomendados",
+                          title: AppStrings.suggestions,
                           mediaList: movieState.movies ?? [],
-                          movies: [],
-                          series: [],
+                          movies: const [],
+                          series: const [],
                         ),
                         const Padding(padding: EdgeInsets.all(6.0)),
                         MediaList(
-                          title: "Series",
+                          title: AppStrings.series,
                           mediaList: serieState.series ?? [],
-                          movies: [],
-                          series: [],
+                          movies: const [],
+                          series: const [],
                         ),
                       ],
                     );
