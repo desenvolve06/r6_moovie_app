@@ -15,23 +15,23 @@ class MoviesRepositoryImpl implements MoviesRepository {
   Future<List<Movie>> getPopularMovies() => moviesDataSource.getPopularMovies();
 
   @override
-  Future<void> addToFavorites(int id) async {
-  await localDataSource.addToFavorites(id);
+  Future<void> addToFavorites(Movie movie) async {
+  await localDataSource.addToFavorites(movie);
   }
 
   @override
-  Future<List<int>> getFavourites() async {
-   return await localDataSource.getFavourites();
+  Future<List<Movie>> getFavorites() async {
+   return await localDataSource.getFavorites();
   }
 
   @override
-  Future<bool> isFavourite(int id) async {
-    return await localDataSource.isFavourite(id);
+  Future<bool> isFavorite(int id) async {
+    return await localDataSource.isFavorite(id);
   }
 
   @override
-  Future<void> removeFromFavorites(int id) async {
-    localDataSource.removeFromFavorites(id);
+  Future<void> removeFromFavorites(Movie movie) async {
+    localDataSource.removeFromFavorites(movie);
   }
 
 

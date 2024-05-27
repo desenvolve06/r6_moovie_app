@@ -3,12 +3,11 @@ import '../entities/movie.dart';
 abstract class MoviesRepository {
   Future<List<Movie>> getPopularMovies();
 
-  Future<List<int>> getFavourites();
+  Future<List<Movie>> getFavorites();
 
-  Future<void> addToFavorites(int id);
+  Future<void> addToFavorites(Movie movie);
 
-  Future<bool> isFavourite(int id);
+  Future<bool> isFavorite(int id);
 
-  Future<void> removeFromFavorites(int id);
-
+  Future<void> removeFromFavorites(Movie movie);
 }

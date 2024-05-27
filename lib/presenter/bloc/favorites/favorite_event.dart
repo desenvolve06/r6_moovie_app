@@ -1,13 +1,15 @@
+import '../../../domain/entities/movie.dart';
+
 abstract class FavoriteEvent {}
 
 class AddToFavoritesEvent extends FavoriteEvent {
-  final int movieId;
+  final Movie movie;
 
-  AddToFavoritesEvent(this.movieId);
+  AddToFavoritesEvent(this.movie);
 }
 
 class RemoveFromFavoritesEvent extends FavoriteEvent {
-  final int movieId;
+  final Movie movieId;
 
   RemoveFromFavoritesEvent(this.movieId);
 }
@@ -20,7 +22,8 @@ class CheckIfFavoriteEvent extends FavoriteEvent {
 
 class GetFavoritesEvent extends FavoriteEvent {}
 
-class ToggleFavorite extends FavoriteEvent {
-  final int movieId;
-  ToggleFavorite(this.movieId);
+class ToggleFavoriteEvent extends FavoriteEvent {
+  final Movie movie;
+
+  ToggleFavoriteEvent(this.movie);
 }

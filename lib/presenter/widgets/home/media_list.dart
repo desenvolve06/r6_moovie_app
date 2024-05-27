@@ -1,12 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../domain/entities/movie.dart';
 import '../../../domain/entities/series.dart';
-import '../../../resources/app_values.dart';
 import '../../bloc/favorites/favorite_bloc.dart';
-import '../../bloc/favorites/favorite_event.dart';
 import '../../bloc/favorites/favorite_state.dart';
 import '../../pages/movies_details_screen.dart';
 import '../../pages/series_details_screen.dart';
@@ -19,17 +17,15 @@ class MediaList extends StatelessWidget {
   final String title;
 
   const MediaList({
-    super.key,
+    Key? key,
     required this.mediaList,
     required this.title,
     required this.movies,
     required this.series,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    context.read<FavoriteBloc>().add(GetFavoritesEvent());
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -38,7 +34,7 @@ class MediaList extends StatelessWidget {
           child: Text(
             title,
             style: const TextStyle(
-              fontSize: AppSize.s24,
+              fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -93,13 +89,10 @@ class MediaList extends StatelessWidget {
                             builder: (context, state) {
                               bool isFavorite = false;
                               if (state is FavoritesLoadedState) {
-                                isFavorite = state.favoriteMovieIds.contains(media.id);
+                                isFavorite = state.favoriteMovieIds.any((movie) => movie.id == (media is Movie ? media.id : (media as Series).id));
                               }
                               return FavoriteToggleButton(
-                                isFavorite: isFavorite,
-                                onChanged: (bool isFavorite) {
-                                  _toggleFavorite(media, isFavorite, context);
-                                },
+                                movie: media,
                               );
                             },
                           ),
@@ -138,14 +131,5 @@ class MediaList extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  void _toggleFavorite(Movie movie, bool isFavorite, BuildContext context) {
-    final favoriteBloc = BlocProvider.of<FavoriteBloc>(context);
-    if (isFavorite) {
-      favoriteBloc.add(RemoveFromFavoritesEvent(movie.id));
-    } else {
-      favoriteBloc.add(AddToFavoritesEvent(movie.id));
-    }
   }
 }

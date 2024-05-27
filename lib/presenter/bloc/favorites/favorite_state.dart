@@ -1,3 +1,5 @@
+import '../../../domain/entities/movie.dart';
+
 abstract class FavoriteState {}
 
 class FavoriteInitialState extends FavoriteState {}
@@ -15,7 +17,7 @@ class FavoriteCheckState extends FavoriteState {
 }
 
 class FavoritesLoadedState extends FavoriteState {
-  final List<int> favoriteMovieIds;
+  final List<Movie> favoriteMovieIds;
 
   FavoritesLoadedState(this.favoriteMovieIds);
 }

@@ -1,4 +1,5 @@
 
+import '../entities/movie.dart';
 import '../repository/movie_repository.dart';
 
 class RemoveFromFavoriteUseCase {
@@ -6,7 +7,7 @@ class RemoveFromFavoriteUseCase {
 
   RemoveFromFavoriteUseCase(this.moviesRepository);
 
-  Future<void> removeFromFavorite(int id) {
-    return moviesRepository.removeFromFavorites(id);
+  Future<void> removeFromFavorite(Movie movie) {
+    return moviesRepository.removeFromFavorites(movie);
   }
 }

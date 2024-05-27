@@ -1,48 +1,50 @@
 import 'dart:convert';
-import 'package:r6_moovie_app/data/local/local_data_source.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../domain/entities/movie.dart';
+import '../local/local_data_source.dart';
 
 class LocalDataSourceImpl implements LocalDataSource {
-  static const String _favouritesKey = 'favouriteKey';
-  late Set<int> favoriteMovieIds;
+  static const String _favoritesKey = 'favoritesKey';
 
   @override
-  Future<void> addToFavorites(int movieId) async {
+  Future<void> addToFavorites(Movie movie) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<int> favorites = await getFavourites();
-    if (!favorites.contains(movieId)) {
-      favorites.add(movieId);
-      String jsonFavorites = jsonEncode(favorites);
-      await prefs.setString(_favouritesKey, jsonFavorites);
-      print('adicionou no favorito $movieId');
+    List<Movie> favorites = await getFavorites();
+    if (!favorites.any((m) => m.id == movie.id)) {
+      favorites.add(movie);
+      String jsonFavorites = jsonEncode(
+          favorites.map((m) => m.toJson()).toList());
+      await prefs.setString(_favoritesKey, jsonFavorites);
     }
   }
 
   @override
-  Future<void> removeFromFavorites(int movieId) async {
+  Future<void> removeFromFavorites(Movie movie) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<int> favorites = await getFavourites();
-    favorites.remove(movieId);
-    String jsonFavorites = jsonEncode(favorites);
-    await prefs.setString(_favouritesKey, jsonFavorites);
+    List<Movie> favorites = await getFavorites();
+    favorites.removeWhere((movie) => movie.id == movie.id);
+    String jsonFavorites = jsonEncode(
+        favorites.map((m) => m.toJson()).toList());
+    await prefs.setString(_favoritesKey, jsonFavorites);
   }
 
   @override
-  Future<bool> isFavourite(int id) async {
-    List<int> favorites = await getFavourites();
-    print('è favorito $id');
-    return favorites.contains(id);
-
+  Future<bool> isFavorite(int id) async {
+    List<Movie> favorites = await getFavorites();
+    return favorites.any((movie) => movie.id == movie.id);
   }
 
   @override
-  Future<List<int>> getFavourites() async {
+  Future<List<Movie>> getFavorites() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? jsonFavorites = prefs.getString(_favouritesKey);
+    String? jsonFavorites = prefs.getString(_favoritesKey);
     if (jsonFavorites != null) {
-      List<int> favoriteIds = List<int>.from(jsonDecode(jsonFavorites));
-      return favoriteIds;
+      List<dynamic> decoded = jsonDecode(jsonFavorites);
+      return decoded.map((json) => Movie.fromJson(json)).toList();
     }
     return [];
   }
 }
+
+
+

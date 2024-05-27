@@ -45,7 +45,7 @@ class MovieDetailsScreen extends StatelessWidget {
         builder: (context, state) {
           bool isFavorite = false;
           if (state is FavoritesLoadedState) {
-            isFavorite = state.favoriteMovieIds.contains(movie.id);
+            isFavorite = state.favoriteMovieIds.any((m) => m.id == movie.id);
           }
 
           return SingleChildScrollView(
@@ -57,16 +57,11 @@ class MovieDetailsScreen extends StatelessWidget {
                   child: MediaDetailHeader(
                     media: movie,
                     height: 250,
-                    action: FavoriteToggleButton(
-                      isFavorite: isFavorite,
-                      onChanged: (bool isFavorite) {
-                        context.read<FavoriteBloc>().add(ToggleFavorite(movie.id));
-                      },
-                    ),
+                    action: FavoriteToggleButton(movie: movie),
                   ),
                 ),
                 InfoRow(
-                  releaseDate: movie.releaseDate.toString(),
+                  releaseDate: movie.releaseDate,
                   vote: movie.voteCount.toString(),
                   popularity: movie.popularity.toString(),
                 ),

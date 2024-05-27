@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import '../entities/movie.dart';
 import '../repository/movie_repository.dart';
 
 class IsFavoriteUseCase {
@@ -8,6 +9,6 @@ class IsFavoriteUseCase {
   IsFavoriteUseCase(this.moviesRepository);
 
   Future<bool> isFavorite(int id) {
-    return moviesRepository.isFavourite(id);
+    return moviesRepository.isFavorite(id);
   }
 }

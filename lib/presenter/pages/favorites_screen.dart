@@ -30,7 +30,7 @@ class FavoritesScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Image.network(
-                        'https://image.tmdb.org/t/p/w500${movie.toString()}',
+                        'https://image.tmdb.org/t/p/w500${movie.backdropPath}',
                         height: 150,
                         width: 200,
                         fit: BoxFit.cover,
@@ -38,7 +38,7 @@ class FavoritesScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8),
                         child: Text(
-                          state.favoriteMovieIds.toString(),
+                          movie.title,
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,

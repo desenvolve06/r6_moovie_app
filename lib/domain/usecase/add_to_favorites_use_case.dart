@@ -1,3 +1,4 @@
+import '../entities/movie.dart';
 import '../repository/movie_repository.dart';
 
 class AddToFavoritesUseCase {
@@ -5,7 +6,7 @@ class AddToFavoritesUseCase {
 
   AddToFavoritesUseCase(this.moviesRepository);
 
-  Future<void> addToFavoritesList(int id) {
-    return moviesRepository.addToFavorites(id);
+  Future<void> addToFavoritesList(Movie movie) {
+    return moviesRepository.addToFavorites(movie);
   }
 }
