@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:r6_moovie_app/resources/app_colors.dart';
+import 'package:r6_moovie_app/resources/app_values.dart';
 
 class OverView extends StatelessWidget {
   const OverView(this.overview, {super.key});
@@ -6,7 +8,7 @@ class OverView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -15,9 +17,9 @@ class OverView extends StatelessWidget {
         Text(
           overview,
           style: textTheme.bodyLarge?.copyWith(
-            color: Colors.white,
-            fontSize: 16.0,
-          ),
+              color: AppColors.greyLight1Color,
+              fontSize: AppSize.s16,
+              fontFamily: 'Lora'),
         ),
       ],
     );

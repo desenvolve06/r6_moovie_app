@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
+import 'package:r6_moovie_app/utils/utils.dart';
+
 import '../../domain/entities/series.dart';
 import '../widgets/details/info_row.dart';
 import '../widgets/details/media_detail_header.dart';
@@ -40,7 +42,7 @@ class SeriesDetailsScreen extends StatelessWidget {
               child: MediaDetailHeader(media: series, height: 60),
             ),
             InfoRow(
-              releaseDate: series.firstAirDate,
+              releaseDate: Utils.formatDateString(series.firstAirDate),
               vote: series.name,
               popularity: series.name,
             ),
