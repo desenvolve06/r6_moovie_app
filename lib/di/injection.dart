@@ -64,7 +64,7 @@ void setupSeriesDependencies() {
       SeriesDataSourceImpl(getIt<SeriesServiceApi>()));
 
   getIt.registerSingleton<SeriesRepository>(
-      SeriesRepositoryImpl(getIt<SeriesDatasource>()));
+      SeriesRepositoryImpl(getIt<SeriesDatasource>(), getIt<LocalDataSource>()));
 
   getIt.registerSingleton<GetPopularSeriesUseCase>(
       GetPopularSeriesUseCase(getIt<SeriesRepository>()));

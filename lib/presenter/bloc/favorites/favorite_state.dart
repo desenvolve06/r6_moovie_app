@@ -20,6 +20,12 @@ class FavoritesLoadedState extends FavoriteState {
   FavoritesLoadedState(this.favoriteMovieIds);
 }
 
+class FavoritesSeriesLoadedState extends FavoriteState{
+  final List<int> favoriteSeriesIds;
+  
+  FavoritesSeriesLoadedState(this.favoriteSeriesIds);
+}
+
 class FavoriteErrorState extends FavoriteState {
   final String error;
 

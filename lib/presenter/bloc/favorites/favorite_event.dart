@@ -24,3 +24,33 @@ class ToggleFavorite extends FavoriteEvent {
   final int movieId;
   ToggleFavorite(this.movieId);
 }
+
+
+// Eventos 
+// para 
+// séries
+
+class AddSeriesToFavoritesEvent extends FavoriteEvent {
+  final int serieId;
+
+  AddSeriesToFavoritesEvent(this.serieId);
+}
+
+class RemoveSeriesFromFavoritesEvent extends FavoriteEvent {
+  final int serieId;
+
+  RemoveSeriesFromFavoritesEvent(this.serieId);
+}
+
+class CheckSeriesIfFavoriteEvent extends FavoriteEvent {
+  final int serieId;
+
+  CheckSeriesIfFavoriteEvent(this.serieId);
+}
+
+class GetSeriesFavoritesEvent extends FavoriteEvent {}
+
+class ToggleSeriesFavorite extends FavoriteEvent {
+  final int serieId;
+  ToggleSeriesFavorite(this.serieId);
+}
