@@ -19,5 +19,6 @@ class AppColors {
   static const greyLight2Color = Color(0xffB2B2B2);
   static const circleDotColor = Color(0x33ffffff);
   static const iconContainerColor = Color(0xB2272830);
+  static const linkColor = Color(0xFF2196F3);
   
 }
