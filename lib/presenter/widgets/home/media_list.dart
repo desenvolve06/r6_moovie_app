@@ -98,7 +98,12 @@ class MediaList extends StatelessWidget {
                               return FavoriteToggleButton(
                                 isFavorite: isFavorite,
                                 onChanged: (bool isFavorite) {
-                                  _toggleFavorite(media, isFavorite, context);
+                                  if(media is Movie){
+                                    _toggleFavorite(media, isFavorite, context);
+                                  }
+                                  else{
+                                    _toggleSerieFavorite(media, isFavorite, context);
+                                  }                                 
                                 },
                               );
                             },
@@ -146,6 +151,15 @@ class MediaList extends StatelessWidget {
       favoriteBloc.add(RemoveFromFavoritesEvent(movie.id));
     } else {
       favoriteBloc.add(AddToFavoritesEvent(movie.id));
+    }
+  }
+
+  void _toggleSerieFavorite(Series series, bool isFavorite, BuildContext context) {
+    final favoriteBloc = BlocProvider.of<FavoriteBloc>(context);
+    if (isFavorite) {
+      favoriteBloc.add(RemoveFromFavoritesEvent(series.id));
+    } else {
+      favoriteBloc.add(AddToFavoritesEvent(series.id));
     }
   }
 }
