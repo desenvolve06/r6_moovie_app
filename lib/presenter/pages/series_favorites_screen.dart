@@ -6,9 +6,9 @@ import '../bloc/favorites/favorite_state.dart';
 
 
 class SeriesFavoritesScreen extends StatelessWidget {
-  //final List<Series> series = [];
-  final dynamic item;
-  const SeriesFavoritesScreen({super.key, required this.item});
+  final List<Series> series = [];
+  SeriesFavoritesScreen({super.key});
+  
   @override
   Widget build(BuildContext context) {
     
