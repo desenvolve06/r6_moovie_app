@@ -1,5 +1,5 @@
-import '../entities/series.dart';
-import '../repository/series_repository.dart';
+import '../../entities/series.dart';
+import '../../repository/series_repository.dart';
 
 class GetPopularSeriesUseCase {
   final SeriesRepository repository;

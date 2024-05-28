@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:r6_moovie_app/presenter/pages/series/favorites_series_screen.dart';
+import 'package:r6_moovie_app/presenter/widgets/home/favorite_toggle_button_series.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
 import '../../domain/entities/series.dart';
 import '../widgets/details/info_row.dart';
@@ -27,7 +29,12 @@ class SeriesDetailsScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.bookmark_sharp),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FavoritesSeriesScreen()),
+              );
+            },
           ),
         ],
       ),
@@ -37,7 +44,11 @@ class SeriesDetailsScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 20),
-              child: MediaDetailHeader(media: series, height: 60),
+              child: MediaDetailHeader(
+                media: series, 
+                height: 60,
+                action: FavoriteToggleButtonSeries(series: series),
+                ),
             ),
             InfoRow(
               releaseDate: series.firstAirDate,

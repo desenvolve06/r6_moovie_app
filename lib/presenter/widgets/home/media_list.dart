@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:r6_moovie_app/presenter/widgets/home/favorite_toggle_button_series.dart';
 
 import '../../../domain/entities/movie.dart';
 import '../../../domain/entities/series.dart';
@@ -91,9 +92,15 @@ class MediaList extends StatelessWidget {
                               if (state is FavoritesLoadedState) {
                                 isFavorite = state.favoriteMovieIds.any((movie) => movie.id == (media is Movie ? media.id : (media as Series).id));
                               }
-                              return FavoriteToggleButton(
-                                movie: media,
-                              );
+                              if (media is Movie) {
+                                return FavoriteToggleButton(
+                                  movie: media,
+                                );
+                              } else {
+                                return FavoriteToggleButtonSeries(
+                                  series: media as Series,
+                                );
+                              }
                             },
                           ),
                         ),
