@@ -103,7 +103,7 @@ flutter:
      - assets/logoKoruFlix.png
      - assets/icon_face.png
      - assets/icon_google.png
-     - .env.dart
+     - .env
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
