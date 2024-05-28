@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:r6_moovie_app/presenter/bloc/favorites/favorite_bloc.dart';
 import 'package:r6_moovie_app/presenter/bloc/movies/movie_bloc.dart';
 import 'package:r6_moovie_app/presenter/bloc/series/series_bloc.dart';
 import 'package:r6_moovie_app/presenter/pages/main_screen.dart';
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (context) => getIt<MovieBloc>()),
           BlocProvider(create: (context) => getIt<SeriesBloc>()),
+          BlocProvider(create: (context) => getIt<FavoriteBloc>()),
+
+
         ],
         child: MaterialApp(
           title: AppStrings.appTitle,

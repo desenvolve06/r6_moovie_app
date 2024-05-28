@@ -24,3 +24,12 @@ class ErrorState extends MovieState {
   final String? error;
   const ErrorState({required this.error});
 }
+
+class FavoriteListUpdatedState extends MovieState {
+  final List<int> favoriteList;
+
+  const FavoriteListUpdatedState({required this.favoriteList});
+
+  @override
+  List<Object> get props => [favoriteList];
+}

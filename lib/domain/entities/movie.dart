@@ -14,10 +14,60 @@ class Movie {
   final double voteAverage;
   final int voteCount;
 
-  Movie({required this.adult, required this.backdropPath, 
-  required this.genreIds, required this.id, required this.originalLanguage, 
-  required this.originalTitle, required this.overview, required this.popularity,
-  required this.posterPath, required this.releaseDate, required this.title, 
-  required this.video, required this.voteAverage, required this.voteCount});
+  Movie({
+    required this.adult,
+    required this.backdropPath,
+    required this.genreIds,
+    required this.id,
+    required this.originalLanguage,
+    required this.originalTitle,
+    required this.overview,
+    required this.popularity,
+    required this.posterPath,
+    required this.releaseDate,
+    required this.title,
+    required this.video,
+    required this.voteAverage,
+    required this.voteCount,
+  });
 
+  // Método para converter um objeto Movie em um mapa JSON
+  Map<String, dynamic> toJson() {
+    return {
+      'adult': adult,
+      'backdropPath': backdropPath,
+      'genreIds': genreIds,
+      'id': id,
+      'originalLanguage': originalLanguage,
+      'originalTitle': originalTitle,
+      'overview': overview,
+      'popularity': popularity,
+      'posterPath': posterPath,
+      'releaseDate': releaseDate,
+      'title': title,
+      'video': video,
+      'voteAverage': voteAverage,
+      'voteCount': voteCount,
+    };
+  }
+
+  // Método para criar um objeto Movie a partir de um mapa JSON
+  factory Movie.fromJson(Map<String, dynamic> json) {
+    return Movie(
+      adult: json['adult'],
+      backdropPath: json['backdropPath'],
+      genreIds: List<int>.from(json['genreIds']),
+      id: json['id'],
+      originalLanguage: json['originalLanguage'],
+      originalTitle: json['originalTitle'],
+      overview: json['overview'],
+      popularity: json['popularity'].toDouble(),
+      posterPath: json['posterPath'],
+      releaseDate: json['releaseDate'],
+      title: json['title'],
+      video: json['video'],
+      voteAverage: json['voteAverage'].toDouble(),
+      voteCount: json['voteCount'],
+    );
+  }
 }
