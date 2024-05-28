@@ -100,7 +100,10 @@ flutter:
   assets:
      - assets/assets.json
      - assets/splash_image6.png
-     - .env
+     - assets/logoKoruFlix.png
+     - assets/icon_face.png
+     - assets/icon_google.png
+     - .env.dart
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
