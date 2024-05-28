@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:r6_moovie_app/domain/entities/movie.dart';
+import 'package:r6_moovie_app/presenter/pages/movies_details_screen.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
 
 class SearchBarApp extends StatefulWidget {
   const SearchBarApp({super.key});
-  
+
   @override
   State<SearchBarApp> createState() => _SearchBarAppState();
 }
@@ -15,59 +17,62 @@ class _SearchBarAppState extends State<SearchBarApp> {
   bool showSearchResults = false;
 
   Future<void> searchListFunction(String val) async {
-
     List<Map<String, dynamic>> tempSearchResult = [];
-    
+
     var dio = Dio();
     var apiKey = dotenv.env['API_KEY'];
     var searchUrl =
         'https://api.themoviedb.org/3/search/multi?api_key=$apiKey&query=$val';
     try {
-    var searchResponse = await dio.get(searchUrl);
-    if (searchResponse.statusCode == 200) {
-      var tempData = searchResponse.data;
-      var searchJson = tempData['results'];
+      var searchResponse = await dio.get(searchUrl);
+      if (searchResponse.statusCode == 200) {
+        var tempData = searchResponse.data;
+        var searchJson = tempData['results'];
 
-      var filteredResults = searchJson.where((result) => result['media_type'] != 'person').toList();
+        var filteredResults = searchJson
+            .where((result) => result['media_type'] != 'person')
+            .toList();
 
-      for (var result in filteredResults) {
+        for (var result in filteredResults) {
+          if (result['id'] != null &&
+              result['poster_path'] != null &&
+              result['vote_average'] != null &&
+              result['media_type'] != null &&
+              result['media_type'] != 'person') {
+                                print(result);
+            setState(() {
+              tempSearchResult.add({
+                'id': result['id'],
+                'poster_path': result['poster_path'],
+                'backdrop_path': result['backdrop_path'],
+                'vote_average': result['vote_average'],
+                'release_date': result['release_date'],
+                'media_type': result['media_type'],
+                'popularity': result['popularity'],
+                'overview': result['overview'],
+                'vote_count': result['vote_count'],
+                result.containsKey('title') ? 'title' : 'name':
+                    result.containsKey('title')
+                        ? result['title']
+                        : result['name'],
+              });
 
-
-        if (result['id'] != null &&
-            result['poster_path'] != null &&
-            result['vote_average'] != null &&
-            result['media_type'] != null && 
-            result['media_type'] != 'person') {
-          setState(() {
-            tempSearchResult.add({
-              'id': result['id'],
-              'poster_path': result['poster_path'],
-              'vote_average': result['vote_average'],
-              'media_type': result['media_type'],
-              'popularity': result['popularity'],
-              'overview': result['overview'],
-              result.containsKey('title') ? 'title': 'name': result.containsKey('title') ? result['title'] : result['name'],
+              if (tempSearchResult.length > 5) {
+                tempSearchResult.removeRange(5, tempSearchResult.length);
+              }
             });
-
-            if (tempSearchResult.length > 5) {
-              tempSearchResult.removeRange(5, tempSearchResult.length);
-            }
-          });
-        } else {
-          print('deu ruim');
+          } else {
+            print('deu ruim');
+          }
         }
+
+        setState(() {
+          searchResult = List.from(tempSearchResult);
+        });
       }
-
-      setState(() {
-      searchResult = List.from(tempSearchResult); 
-    });
-
-
-    }
     } catch (e) {
       print('Error: $e');
     }
-
   }
 
   final TextEditingController searchText = TextEditingController();
@@ -97,16 +102,17 @@ class _SearchBarAppState extends State<SearchBarApp> {
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(
-                          border: Border.all(color: AppColors.primaryColorLight),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
+                            border:
+                                Border.all(color: AppColors.primaryColorLight),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
                           child: SearchBar(
                             hintText: 'Search',
                             onChanged: (value) {
                               searchListFunction(value);
                             },
                             leading: const Icon(Icons.search,
-                            color: AppColors.primaryColorLight),
+                                color: AppColors.primaryColorLight),
                           ),
                         ),
                       ),
@@ -121,32 +127,47 @@ class _SearchBarAppState extends State<SearchBarApp> {
               itemCount: searchResult.length,
               itemBuilder: (context, index) {
                 final result = searchResult[index];
-                return ListTile(
-                  leading: result['poster_path'] != null
-                      ? Image.network(
-                          'https://image.tmdb.org/t/p/w92${result['poster_path']}',
-                          width: 100,
-                          height: 100,
-                          fit: BoxFit.cover,
-                        )
-                      : const SizedBox(
-                          width: 100,
-                          height: 100,
+                final Movie movie = Movie.fromMap(result);
+                return GestureDetector(
+                  onTap: () {
+                    
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MovieDetailsScreen(
+                          item: Movie.fromMap(result),
                         ),
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        result.containsKey('title') ? result['title'] : result['name'] ?? '',    
-                          
-                        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
-                      
-                      Text(
-                        'Rating: ${result['vote_average'].toStringAsFixed(1)}',
-                        style: const TextStyle(fontSize: 14),
-                      ),
-                    ],
+                    );
+                  },
+                  child: ListTile(
+                    leading: result['poster_path'] != null
+                        ? Image.network(
+                            'https://image.tmdb.org/t/p/w92${result['poster_path']}',
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          )
+                        : const SizedBox(
+                            width: 100,
+                            height: 100,
+                          ),
+                    title: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          result.containsKey('title')
+                              ? result['title']
+                              : result['name'] ?? '',
+                          style: const TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          'Rating: ${result['vote_average'].toStringAsFixed(1)}',
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },
