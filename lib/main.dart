@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/presenter/bloc/favorites/favorite_bloc.dart';
+import 'package:r6_moovie_app/presenter/bloc/favorites/series/favorite_bloc_series.dart';
 import 'package:r6_moovie_app/presenter/bloc/movies/movie_bloc.dart';
 import 'package:r6_moovie_app/presenter/bloc/series/series_bloc.dart';
 import 'package:r6_moovie_app/presenter/pages/main_screen.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => getIt<MovieBloc>()),
           BlocProvider(create: (context) => getIt<SeriesBloc>()),
           BlocProvider(create: (context) => getIt<FavoriteBloc>()),
+          BlocProvider(create: (context) => getIt<FavoriteBlocSeries>()),
         ],
         child: MaterialApp(
           title: AppStrings.appTitle,
