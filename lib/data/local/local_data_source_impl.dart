@@ -24,7 +24,7 @@ class LocalDataSourceImpl implements LocalDataSource {
     List<Movie> favorites = await getFavorites();
     favorites.removeWhere((movie) => movie.id == movie.id);
     String jsonFavorites = jsonEncode(
-        favorites.map((m) => m.toJson()).toList());
+        favorites.map((movie) => movie.toJson()).toList());
     await prefs.setString(_favoritesKey, jsonFavorites);
   }
 

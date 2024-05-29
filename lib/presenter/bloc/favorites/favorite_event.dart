@@ -1,29 +1,46 @@
-import '../../../domain/entities/movie.dart';
+import 'package:equatable/equatable.dart';
 
-abstract class FavoriteEvent {}
+abstract class FavoriteEvent extends Equatable {
+  const FavoriteEvent();
+
+  @override
+  List<Object> get props => [];
+}
 
 class AddToFavoritesEvent extends FavoriteEvent {
-  final Movie movie;
+  final dynamic media;
 
-  AddToFavoritesEvent(this.movie);
+  const AddToFavoritesEvent(this.media);
+
+  @override
+  List<Object> get props => [media];
 }
 
 class RemoveFromFavoritesEvent extends FavoriteEvent {
-  final Movie movieId;
+  final dynamic media;
 
-  RemoveFromFavoritesEvent(this.movieId);
+  const RemoveFromFavoritesEvent(this.media);
+
+  @override
+  List<Object> get props => [media];
 }
 
 class CheckIfFavoriteEvent extends FavoriteEvent {
-  final int movieId;
+  final dynamic media;
 
-  CheckIfFavoriteEvent(this.movieId);
+  const CheckIfFavoriteEvent(this.media);
+
+  @override
+  List<Object> get props => [media];
 }
 
 class GetFavoritesEvent extends FavoriteEvent {}
 
 class ToggleFavoriteEvent extends FavoriteEvent {
-  final Movie movie;
+  final dynamic media;
 
-  ToggleFavoriteEvent(this.movie);
+  const ToggleFavoriteEvent(this.media);
+
+  @override
+  List<Object> get props => [media];
 }
