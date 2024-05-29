@@ -1,6 +1,6 @@
 import 'package:r6_moovie_app/domain/repository/movie_repository.dart';
 
-import '../entities/movie.dart';
+import '../../entities/movie.dart';
 
 class GetFavoritesUseCase {
   final MoviesRepository moviesRepository;

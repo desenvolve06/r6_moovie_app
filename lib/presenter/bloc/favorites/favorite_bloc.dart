@@ -2,12 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/domain/entities/movie.dart';
 import 'package:r6_moovie_app/domain/entities/series.dart';
-import 'package:r6_moovie_app/domain/usecase/add_to_favorites_use_case.dart';
-import 'package:r6_moovie_app/domain/usecase/get_favorites_use_case.dart';
-import 'package:r6_moovie_app/domain/usecase/is_favorite_use_case.dart';
+import 'package:r6_moovie_app/domain/usecase/movies/add_to_favorites_use_case.dart';
+import 'package:r6_moovie_app/domain/usecase/movies/get_favorites_use_case.dart';
+import 'package:r6_moovie_app/domain/usecase/movies/is_favorite_use_case.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
-
-import '../../../domain/usecase/remove_from_favorite_use_case.dart';
+import '../../../domain/usecase/movies/remove_from_favorite_use_case.dart';
 import '../../../domain/usecase/series/add_to_favorites_use_case.dart';
 import '../../../domain/usecase/series/get_favorites_use_case.dart';
 import '../../../domain/usecase/series/is_favorite_use_case.dart';

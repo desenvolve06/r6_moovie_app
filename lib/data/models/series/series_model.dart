@@ -1,4 +1,4 @@
-import '../../domain/entities/series.dart';
+import '../../../domain/entities/series.dart';
 
 class SeriesModels {
   final int id;

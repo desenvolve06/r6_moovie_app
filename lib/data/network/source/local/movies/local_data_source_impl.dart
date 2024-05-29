@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../domain/entities/movie.dart';
-import '../local/local_data_source.dart';
+import '../../../../../domain/entities/movie.dart';
+import 'local_data_source.dart';
 
 class LocalDataSourceImpl implements LocalDataSource {
   static const String _favoritesKey = 'favoritesKey';
@@ -10,7 +10,7 @@ class LocalDataSourceImpl implements LocalDataSource {
   Future<void> addToFavorites(Movie movie) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     List<Movie> favorites = await getFavorites();
-    if (!favorites.any((m) => m.id == movie.id)) {
+    if (!favorites.any((movie) => movie.id == movie.id)) {
       favorites.add(movie);
       String jsonFavorites = jsonEncode(
           favorites.map((m) => m.toJson()).toList());

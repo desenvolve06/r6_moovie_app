@@ -1,26 +1,26 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:r6_moovie_app/data/local/local_data_source.dart'; //series
-import 'package:r6_moovie_app/data/local/series/local_data_source_series.dart'; //series
 import 'package:shared_preferences/shared_preferences.dart';
-import '../data/local/local_data_source_impl.dart';
-import '../data/local/series/local_data_source_impl.dart'; //series
 import '../data/network/api_client.dart';
+import '../data/network/source/local/movies/local_data_source.dart';
+import '../data/network/source/local/movies/local_data_source_impl.dart';
+import '../data/network/source/local/series/local_data_source_impl.dart';
+import '../data/network/source/local/series/local_data_source_series.dart';
+import '../data/network/source/remote/movie_data_source.dart';
+import '../data/network/source/remote/movie_data_source_impl.dart';
+import '../data/network/source/remote/series_data_source.dart';
+import '../data/network/source/remote/series_data_source_impl.dart';
 import '../data/repository/movie_repository_impl.dart';
 import '../data/repository/series_repository_impl.dart';
 import '../data/service/movie_service_api.dart';
 import '../data/service/series_service_api.dart';
-import '../data/source/movie_data_source.dart';
-import '../data/source/movie_data_source_impl.dart';
-import '../data/source/series_data_source.dart';
-import '../data/source/series_data_source_impl.dart';
 import '../domain/repository/movie_repository.dart';
 import '../domain/repository/series_repository.dart';
-import '../domain/usecase/add_to_favorites_use_case.dart';
-import '../domain/usecase/get_favorites_use_case.dart';
-import '../domain/usecase/get_popular_movie_use_case.dart';
-import '../domain/usecase/is_favorite_use_case.dart';
-import '../domain/usecase/remove_from_favorite_use_case.dart';
+import '../domain/usecase/movies/add_to_favorites_use_case.dart';
+import '../domain/usecase/movies/get_favorites_use_case.dart';
+import '../domain/usecase/movies/get_popular_movie_use_case.dart';
+import '../domain/usecase/movies/is_favorite_use_case.dart';
+import '../domain/usecase/movies/remove_from_favorite_use_case.dart';
 import '../domain/usecase/series/add_to_favorites_use_case.dart';
 import '../domain/usecase/series/get_favorites_use_case.dart';
 import '../domain/usecase/series/get_popular_series_use_case.dart';
