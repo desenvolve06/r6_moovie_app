@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/presenter/pages/series/favorites_series_screen.dart';
-import 'package:r6_moovie_app/presenter/widgets/home/favorite_toggle_button_series.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
 import '../../domain/entities/series.dart';
 import '../widgets/details/info_row.dart';
 import '../widgets/details/media_detail_header.dart';
 import '../widgets/details/overview.dart';
 import '../widgets/details/text_list.dart';
+import '../widgets/home/favorite_toggle_button_series.dart';
 
 class SeriesDetailsScreen extends StatelessWidget {
   final dynamic item;
@@ -28,8 +28,6 @@ class SeriesDetailsScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.account_circle),
-            onPressed: () {},
-            icon: const Icon(Icons.bookmark_sharp),
             onPressed: () {
               Navigator.push(
                 context,
