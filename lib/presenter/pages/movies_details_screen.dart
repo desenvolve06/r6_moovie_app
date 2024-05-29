@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
+import 'package:r6_moovie_app/utils/utils.dart';
 
 import '../../domain/entities/movie.dart';
 import '../bloc/favorites/favorite_bloc.dart';
@@ -62,14 +63,16 @@ class MovieDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 InfoRow(
-                  releaseDate: movie.releaseDate,
+                  releaseDate: Utils.formatDateString(movie.releaseDate),
                   vote: movie.voteCount.toString(),
                   popularity: movie.popularity.toString(),
                 ),
                 const SizedBox(height: 10),
-                const TextList(
-                  items: ["About Movie", "Review", "Cast"],
-                ),
+                const TextList(items: [
+                  AppStrings.aboutMovie,
+                  AppStrings.reviews,
+                  AppStrings.cast
+                ]),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: OverView(movie.overview),

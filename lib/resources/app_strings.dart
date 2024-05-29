@@ -6,7 +6,8 @@ class AppStrings {
   static const String trending = 'Trending';
   static const String options = 'opções';
   static const String favorites = 'Favoritos';
-  static const String bannerFavorites = 'Banners Favoritos';
+  static const String myFavorites = 'Meus Favoritos';
+  static const String bannerPopular = 'Banners Populares';
   static const String suggestions = 'Sugestões';
   static const String seeAll = 'Ver todos';
   static const String popularMovies = 'Filmes populares';

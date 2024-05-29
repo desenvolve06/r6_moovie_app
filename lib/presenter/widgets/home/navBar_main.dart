@@ -6,12 +6,11 @@ import 'package:r6_moovie_app/resources/app_values.dart';
 import '../../pages/favorites_screen.dart';
 
 class NavBarMain extends StatelessWidget {
-  const NavBarMain({Key? key}) : super(key: key);
+  const NavBarMain({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      // backgroundColor: AppColors.secondaryBackgroundColor,
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
@@ -56,7 +55,7 @@ class NavBarMain extends StatelessWidget {
           ),
           ListTile(
             title: const Text(
-              AppStrings.popular,
+              AppStrings.populars,
               style: TextStyle(
                 fontSize: AppSize.s30,
                 color: AppColors.primaryColor,
@@ -67,7 +66,7 @@ class NavBarMain extends StatelessWidget {
           ),
           ListTile(
             title: const Text(
-              AppStrings.suggestions,
+              AppStrings.myFavorites,
               style: TextStyle(
                 fontSize: AppSize.s30,
                 color: AppColors.primaryColor,
@@ -77,23 +76,7 @@ class NavBarMain extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>  FavoritesScreen()),
-              );
-            },
-          ),
-          ListTile(
-            title: const Text(
-              AppStrings.options,
-              style: TextStyle(
-                fontSize: AppSize.s30,
-                color: AppColors.primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>  FavoritesScreen()),
+                MaterialPageRoute(builder: (context) => FavoritesScreen()),
               );
             },
           ),

@@ -42,7 +42,7 @@ class SeriesDetailsScreen extends StatelessWidget {
             ),
             InfoRow(
               releaseDate: Utils.formatDateString(series.firstAirDate),
-              vote: series.name,
+              vote: series.voteAverage.toString(),
               popularity: series.name,
             ),
             const SizedBox(height: 10),

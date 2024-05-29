@@ -56,7 +56,7 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                         const Padding(padding: EdgeInsets.all(6.0)),
                         MediaList(
-                          title: AppStrings.suggestions,
+                          title: AppStrings.favorites,
                           mediaList: movieState.movies ?? [],
                           movies: const [],
                           series: const [],

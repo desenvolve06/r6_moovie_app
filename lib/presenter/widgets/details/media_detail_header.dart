@@ -25,9 +25,13 @@ class MediaDetailHeader<T> extends StatelessWidget {
         ? (media as Movie).backdropPath
         : (media as Series).backdropPath;
 
-    String backdropPathItem = "https://image.tmdb.org/t/p/w500$backdropPath";
+    final posterPath = media is Movie
+        ? (media as Movie).posterPath
+        : (media as Series).posterPath;   
 
     var backdropPathItem = "https://image.tmdb.org/t/p/w500$backdropPath";
+    var posterPathItem = "https://image.tmdb.org/t/p/w500$posterPath";
+
 
     final mediaInformation = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,20 +54,20 @@ class MediaDetailHeader<T> extends StatelessWidget {
         ),
         Positioned(
           bottom: 0.0,
-          left: 16.0,
-          right: 16.0,
+          left: AppPadding.p16,
+          right: AppPadding.p16,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.network(
-                  backdropPathItem,
+                  posterPathItem,
                   fit: BoxFit.cover,
                   height: 100,
                 ),
               ),
-              const SizedBox(width: 16.0),
+              const SizedBox(width: 40),
               Expanded(child: mediaInformation),
             ],
           ),
