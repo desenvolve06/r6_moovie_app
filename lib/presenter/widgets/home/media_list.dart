@@ -1,11 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:r6_moovie_app/presenter/widgets/home/toogle_favorite.dart';
-import 'package:r6_moovie_app/resources/app_values.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../domain/entities/movie.dart';
 import '../../../domain/entities/series.dart';
+import '../../bloc/favorites/favorite_bloc.dart';
+import '../../bloc/favorites/favorite_state.dart';
 import '../../pages/movies_details_screen.dart';
 import '../../pages/series_details_screen.dart';
+import 'favorite_toggle_button.dart';
 
 class MediaList extends StatelessWidget {
   final List<dynamic>? mediaList;
@@ -14,12 +17,12 @@ class MediaList extends StatelessWidget {
   final String title;
 
   const MediaList({
-    super.key,
+    Key? key,
     required this.mediaList,
     required this.title,
     required this.movies,
     required this.series,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,7 @@ class MediaList extends StatelessWidget {
           child: Text(
             title,
             style: const TextStyle(
-              fontSize: AppSize.s24,
+              fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -70,8 +73,8 @@ class MediaList extends StatelessWidget {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(10.0),
-                          child: CachedNetworkImage(imageUrl:
-                          "https://image.tmdb.org/t/p/w500${media.backdropPath}",
+                          child: CachedNetworkImage(
+                            imageUrl: "https://image.tmdb.org/t/p/w500${media.backdropPath}",
                             fit: BoxFit.cover,
                             height: double.infinity,
                             width: double.infinity,
@@ -82,9 +85,15 @@ class MediaList extends StatelessWidget {
                         Positioned(
                           top: 8,
                           right: 8,
-                          child: FavoriteToggleButton(
-                            isFavorite: false,
-                            onChanged: (bool isFavorite) {
+                          child: BlocBuilder<FavoriteBloc, FavoriteState>(
+                            builder: (context, state) {
+                              bool isFavorite = false;
+                              if (state is FavoritesLoadedState) {
+                                isFavorite = state.favoriteMovieIds.any((movie) => movie.id == (media is Movie ? media.id : (media as Series).id));
+                              }
+                              return FavoriteToggleButton(
+                                movie: media,
+                              );
                             },
                           ),
                         ),
@@ -102,9 +111,7 @@ class MediaList extends StatelessWidget {
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              media is Movie
-                                  ? (media as Movie).title.toString()
-                                  : (media as Series).name.toString(),
+                              media is Movie ? media.title.toString() : (media as Series).name.toString(),
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,

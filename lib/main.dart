@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:r6_moovie_app/presenter/bloc/favorites/favorite_bloc.dart';
 import 'package:r6_moovie_app/presenter/bloc/movies/movie_bloc.dart';
 import 'package:r6_moovie_app/presenter/bloc/series/series_bloc.dart';
 import 'package:r6_moovie_app/presenter/pages/main_screen.dart';
@@ -26,12 +26,25 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (context) => getIt<MovieBloc>()),
           BlocProvider(create: (context) => getIt<SeriesBloc>()),
+          BlocProvider(create: (context) => getIt<FavoriteBloc>()),
+
+
         ],
         child: MaterialApp(
           title: AppStrings.appTitle,
           theme: ThemeData(
             colorScheme: const ColorScheme.dark(
-                background: AppColors.primaryBackgroundColor),
+              primary: AppColors.primaryColor,
+              secondary: AppColors.secondaryColor,
+              surface: AppColors.primaryBackgroundColor,
+              background: AppColors.secondaryBackgroundColor,
+              error: AppColors.errorColor,
+              onPrimary: AppColors.secondaryText,
+              onSecondary: AppColors.secondaryText,
+              onSurface: AppColors.secondaryText,
+              onError: AppColors.errorColor,
+              brightness: Brightness.dark,
+            ),
             fontFamily: 'Montserrat',
             useMaterial3: true,
           ),
@@ -43,6 +56,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }

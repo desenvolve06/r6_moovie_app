@@ -10,10 +10,12 @@ class MediaDetailHeader<T> extends StatelessWidget {
     super.key,
     required this.media,
     required this.height,
+    this.action,
   });
 
   final T media;
   final double height;
+  final Widget? action;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,8 @@ class MediaDetailHeader<T> extends StatelessWidget {
     final backdropPath = media is Movie
         ? (media as Movie).backdropPath
         : (media as Series).backdropPath;
+
+    String backdropPathItem = "https://image.tmdb.org/t/p/w500$backdropPath";
 
     var backdropPathItem = "https://image.tmdb.org/t/p/w500$backdropPath";
 
@@ -41,7 +45,7 @@ class MediaDetailHeader<T> extends StatelessWidget {
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.only(bottom: 30),
+          padding: const EdgeInsets.only(bottom: 30),
           child: ArcBannerImage(backdropPathItem, height: 80),
         ),
         Positioned(
@@ -63,6 +67,11 @@ class MediaDetailHeader<T> extends StatelessWidget {
               Expanded(child: mediaInformation),
             ],
           ),
+        ),
+        Positioned(
+          top: 8,
+          right: 8,
+          child: action ?? Container(),
         ),
       ],
     );

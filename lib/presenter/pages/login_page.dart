@@ -26,9 +26,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.primaryBackgroundColor,
-        ),
         body: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
@@ -67,15 +64,13 @@ class _LoginPageState extends State<LoginPage> {
                     contentPadding: const EdgeInsets.all(10.0),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                      borderSide:
-                          const BorderSide(color: AppColors.primaryColor),
+                      borderSide: const BorderSide(color: AppColors.primaryColor),
                     ),
                     focusColor: AppColors.primaryColorDark,
                     hintText: AppStrings.password,
                     suffixIcon: IconButton(
-                      icon: Icon(_obscureText
-                          ? Icons.visibility_off
-                          : Icons.visibility),
+                      icon: Icon(
+                          _obscureText ? Icons.visibility_off : Icons.visibility),
                       onPressed: _togglePasswordVisibility,
                     )),
               ),
@@ -178,6 +173,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ],
           ),
-        ));
+    ));
   }
 }

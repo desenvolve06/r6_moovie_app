@@ -5,6 +5,7 @@ class AssetPath {
 
   //Logos
   static const String logoKoruFlix = 'assets/logoKoruFlix.png';
+  static const String logoKoruFlixSvg = 'assets/logoKoruFlix.svg';
 
   // Fonts
   static const String fontMontserratRegular =

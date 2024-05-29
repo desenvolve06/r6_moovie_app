@@ -17,7 +17,7 @@ class OverView extends StatelessWidget {
         Text(
           overview,
           style: textTheme.bodyLarge?.copyWith(
-              color: AppColors.greyLight1Color,
+              color: AppColors.secondaryText,
               fontSize: AppSize.s16,
               fontFamily: 'Lora'),
         ),

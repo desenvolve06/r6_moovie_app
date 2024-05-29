@@ -4,7 +4,9 @@ class AppStrings {
   static const String popular = 'Popular';
   static const String populars = 'Populares';
   static const String trending = 'Trending';
-  static const String options = 'Opções';
+  static const String options = 'opções';
+  static const String favorites = 'Favoritos';
+  static const String bannerFavorites = 'Banners Favoritos';
   static const String suggestions = 'Sugestões';
   static const String seeAll = 'Ver todos';
   static const String popularMovies = 'Filmes populares';

@@ -48,13 +48,15 @@ dependencies:
   json_serializable: ^6.8.0
   bloc_provider: ^1.0.0
   flutter_dotenv: ^5.1.0
-  http: ^1.2.1
+  http: 1.2.1
+  shared_preferences: ^2.1.0
 
 
   #  retrofit_generator: ^8.1.0
   build_runner: ^2.4.9
   bloc: ^8.1.4
   google_fonts: ^6.2.1
+  flutter_svg: ^2.0.10
 #  json_serializable: ^6.8.0
 #  built_value_generator: ^8.9.2
 
@@ -98,12 +100,13 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/assets.json
-     - assets/splash_image6.png
-     - assets/logoKoruFlix.png
-     - assets/icon_face.png
-     - assets/icon_google.png
-     - .env
+    - assets/assets.json
+    - assets/splash_image6.png
+    - assets/logoKoruFlix.png
+    - assets/icon_face.png
+    - assets/icon_google.png
+    - assets/logoKoruFlix.svg
+    - .env
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

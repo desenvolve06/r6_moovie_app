@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
+import 'package:r6_moovie_app/resources/app_strings.dart';
 import 'package:r6_moovie_app/resources/app_values.dart';
 
 class SearchBarApp extends StatefulWidget {
@@ -102,7 +103,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: SearchBar(
-                            hintText: 'Search',
+                            hintText: AppStrings.search,
                             onChanged: (value) {
                               searchListFunction(value);
                             },
