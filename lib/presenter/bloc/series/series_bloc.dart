@@ -3,7 +3,7 @@ import 'package:r6_moovie_app/presenter/bloc/series/series_event.dart';
 import 'package:r6_moovie_app/presenter/bloc/series/series_state.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
 import '../../../domain/entities/series.dart';
-import '../../../domain/usecase/get_popular_series_use_case.dart';
+import '../../../domain/usecase/series/get_popular_series_use_case.dart';
 
 class SeriesBloc extends Bloc<SeriesEvent, SeriesState> {
   final GetPopularSeriesUseCase getPopularSeriesUseCase;
