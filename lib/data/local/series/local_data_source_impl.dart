@@ -4,7 +4,7 @@ import 'dart:convert';
   import '../../../domain/entities/series.dart';
 
   class LocalDataSourceSeriesImpl implements LocalDataSourceSeries {
-    static const String _favoritesKey = 'favoritesKey';
+    static const String _favoritesSeriesKey = 'favoritesSeriesKey';
 
     @override
     Future<void> addToFavorites(Series series) async {
@@ -14,7 +14,7 @@ import 'dart:convert';
         favorites.add(series);
         String jsonFavorites = jsonEncode(
             favorites.map((series) => series.toJson()).toList());
-        await prefs.setString(_favoritesKey, jsonFavorites);
+        await prefs.setString(_favoritesSeriesKey, jsonFavorites);
       }
     }
 
@@ -25,7 +25,7 @@ import 'dart:convert';
       favorites.removeWhere((series) => series.id == series.id);
       String jsonFavorites = jsonEncode(
           favorites.map((series) => series.toJson()).toList());
-      await prefs.setString(_favoritesKey, jsonFavorites);
+      await prefs.setString(_favoritesSeriesKey, jsonFavorites);
     }
 
     @override
@@ -37,7 +37,7 @@ import 'dart:convert';
     @override
     Future<List<Series>> getFavorites() async {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-      String? jsonFavorites = prefs.getString(_favoritesKey);
+      String? jsonFavorites = prefs.getString(_favoritesSeriesKey);
       if (jsonFavorites != null) {
         List<dynamic> decoded = jsonDecode(jsonFavorites);
         return decoded.map((json) => Series.fromJson(json)).toList();
