@@ -1,7 +1,7 @@
-<h1 align="center" style="font-weight: bold;">KorúFlix</h1>
+<!--<h1 align="center" style="font-weight: bold;">KorúFlix</h1> -->
 
 <h1 align="center">
-    <img alt="KoruFlix Logo" src="./src/assets/splash_image6.png" />
+    <img alt="KoruFlix Logo" src="./assets/splash_image6.png" width="200" height="200" />
     </br>
 </h1> 
 
