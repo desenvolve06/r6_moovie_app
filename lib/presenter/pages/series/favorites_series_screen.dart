@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/domain/entities/series.dart';
-import 'package:r6_moovie_app/presenter/bloc/favorites/series/favorite_bloc.dart';
-import 'package:r6_moovie_app/presenter/bloc/favorites/series/favorite_state.dart';
+import '../../bloc/favorites/series/favorite_bloc_series.dart';
+import '../../bloc/favorites/series/favorite_state_series.dart';
 
 
 

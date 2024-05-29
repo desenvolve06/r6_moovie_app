@@ -6,7 +6,6 @@ import 'package:r6_moovie_app/domain/usecase/series/add_to_favorites_use_case.da
 import 'package:r6_moovie_app/domain/usecase/series/get_favorites_use_case.dart';
 import 'package:r6_moovie_app/domain/usecase/series/is_favorite_use_case.dart';
 import 'package:r6_moovie_app/domain/usecase/series/remove_from_favorite_use_case.dart';
-import 'package:r6_moovie_app/presenter/bloc/favorites/series/favorite_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/local/local_data_source_impl.dart';
 import '../data/local/series/local_data_source_impl.dart';    //series
@@ -28,6 +27,7 @@ import '../domain/usecase/series/get_popular_series_use_case.dart';
 import '../domain/usecase/is_favorite_use_case.dart';
 import '../domain/usecase/remove_from_favorite_use_case.dart';
 import '../presenter/bloc/favorites/favorite_bloc.dart';
+import '../presenter/bloc/favorites/series/favorite_bloc_series.dart';
 import '../presenter/bloc/movies/movie_bloc.dart';
 import '../presenter/bloc/series/series_bloc.dart';
 

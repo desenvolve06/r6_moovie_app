@@ -3,11 +3,11 @@ import 'package:r6_moovie_app/domain/usecase/series/add_to_favorites_use_case.da
 import 'package:r6_moovie_app/domain/usecase/series/get_favorites_use_case.dart';
 import 'package:r6_moovie_app/domain/usecase/series/is_favorite_use_case.dart';
 import 'package:r6_moovie_app/domain/usecase/series/remove_from_favorite_use_case.dart';
+import 'package:r6_moovie_app/presenter/bloc/favorites/series/favorite_event_series.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
-import 'favorite_event.dart';
-import 'favorite_state.dart';
+import 'favorite_state_series.dart';
 
-class FavoriteBlocSeries extends Bloc<FavoriteEvent, FavoriteStateSeries> {
+class FavoriteBlocSeries extends Bloc<FavoriteEventSeries, FavoriteStateSeries> {
   final AddToFavoritesSeriesUseCase addToFavoritesUseCase;
   final RemoveFromFavoriteSeriesUseCase removeFromFavoriteUseCase;
   final IsFavoriteSeriesUseCase isFavoriteUseCase;
@@ -18,51 +18,51 @@ class FavoriteBlocSeries extends Bloc<FavoriteEvent, FavoriteStateSeries> {
       this.removeFromFavoriteUseCase,
       this.isFavoriteUseCase,
       this.getFavoritesUseCase,
-      ) : super(FavoriteInitialState()) {
-    on<AddToFavoritesEvent>((event, emit) async {
+      ) : super(FavoriteInitialStateSeries()) {
+    on<AddToFavoritesEventSeries>((event, emit) async {
       try {
-        emit(FavoriteLoadingState());
+        emit(FavoriteLoadingStateSeries());
         await addToFavoritesUseCase.addToFavoritesList(event.series);
         final favoriteSeries = await getFavoritesUseCase.getFavorites();
         emit(FavoritesLoadedStateSeries(favoriteSeries));
       } catch (e) {
-        emit(FavoriteErrorState(e.toString()));
+        emit(FavoriteErrorStateSeries(AppStrings.errorMessage));
       }
     });
 
-    on<RemoveFromFavoritesEvent>((event, emit) async {
+    on<RemoveFromFavoritesEventSeries>((event, emit) async {
       try {
-        emit(FavoriteLoadingState());
+        emit(FavoriteLoadingStateSeries());
         await removeFromFavoriteUseCase.removeFromFavorite(event.seriesId);
         final favoriteSeries = await getFavoritesUseCase.getFavorites();
         emit(FavoritesLoadedStateSeries(favoriteSeries));
       } catch (e) {
-        emit(FavoriteErrorState(e.toString()));
+        emit(FavoriteErrorStateSeries(AppStrings.errorMessage));
       }
     });
 
-    on<CheckIfFavoriteEvent>((event, emit) async {
+    on<CheckIfFavoriteEventSeries>((event, emit) async {
       try {
         final isFavorite = await isFavoriteUseCase.isFavorite(event.seriesId);
-        emit(FavoriteCheckState(isFavorite));
+        emit(FavoriteCheckStateSeries(isFavorite));
       } catch (e) {
-        emit(FavoriteErrorState(AppStrings.errorMessage));
+        emit(FavoriteErrorStateSeries(AppStrings.errorMessage));
       }
     });
 
-    on<GetFavoritesEvent>((event, emit) async {
+    on<GetFavoritesEventSeries>((event, emit) async {
       try {
-        emit(FavoriteLoadingState());
+        emit(FavoriteLoadingStateSeries());
         final favoriteSeries = await getFavoritesUseCase.getFavorites();
         emit(FavoritesLoadedStateSeries(favoriteSeries));
       } catch (e) {
-        emit(FavoriteErrorState(AppStrings.errorMessage));
+        emit(FavoriteErrorStateSeries(AppStrings.errorMessage));
       }
     });
 
-    on<ToggleFavoriteEvent>((event, emit) async {
+    on<ToggleFavoriteEventSeries>((event, emit) async {
       try {
-        emit(FavoriteLoadingState());
+        emit(FavoriteLoadingStateSeries());
         final isFavorite = await isFavoriteUseCase.isFavorite(event.series.id);
         if (isFavorite) {
           await removeFromFavoriteUseCase.removeFromFavorite(event.series);
@@ -72,7 +72,7 @@ class FavoriteBlocSeries extends Bloc<FavoriteEvent, FavoriteStateSeries> {
         final favoriteSeries = await getFavoritesUseCase.getFavorites();
         emit(FavoritesLoadedStateSeries(favoriteSeries));
       } catch (e) {
-        emit(FavoriteErrorState(e.toString()));
+        emit(FavoriteErrorStateSeries(e.toString()));
       }
     });
   }

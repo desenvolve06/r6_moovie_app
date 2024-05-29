@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/domain/entities/series.dart';
-
-
-import '../../bloc/favorites/series/favorite_bloc.dart';
-import '../../bloc/favorites/series/favorite_event.dart';
-import '../../bloc/favorites/series/favorite_state.dart';
+import 'package:r6_moovie_app/presenter/bloc/favorites/series/favorite_event_series.dart';
+import '../../bloc/favorites/series/favorite_bloc_series.dart';
+import '../../bloc/favorites/series/favorite_state_series.dart';
 
 class FavoriteToggleButtonSeries extends StatelessWidget {
   final Series series;
@@ -19,7 +17,7 @@ class FavoriteToggleButtonSeries extends StatelessWidget {
       builder: (context, state) {
         bool isFavorite = false;
         if (state is FavoritesLoadedStateSeries) {
-          isFavorite = state.favoriteSeriesIds.any((m) => m.id == series.id);
+          isFavorite = state.favoriteSeriesIds.any((series) => series.id == series.id);
         }
         return IconButton(
           icon: Icon(
@@ -28,9 +26,9 @@ class FavoriteToggleButtonSeries extends StatelessWidget {
           ),
           onPressed: () {
             if (isFavorite) {
-              context.read<FavoriteBlocSeries>().add(RemoveFromFavoritesEvent(series));
+              context.read<FavoriteBlocSeries>().add(RemoveFromFavoritesEventSeries(series));
             } else {
-              context.read<FavoriteBlocSeries>().add(AddToFavoritesEvent(series));
+              context.read<FavoriteBlocSeries>().add(AddToFavoritesEventSeries(series));
             }
           },
         );
