@@ -10,7 +10,6 @@ import '../widgets/details/text_list.dart';
 
 class SeriesDetailsScreen extends StatelessWidget {
   final dynamic item;
-
   const SeriesDetailsScreen({super.key, required this.item});
 
   @override
@@ -28,6 +27,8 @@ class SeriesDetailsScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
+            icon: const Icon(Icons.account_circle),
+            onPressed: () {},
             icon: const Icon(Icons.bookmark_sharp),
             onPressed: () {
               Navigator.push(
@@ -45,7 +46,7 @@ class SeriesDetailsScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(bottom: 20),
               child: MediaDetailHeader(
-                media: series, 
+                media: series,
                 height: 60,
                 action: FavoriteToggleButtonSeries(series: series),
                 ),
