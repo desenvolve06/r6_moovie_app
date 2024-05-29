@@ -21,6 +21,9 @@ class MediaDetailHeader<T> extends StatelessWidget {
     var textTheme = Theme.of(context).textTheme;
     var title = media is Movie ? (media as Movie).title : (media as Series).name;
     var backdropPath = media is Movie ? (media as Movie).backdropPath : (media as Series).backdropPath;
+
+    String backdropPathItem = "https://image.tmdb.org/t/p/w500$backdropPath";
+    
     var mediaInformation = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -38,7 +41,7 @@ class MediaDetailHeader<T> extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: 30),
-          child: ArcBannerImage("https://image.tmdb.org/t/p/w500$backdropPath", height: 80),
+          child: ArcBannerImage(backdropPathItem, height: 80),
         ),
         Positioned(
           bottom: 0.0,
@@ -50,10 +53,7 @@ class MediaDetailHeader<T> extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.network(
-                  "https://image.tmdb.org/t/p/w500$backdropPath",
-                  errorBuilder: (context, error, stackTrace) {
-                    return Text('Falha ao carregar a imagem');
-                  },
+                  backdropPathItem,
                   fit: BoxFit.cover,
                   height: 100,
                 ),
