@@ -4,13 +4,10 @@ class InfoRow extends StatelessWidget {
   final String releaseDate;
   final String vote;
   final String popularity;
+  final String voteAverage;
+  final String firstAirDate;
 
-  const InfoRow({
-    super.key,
-    required this.releaseDate,
-    required this.vote,
-    required this.popularity,
-  });
+  const InfoRow(this.releaseDate, this.vote, this.popularity, this.voteAverage, this.firstAirDate);
 
   @override
   Widget build(BuildContext context) {

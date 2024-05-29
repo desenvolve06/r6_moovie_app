@@ -1,14 +1,26 @@
+import 'package:equatable/equatable.dart';
 import '../../../domain/entities/movie.dart';
+import '../../../domain/entities/series.dart';
 
-abstract class FavoriteState {}
+abstract class FavoriteState extends Equatable {
+  const FavoriteState();
 
-class FavoriteInitialState extends FavoriteState {}
-
-class FavoriteLoadingState extends FavoriteState {}
+  @override
+  List<Object?> get props => [];
+}
 
 class FavoriteAddedState extends FavoriteState {}
 
-class FavoriteRemovedState extends FavoriteState {}
+
+class FavoriteLoadingState extends FavoriteState {
+  @override
+  List<Object> get props => [];
+}
+
+class FavoriteRemovedState extends FavoriteState {
+  @override
+  List<Object> get props => [];
+}
 
 class FavoriteCheckState extends FavoriteState {
   final bool isFavorite;
@@ -16,14 +28,23 @@ class FavoriteCheckState extends FavoriteState {
   FavoriteCheckState(this.isFavorite);
 }
 
+class FavoritesInitialState extends FavoriteState {}
+
 class FavoritesLoadedState extends FavoriteState {
-  final List<Movie> favoriteMovieIds;
+  final List<Movie> favoriteMovies;
+  final List<Series> favoriteSeries;
 
-  FavoritesLoadedState(this.favoriteMovieIds);
+  const FavoritesLoadedState(this.favoriteMovies, this.favoriteSeries);
+
+  @override
+  List<Object?> get props => [favoriteMovies, favoriteSeries];
 }
-
 class FavoriteErrorState extends FavoriteState {
-  final String error;
+  final String message;
 
-  FavoriteErrorState(this.error);
+  const FavoriteErrorState(this.message);
+
+  @override
+  List<Object> get props => [message];
 }
+

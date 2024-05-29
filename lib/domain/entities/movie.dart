@@ -31,7 +31,6 @@ class Movie {
     required this.voteCount,
   });
 
-  // Método para converter um objeto Movie em um mapa JSON
   Map<String, dynamic> toJson() {
     return {
       'adult': adult,
@@ -51,7 +50,6 @@ class Movie {
     };
   }
 
-  // Método para criar um objeto Movie a partir de um mapa JSON
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
       adult: json['adult'],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:r6_moovie_app/presenter/pages/series/favorites_series_screen.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
 import 'package:r6_moovie_app/resources/app_values.dart';
@@ -93,7 +94,7 @@ class NavBarMain extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>  FavoritesScreen()),
+                MaterialPageRoute(builder: (context) =>  FavoritesSeriesScreen()),
               );
             },
           ),

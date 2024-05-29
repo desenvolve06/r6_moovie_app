@@ -8,43 +8,60 @@ class LocalDataSourceImpl implements LocalDataSource {
 
   @override
   Future<void> addToFavorites(Movie movie) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<Movie> favorites = await getFavorites();
-    if (!favorites.any((m) => m.id == movie.id)) {
-      favorites.add(movie);
-      String jsonFavorites = jsonEncode(
-          favorites.map((m) => m.toJson()).toList());
-      await prefs.setString(_favoritesKey, jsonFavorites);
+    try {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      List<Movie> favorites = await getFavorites();
+      if (!favorites.any((m) => m.id == movie.id)) {
+        favorites.add(movie);
+        String jsonFavorites = jsonEncode(
+            favorites.map((m) => m.toJson()).toList());
+        await prefs.setString(_favoritesKey, jsonFavorites);
+      }
+    } catch (e) {
+      print('Erro ao adicionar aos favoritos: $e');
+      rethrow; // Re-throwing the exception might be useful to handle it further up the call stack if needed
     }
   }
 
   @override
   Future<void> removeFromFavorites(Movie movie) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<Movie> favorites = await getFavorites();
-    favorites.removeWhere((movie) => movie.id == movie.id);
-    String jsonFavorites = jsonEncode(
-        favorites.map((m) => m.toJson()).toList());
-    await prefs.setString(_favoritesKey, jsonFavorites);
+    try {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      List<Movie> favorites = await getFavorites();
+      favorites.removeWhere((m) => m.id == movie.id);
+      String jsonFavorites = jsonEncode(
+          favorites.map((m) => m.toJson()).toList());
+      await prefs.setString(_favoritesKey, jsonFavorites);
+    } catch (e) {
+      print('Erro ao remover dos favoritos: $e');
+      rethrow;
+    }
   }
 
   @override
   Future<bool> isFavorite(int id) async {
-    List<Movie> favorites = await getFavorites();
-    return favorites.any((movie) => movie.id == movie.id);
+    try {
+      List<Movie> favorites = await getFavorites();
+      return favorites.any((movie) => movie.id == id);
+    } catch (e) {
+      print('Erro ao verificar se é favorito: $e');
+      return false; // Returning false in case of an error
+    }
   }
 
   @override
   Future<List<Movie>> getFavorites() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? jsonFavorites = prefs.getString(_favoritesKey);
-    if (jsonFavorites != null) {
-      List<dynamic> decoded = jsonDecode(jsonFavorites);
-      return decoded.map((json) => Movie.fromJson(json)).toList();
+    try {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? jsonFavorites = prefs.getString(_favoritesKey);
+      if (jsonFavorites != null) {
+        List<dynamic> decoded = jsonDecode(jsonFavorites);
+        return decoded.map((json) => Movie.fromJson(json)).toList();
+      }
+      return [];
+    } catch (e) {
+      print('Erro ao obter os favoritos: $e');
+      return [];
     }
-    return [];
   }
 }
-
-
-

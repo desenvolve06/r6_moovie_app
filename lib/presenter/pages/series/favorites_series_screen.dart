@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/domain/entities/series.dart';
-import 'package:r6_moovie_app/presenter/bloc/favorites/series/favorite_bloc.dart';
-import 'package:r6_moovie_app/presenter/bloc/favorites/series/favorite_state.dart';
-
-
+import '../../bloc/favorites/favorite_bloc.dart';
+import '../../bloc/favorites/favorite_state.dart';
 
 class FavoritesSeriesScreen extends StatelessWidget {
   final List<Series> series = [];
@@ -18,13 +16,13 @@ class FavoritesSeriesScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Favorites Series'),
       ),
-      body: BlocBuilder<FavoriteBlocSeries, FavoriteStateSeries>(
+      body: BlocBuilder<FavoriteBloc,FavoriteState>(
         builder: (context, state) {
-          if (state is FavoritesLoadedStateSeries) {
+          if (state is FavoritesLoadedState) {
             return ListView.builder(
-              itemCount: state.favoriteSeriesIds.length,
+              itemCount: state.favoriteSeries.length,
               itemBuilder: (context, index) {
-                final series = state.favoriteSeriesIds[index];
+                final series = state.favoriteSeries[index];
                 return Card(
                   margin: const EdgeInsets.all(8),
                   child: Column(

@@ -2,8 +2,8 @@ class AppStrings {
   static const String appTitle = 'KoruFlix';
   static const String details = 'Detalhes';
   static const String popular = 'Popular';
-  static const String options = 'Banners Favoritos';
-  static const String suggestions = 'Favoritos';
+  static const String options = 'Series Favoritos';
+  static const String suggestions = 'Filmes Favoritos';
   static const String seeAll = 'Ver todos';
   static const String popularMovies = 'Filmes populares';
   static const String topRatedMovies = 'Top Filmes avaliados';

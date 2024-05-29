@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import '../entities/movie.dart';
 import '../repository/movie_repository.dart';
 
 class IsFavoriteUseCase {

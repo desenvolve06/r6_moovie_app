@@ -1,7 +1,6 @@
 import 'package:r6_moovie_app/domain/entities/series.dart';
 import 'package:r6_moovie_app/domain/repository/series_repository.dart';
 
-
 class AddToFavoritesSeriesUseCase {
   final SeriesRepository seriesRepository;
 
