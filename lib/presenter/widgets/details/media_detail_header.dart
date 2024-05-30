@@ -23,7 +23,7 @@ class MediaDetailHeader<T> extends StatelessWidget {
     var backdropPath = media is Movie ? (media as Movie).backdropPath : (media as Series).backdropPath;
 
     String backdropPathItem = "https://image.tmdb.org/t/p/w500$backdropPath";
-
+    
     var mediaInformation = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
