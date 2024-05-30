@@ -1,4 +1,4 @@
-import '../../domain/entities/movie.dart';
+import '../../../domain/entities/movie.dart';
 
 class MoviesModels {
   final bool adult;

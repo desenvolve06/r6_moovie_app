@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../domain/entities/movie.dart';
 import '../bloc/favorites/favorite_bloc.dart';
-import '../bloc/favorites/favorite_event.dart';
 import '../bloc/favorites/favorite_state.dart';
 import '../widgets/details/info_row.dart';
 import '../widgets/details/media_detail_header.dart';
@@ -45,7 +45,7 @@ class MovieDetailsScreen extends StatelessWidget {
         builder: (context, state) {
           bool isFavorite = false;
           if (state is FavoritesLoadedState) {
-            isFavorite = state.favoriteMovieIds.any((m) => m.id == movie.id);
+            isFavorite = state.favoriteMovies.any((movie) => movie.id == movie.id);
           }
 
           return SingleChildScrollView(
@@ -57,14 +57,13 @@ class MovieDetailsScreen extends StatelessWidget {
                   child: MediaDetailHeader(
                     media: movie,
                     height: 250,
-                    action: FavoriteToggleButton(movie: movie),
+                    action: FavoriteToggleButton(media: movie),
                   ),
                 ),
                 InfoRow(
-                  releaseDate: movie.releaseDate,
-                  vote: movie.voteCount.toString(),
-                  popularity: movie.popularity.toString(),
-                ),
+                    releaseDate: movie.releaseDate,
+                    vote: movie.voteCount.toString(),
+                    popularity:movie.popularity.toString()),
                 const SizedBox(height: 10),
                 const TextList(
                   items: ["About Movie", "Review", "Cast"],

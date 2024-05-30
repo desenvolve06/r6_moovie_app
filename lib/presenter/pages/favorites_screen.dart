@@ -6,7 +6,6 @@ import '../bloc/favorites/favorite_state.dart';
 
 
 class FavoritesScreen extends StatelessWidget {
-  final List<Movie> movies = [];
 
   FavoritesScreen({super.key});
 
@@ -21,9 +20,9 @@ class FavoritesScreen extends StatelessWidget {
         builder: (context, state) {
           if (state is FavoritesLoadedState) {
             return ListView.builder(
-              itemCount: state.favoriteMovieIds.length,
+              itemCount: state.favoriteMovies.length,
               itemBuilder: (context, index) {
-                final movie = state.favoriteMovieIds[index];
+                final movie = state.favoriteMovies[index];
                 return Card(
                   margin: const EdgeInsets.all(8),
                   child: Column(

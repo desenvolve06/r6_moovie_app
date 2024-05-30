@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
-import '../models/series_response.dart';
+import '../models/series/series_response.dart';
 part 'series_service_api.g.dart';
 
 @RestApi(baseUrl: 'https://api.themoviedb.org/3')
