@@ -1,7 +1,8 @@
 import 'dart:convert';
-  import 'package:r6_moovie_app/data/local/series/local_data_source_series.dart';
   import 'package:shared_preferences/shared_preferences.dart';
-  import '../../../domain/entities/series.dart';
+
+import '../../../../../domain/entities/series.dart';
+import 'local_data_source_series.dart';
 
   class LocalDataSourceSeriesImpl implements LocalDataSourceSeries {
     static const String _favoritesSeriesKey = 'favoritesSeriesKey';

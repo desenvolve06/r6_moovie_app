@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../domain/entities/movie.dart';
-import '../../../domain/usecase/get_popular_movie_use_case.dart';
+import '../../../domain/usecase/movies/get_popular_movie_use_case.dart';
 import 'movie_event.dart';
 import 'movie_state.dart';
 

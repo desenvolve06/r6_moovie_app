@@ -1,4 +1,4 @@
-import '../../domain/entities/series.dart';
+import '../../../../domain/entities/series.dart';
 
 abstract class SeriesDatasource {
   Future<List<Series>> getPopularMSeries();

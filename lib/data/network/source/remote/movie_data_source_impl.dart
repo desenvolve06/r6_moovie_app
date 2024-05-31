@@ -1,5 +1,5 @@
-import '../../domain/entities/movie.dart';
-import '../service/movie_service_api.dart';
+import '../../../../domain/entities/movie.dart';
+import '../../../service/movie_service_api.dart';
 import 'movie_data_source.dart';
 class MovieDataSourceImpl extends MovieDataSource {
  final MovieServiceApi _movieServiceApi;

@@ -1,6 +1,5 @@
-
-import '../entities/movie.dart';
-import '../repository/movie_repository.dart';
+import '../../entities/movie.dart';
+import '../../repository/movie_repository.dart';
 
 class RemoveFromFavoriteUseCase {
   final MoviesRepository moviesRepository;
