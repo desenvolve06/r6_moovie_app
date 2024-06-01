@@ -48,25 +48,37 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
       if (event.media is Movie) {
         await addToFavoritesUseCase.addToFavoritesList(event.media);
         if (kDebugMode) {
-          print('${event.media}');
+          print('Added movie to favorites: ${event.media.originalTitle}');
         }
       } else if (event.media is Series) {
         await addToFavoritesSeriesUseCase.addToFavoritesList(event.media);
         if (kDebugMode) {
-          print('${event.media}');
+          print('Added series to favorites: ${event.media.name}');
         }
       }
+
+      // Obtém a lista atualizada de filmes e séries favoritos
       final favoriteMovies = await getFavoritesUseCase.getFavorites();
       final favoriteSeries = await getFavoritesSeriesUseCase.getFavorites();
-      emit(FavoritesLoadedState(favoriteMovies, favoriteSeries));
+
+      // Log das listas de favoritos
       if (kDebugMode) {
-        print('$favoriteMovies');
+        print(
+            'Favorite movies: ${favoriteMovies.map((movie) => movie.originalTitle).toList()}');
+        print(
+            'Favorite series: ${favoriteSeries.map((series) => series.name).toList()}');
+      }
+      emit(FavoritesLoadedState(favoriteMovies, favoriteSeries));
+
+      if (kDebugMode) {
+        print(
+            'Favorites loaded: Movies - ${favoriteMovies.map((movie) => movie.originalTitle).toList()}, Series - ${favoriteSeries.map((series) => series.name).toList()}');
       }
     } catch (e) {
       emit(FavoriteErrorState(e.toString()));
-    }
-    if (kDebugMode) {
-      print('${event.media}');
+      if (kDebugMode) {
+        print('Error adding to favorites: $e');
+      }
     }
   }
 
@@ -75,16 +87,22 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
     try {
       emit(FavoriteLoadingState());
       if (event.media is Movie) {
-        await removeFromFavoritesUseCase.removeFromFavorite(event.media.id);
+        await removeFromFavoritesUseCase.removeFromFavorite(event.media);
+        if (kDebugMode) {
+          print('Remove movie to favorites: ${event.media}');
+        }
       } else if (event.media is Series) {
-        await removeFromFavoriteSeriesUseCase
-            .removeFromFavorite(event.media.id);
+        await removeFromFavoriteSeriesUseCase.removeFromFavorite(event.media);
+        if (kDebugMode) {
+          print('Remove series to favorites: ${event.media}');
+        }
       }
       final favoriteMovies = await getFavoritesUseCase.getFavorites();
       final favoriteSeries = await getFavoritesSeriesUseCase.getFavorites();
       emit(FavoritesLoadedState(favoriteMovies, favoriteSeries));
     } catch (e) {
       emit(FavoriteErrorState(e.toString()));
+      print('Error Remove to favorites: $e');
     }
   }
 
