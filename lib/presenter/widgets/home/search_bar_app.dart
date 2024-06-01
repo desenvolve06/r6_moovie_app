@@ -5,7 +5,6 @@ import 'package:r6_moovie_app/domain/entities/movie.dart';
 import 'package:r6_moovie_app/presenter/pages/movies_details_screen.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
-import 'package:r6_moovie_app/resources/app_values.dart';
 
 class SearchBarApp extends StatefulWidget {
   const SearchBarApp({super.key});
@@ -41,7 +40,6 @@ class _SearchBarAppState extends State<SearchBarApp> {
               result['vote_average'] != null &&
               result['media_type'] != null &&
               result['media_type'] != 'person') {
-                                print(result);
             setState(() {
               tempSearchResult.add({
                 'id': result['id'],
@@ -64,7 +62,6 @@ class _SearchBarAppState extends State<SearchBarApp> {
               }
             });
           } else {
-            print('deu ruim');
           }
         }
 
@@ -73,7 +70,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
         });
       }
     } catch (e) {
-      print('Error: $e');
+      //
     }
   }
 
@@ -129,7 +126,6 @@ class _SearchBarAppState extends State<SearchBarApp> {
               itemCount: searchResult.length,
               itemBuilder: (context, index) {
                 final result = searchResult[index];
-                final Movie movie = Movie.fromMap(result);
                 return GestureDetector(
                   onTap: () {
                     

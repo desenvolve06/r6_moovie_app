@@ -51,7 +51,7 @@ class Movie {
     };
   }
 
-  // Método para criar um objeto Movie a partir de um mapa JSON
+  
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
       adult: json['adult'],
