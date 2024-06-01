@@ -73,7 +73,7 @@ class SeriesDetailsScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: OverView(series.overview),
+                  child: OverView(series.overview.isEmpty ? AppStrings.noLanguageSerie : series.overview),
                 ),
               ],
             ),

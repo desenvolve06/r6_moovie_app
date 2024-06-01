@@ -74,7 +74,9 @@ class MovieDetailsScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: OverView(movie.overview),
+                  child: OverView(movie.overview.isEmpty
+                      ? AppStrings.noLanguageMovie
+                      : movie.overview),
                 ),
               ],
             ),

@@ -42,6 +42,8 @@ class AppStrings {
   static const String aboutMovie = 'Sobre o filme';
   static const String myProfile = 'Meu Perfil';
   static const String downloads = 'Downloads';
-  static const String noLanguage =
+  static const String noLanguageSerie =
+      'Esta série não está disponível em seu idioma.';
+  static const String noLanguageMovie =
       'Este filme não está disponível em seu idioma.';
 }
