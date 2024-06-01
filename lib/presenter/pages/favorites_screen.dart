@@ -3,13 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/entities/movie.dart';
 import '../../domain/entities/series.dart';
 import '../bloc/favorites/favorite_bloc.dart';
-import '../bloc/favorites/favorite_event.dart'; // Importando eventos
+import '../bloc/favorites/favorite_event.dart';
 import '../bloc/favorites/favorite_state.dart';
 
 class FavoritesScreen extends StatefulWidget {
-  FavoritesScreen({super.key});
+  const FavoritesScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _FavoritesScreenState createState() => _FavoritesScreenState();
 }
 

@@ -57,11 +57,11 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
         }
       }
 
-      // Obtém a lista atualizada de filmes e séries favoritos
+      
       final favoriteMovies = await getFavoritesUseCase.getFavorites();
       final favoriteSeries = await getFavoritesSeriesUseCase.getFavorites();
 
-      // Log das listas de favoritos
+      
       if (kDebugMode) {
         print(
             'Favorite movies: ${favoriteMovies.map((movie) => movie.originalTitle).toList()}');
@@ -102,7 +102,6 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
       emit(FavoritesLoadedState(favoriteMovies, favoriteSeries));
     } catch (e) {
       emit(FavoriteErrorState(e.toString()));
-      print('Error Remove to favorites: $e');
     }
   }
 
@@ -118,7 +117,7 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
       }
       emit(FavoriteCheckState(isFavorite));
     } catch (e) {
-      emit(FavoriteErrorState(AppStrings.errorMessage));
+      emit(const FavoriteErrorState(AppStrings.errorMessage));
     }
   }
 
@@ -130,7 +129,7 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
       final favoriteSeries = await getFavoritesSeriesUseCase.getFavorites();
       emit(FavoritesLoadedState(favoriteMovies, favoriteSeries));
     } catch (e) {
-      emit(FavoriteErrorState(AppStrings.errorMessage));
+      emit(const FavoriteErrorState(AppStrings.errorMessage));
     }
   }
 
@@ -159,7 +158,7 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
       final favoriteSeries = await getFavoritesSeriesUseCase.getFavorites();
       emit(FavoritesLoadedState(favoriteMovies, favoriteSeries));
     } catch (e) {
-      emit(FavoriteErrorState(AppStrings.errorMessage));
+      emit(const FavoriteErrorState(AppStrings.errorMessage));
     }
   }
 }

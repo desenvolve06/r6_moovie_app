@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../domain/entities/movie.dart';
@@ -16,12 +15,12 @@ class MediaList extends StatelessWidget {
   final String title;
 
   const MediaList({
-    Key? key,
+    super.key,
     required this.mediaList,
     required this.title,
     required this.movies,
     required this.series,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +83,7 @@ class MediaList extends StatelessWidget {
                           right: 8,
                           child: BlocBuilder<FavoriteBloc, FavoriteState>(
                             builder: (context, state) {
+                              // ignore: unused_local_variable
                               bool isFavorite = false;
                               if (state is FavoritesLoadedState) {
                                 if (media is Movie) {
