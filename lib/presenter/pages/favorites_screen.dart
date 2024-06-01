@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/entities/movie.dart';
-import '../../domain/entities/series.dart'; // Importe a classe Series
+import '../../domain/entities/series.dart';
 import '../bloc/favorites/favorite_bloc.dart';
+import '../bloc/favorites/favorite_event.dart'; // Importando eventos
 import '../bloc/favorites/favorite_state.dart';
 
-class FavoritesScreen extends StatelessWidget {
+class FavoritesScreen extends StatefulWidget {
   FavoritesScreen({super.key});
+
+  @override
+  _FavoritesScreenState createState() => _FavoritesScreenState();
+}
+
+class _FavoritesScreenState extends State<FavoritesScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<FavoriteBloc>().add(GetFavoritesEvent());
+  }
 
   @override
   Widget build(BuildContext context) {
