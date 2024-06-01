@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:r6_moovie_app/domain/entities/movie.dart';
 import 'package:r6_moovie_app/presenter/pages/movies_details_screen.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
-import 'package:r6_moovie_app/resources/app_values.dart';
 
 class SearchBarApp extends StatefulWidget {
   const SearchBarApp({super.key});
@@ -15,69 +14,37 @@ class SearchBarApp extends StatefulWidget {
 }
 
 class _SearchBarAppState extends State<SearchBarApp> {
+  final TextEditingController searchText = TextEditingController();
   List<Map<String, dynamic>> searchResult = [];
   bool showSearchResults = false;
 
   Future<void> searchListFunction(String val) async {
-    List<Map<String, dynamic>> tempSearchResult = [];
-
-    var dio = Dio();
-    var apiKey = dotenv.env['API_KEY'];
-    var searchUrl =
+    final dio = Dio();
+    final apiKey = dotenv.env['API_KEY'];
+    final searchUrl =
         'https://api.themoviedb.org/3/search/multi?api_key=$apiKey&query=$val';
-    try {
-      var searchResponse = await dio.get(searchUrl);
-      if (searchResponse.statusCode == 200) {
-        var tempData = searchResponse.data;
-        var searchJson = tempData['results'];
 
-        var filteredResults = searchJson
+    try {
+      final searchResponse = await dio.get(searchUrl);
+      if (searchResponse.statusCode == 200) {
+        final tempData = searchResponse.data;
+        final searchJson = tempData['results'];
+
+        final filteredResults = searchJson
             .where((result) => result['media_type'] != 'person')
             .toList();
 
-        for (var result in filteredResults) {
-          if (result['id'] != null &&
-              result['poster_path'] != null &&
-              result['vote_average'] != null &&
-              result['media_type'] != null &&
-              result['media_type'] != 'person') {
-                                print(result);
-            setState(() {
-              tempSearchResult.add({
-                'id': result['id'],
-                'poster_path': result['poster_path'],
-                'backdrop_path': result['backdrop_path'],
-                'vote_average': result['vote_average'],
-                'release_date': result['release_date'],
-                'media_type': result['media_type'],
-                'popularity': result['popularity'],
-                'overview': result['overview'],
-                'vote_count': result['vote_count'],
-                result.containsKey('title') ? 'title' : 'name':
-                    result.containsKey('title')
-                        ? result['title']
-                        : result['name'],
-              });
-
-              if (tempSearchResult.length > 5) {
-                tempSearchResult.removeRange(5, tempSearchResult.length);
-              }
-            });
-          } else {
-            print('deu ruim');
-          }
-        }
+        final tempSearchResult =
+            filteredResults.map((result) => Movie.fromMap(result)).toList();
 
         setState(() {
-          searchResult = List.from(tempSearchResult);
+          searchResult = tempSearchResult.take(5).toList();
         });
       }
     } catch (e) {
       print('Error: $e');
     }
   }
-
-  final TextEditingController searchText = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +73,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
                           decoration: BoxDecoration(
                             border:
                                 Border.all(color: AppColors.primaryColorLight),
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           child: SearchBar(
                             hintText: AppStrings.search,
@@ -132,7 +99,6 @@ class _SearchBarAppState extends State<SearchBarApp> {
                 final Movie movie = Movie.fromMap(result);
                 return GestureDetector(
                   onTap: () {
-                    
                     Navigator.push(
                       context,
                       MaterialPageRoute(

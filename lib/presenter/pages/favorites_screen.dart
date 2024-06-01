@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../domain/entities/movie.dart';
+
 import '../bloc/favorites/favorite_bloc.dart';
 import '../bloc/favorites/favorite_state.dart';
 
-
 class FavoritesScreen extends StatelessWidget {
-
-  FavoritesScreen({super.key});
-
+  const FavoritesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

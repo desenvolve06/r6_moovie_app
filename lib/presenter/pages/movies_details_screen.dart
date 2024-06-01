@@ -35,7 +35,7 @@ class MovieDetailsScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => FavoritesScreen()),
+                MaterialPageRoute(builder: (context) => const FavoritesScreen()),
               );
             },
           ),

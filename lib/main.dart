@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/presenter/bloc/favorites/favorite_bloc.dart';
 import 'package:r6_moovie_app/presenter/bloc/movies/movie_bloc.dart';
 import 'package:r6_moovie_app/presenter/bloc/series/series_bloc.dart';
+import 'package:r6_moovie_app/presenter/pages/favorites_screen.dart';
 import 'package:r6_moovie_app/presenter/pages/main_screen.dart';
 import 'package:r6_moovie_app/presenter/pages/splash_screen.dart';
 import 'package:r6_moovie_app/presenter/widgets/home/app_bar_main.dart';
@@ -9,7 +11,7 @@ import 'package:r6_moovie_app/presenter/widgets/home/nav_bar_main.dart';
 import 'package:r6_moovie_app/presenter/widgets/home/search_bar_app.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'di/injection.dart';
 
 void main() {
@@ -45,8 +47,14 @@ class MyApp extends StatelessWidget {
             ),
             fontFamily: 'Montserrat',
             useMaterial3: true,
+            bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+              backgroundColor: AppColors.primaryBackgroundColor,
+              selectedItemColor: AppColors.greyLight1Color,
+              unselectedItemColor: AppColors.greyDark1Color,
+              elevation: 8,
+            ),
           ),
-          home: SplashScreen(),
+          home: const SplashScreen(),
         ));
   }
 }
@@ -60,16 +68,40 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _currentIndex = 0;
+
+  final List<Widget> _screens = [
+    const MainScreen(),
+    const SearchBarApp(),
+    const FavoritesScreen()
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: AppBarMain(),
-      drawer: NavBarMain(),
-      body: Column(
-        children: [
-          SearchBarApp(),
-          Expanded(
-            child: MainScreen(),
+    return Scaffold(
+      appBar: const AppBarMain(),
+      drawer: const NavBarMain(),
+      body: _screens[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: _currentIndex,
+        onTap: (item) {
+          setState(() {
+            _currentIndex = item;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Buscar',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favoritos',
           ),
         ],
       ),

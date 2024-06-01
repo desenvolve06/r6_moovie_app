@@ -1,7 +1,7 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
-import 'package:r6_moovie_app/resources/app_values.dart';
 import 'package:r6_moovie_app/resources/asset_path.dart';
 
 import 'login_page.dart';
@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
       const Duration(seconds: 4),
-          () => Navigator.pushReplacement(
+      () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => LoginPage()),
       ),
@@ -31,9 +31,6 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: AppColors.primaryBackgroundColor,
       body: Center(
-        // child: Image.asset(
-        //   AssetPath.logoKoruFlix,
-        // ),
         child: Image.asset(
           AssetPath.logoKoruFlix,
           width: 280,
@@ -42,4 +39,3 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-

@@ -1,6 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../domain/entities/movie.dart';
 import '../../../domain/entities/series.dart';
 import '../../bloc/favorites/favorite_bloc.dart';
@@ -16,12 +16,12 @@ class MediaList extends StatelessWidget {
   final String title;
 
   const MediaList({
-    Key? key,
+    super.key,
     required this.mediaList,
     required this.title,
     required this.movies,
     required this.series,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -87,9 +87,11 @@ class MediaList extends StatelessWidget {
                               bool isFavorite = false;
                               if (state is FavoritesLoadedState) {
                                 if (media is Movie) {
-                                  isFavorite = state.favoriteMovies.any((movie) => movie.id == media.id);
+                                  isFavorite = state.favoriteMovies
+                                      .any((movie) => movie.id == media.id);
                                 } else if (media is Series) {
-                                  isFavorite = state.favoriteSeries.any((series) => series.id == media.id);
+                                  isFavorite = state.favoriteSeries
+                                      .any((series) => series.id == media.id);
                                 }
                               }
                               return FavoriteToggleButton(media: media);
@@ -110,7 +112,9 @@ class MediaList extends StatelessWidget {
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              media is Movie ? media.title.toString() : (media as Series).name.toString(),
+                              media is Movie
+                                  ? media.title.toString()
+                                  : (media as Series).name.toString(),
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
