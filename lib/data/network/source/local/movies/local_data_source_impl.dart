@@ -10,10 +10,10 @@ class LocalDataSourceImpl implements LocalDataSource {
   Future<void> addToFavorites(Movie movie) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     List<Movie> favorites = await getFavorites();
-    if (!favorites.any((movie) => movie.id == movie.id)) {
+    if (!favorites.any((favMovie) => favMovie.id == movie.id)) {
       favorites.add(movie);
-      String jsonFavorites = jsonEncode(
-          favorites.map((m) => m.toJson()).toList());
+      String jsonFavorites =
+          jsonEncode(favorites.map((m) => m.toJson()).toList());
       await prefs.setString(_favoritesKey, jsonFavorites);
     }
   }
@@ -22,9 +22,9 @@ class LocalDataSourceImpl implements LocalDataSource {
   Future<void> removeFromFavorites(Movie movie) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     List<Movie> favorites = await getFavorites();
-    favorites.removeWhere((movie) => movie.id == movie.id);
-    String jsonFavorites = jsonEncode(
-        favorites.map((movie) => movie.toJson()).toList());
+    favorites.removeWhere((favMovie) => favMovie.id == movie.id);
+    String jsonFavorites =
+        jsonEncode(favorites.map((movie) => movie.toJson()).toList());
     await prefs.setString(_favoritesKey, jsonFavorites);
   }
 
@@ -45,6 +45,3 @@ class LocalDataSourceImpl implements LocalDataSource {
     return [];
   }
 }
-
-
-
