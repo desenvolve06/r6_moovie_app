@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 import '../models/movies/movies_response.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:r6_moovie_app/resources/app_strings.dart';
 
 import '../../domain/entities/movie.dart';
 import '../bloc/favorites/favorite_bloc.dart';
@@ -22,7 +23,7 @@ class MovieDetailsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Details'),
+        title: const Text(AppStrings.details),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
@@ -35,7 +36,8 @@ class MovieDetailsScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const FavoritesScreen()),
+                MaterialPageRoute(
+                    builder: (context) => const FavoritesScreen()),
               );
             },
           ),
@@ -46,7 +48,8 @@ class MovieDetailsScreen extends StatelessWidget {
           // ignore: unused_local_variable
           bool isFavorite = false;
           if (state is FavoritesLoadedState) {
-            isFavorite = state.favoriteMovies.any((movie) => movie.id == movie.id);
+            isFavorite =
+                state.favoriteMovies.any((movie) => movie.id == movie.id);
           }
 
           return SingleChildScrollView(
@@ -64,7 +67,7 @@ class MovieDetailsScreen extends StatelessWidget {
                 InfoRow(
                     releaseDate: movie.releaseDate,
                     vote: movie.voteCount.toString(),
-                    popularity:movie.popularity.toString()),
+                    popularity: movie.popularity.toString()),
                 const SizedBox(height: 10),
                 const TextList(
                   items: ["About Movie", "Review", "Cast"],

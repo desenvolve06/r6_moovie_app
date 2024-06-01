@@ -23,7 +23,7 @@ class _SeriesServiceApi implements SeriesServiceApi {
   @override
   Future<SeriesResponse> getSeriesPopular() async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{'language': 'pt-PT'};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio
