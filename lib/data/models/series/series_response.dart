@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:r6_moovie_app/data/models/series_model.dart';
+import 'package:r6_moovie_app/data/models/series/series_model.dart';
 part 'series_response.g.dart';
 
 @JsonSerializable()

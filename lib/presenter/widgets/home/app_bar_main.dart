@@ -9,7 +9,6 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      // backgroundColor: AppColors.primaryBackgroundColor,
       iconTheme: const IconThemeData(color: AppColors.primaryColorDark),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,

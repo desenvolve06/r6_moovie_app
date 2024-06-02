@@ -1,7 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:r6_moovie_app/presenter/widgets/home/favorite_toggle_button_series.dart';
 
 import '../../../domain/entities/movie.dart';
 import '../../../domain/entities/series.dart';
@@ -18,12 +16,12 @@ class MediaList extends StatelessWidget {
   final String title;
 
   const MediaList({
-    Key? key,
+    super.key,
     required this.mediaList,
     required this.title,
     required this.movies,
     required this.series,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -74,13 +72,11 @@ class MediaList extends StatelessWidget {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(10.0),
-                          child: CachedNetworkImage(
-                            imageUrl: "https://image.tmdb.org/t/p/w500${media.backdropPath}",
+                          child: Image.network(
+                            'https://image.tmdb.org/t/p/w500${media.backdropPath}',
                             fit: BoxFit.cover,
                             height: double.infinity,
                             width: double.infinity,
-                            placeholder: (context, url) => const CircularProgressIndicator(),
-                            errorWidget: (context, url, error) => const Icon(Icons.error),
                           ),
                         ),
                         Positioned(
@@ -88,19 +84,18 @@ class MediaList extends StatelessWidget {
                           right: 8,
                           child: BlocBuilder<FavoriteBloc, FavoriteState>(
                             builder: (context, state) {
+                              // ignore: unused_local_variable
                               bool isFavorite = false;
                               if (state is FavoritesLoadedState) {
-                                isFavorite = state.favoriteMovieIds.any((movie) => movie.id == (media is Movie ? media.id : (media as Series).id));
+                                if (media is Movie) {
+                                  isFavorite = state.favoriteMovies
+                                      .any((movie) => movie.id == media.id);
+                                } else if (media is Series) {
+                                  isFavorite = state.favoriteSeries
+                                      .any((series) => series.id == media.id);
+                                }
                               }
-                              if (media is Movie) {
-                                return FavoriteToggleButton(
-                                  movie: media,
-                                );
-                              } else {
-                                return FavoriteToggleButtonSeries(
-                                  series: media as Series,
-                                );
-                              }
+                              return FavoriteToggleButton(media: media);
                             },
                           ),
                         ),
@@ -118,7 +113,9 @@ class MediaList extends StatelessWidget {
                             ),
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              media is Movie ? media.title.toString() : (media as Series).name.toString(),
+                              media is Movie
+                                  ? media.title.toString()
+                                  : (media as Series).name.toString(),
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,

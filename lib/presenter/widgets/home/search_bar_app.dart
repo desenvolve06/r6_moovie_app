@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:r6_moovie_app/domain/entities/movie.dart';
+import 'package:r6_moovie_app/presenter/pages/movies_details_screen.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
-import 'package:r6_moovie_app/resources/app_values.dart';
 
 class SearchBarApp extends StatefulWidget {
   const SearchBarApp({super.key});
@@ -25,49 +26,61 @@ class _SearchBarAppState extends State<SearchBarApp> {
         'https://api.themoviedb.org/3/search/multi?api_key=$apiKey&query=$val';
     try {
       var searchResponse = await dio.get(searchUrl);
+      var tempData = searchResponse.data;
+
       if (searchResponse.statusCode == 200) {
-        var tempData = searchResponse.data;
         var searchJson = tempData['results'];
+        var searchResponse = await dio.get(searchUrl);
+        if (searchResponse.statusCode == 200) {
+          var tempData = searchResponse.data;
+          var searchJson = tempData['results'];
 
-        var filteredResults = searchJson
-            .where((result) => result['media_type'] != 'person')
-            .toList();
+          var filteredResults = searchJson
+              .where((result) => result['media_type'] != 'person')
+              .toList();
 
-        for (var result in filteredResults) {
-          if (result['id'] != null &&
-              result['poster_path'] != null &&
-              result['vote_average'] != null &&
-              result['media_type'] != null &&
-              result['media_type'] != 'person') {
-            setState(() {
-              tempSearchResult.add({
-                'id': result['id'],
-                'poster_path': result['poster_path'],
-                'vote_average': result['vote_average'],
-                'media_type': result['media_type'],
-                'popularity': result['popularity'],
-                'overview': result['overview'],
-                result.containsKey('title') ? 'title' : 'name':
-                    result.containsKey('title')
-                        ? result['title']
-                        : result['name'],
+          for (var result in filteredResults) {
+            if (result['id'] != null &&
+                result['poster_path'] != null &&
+                result['vote_average'] != null &&
+                result['media_type'] != null &&
+                result['media_type'] != 'person') {
+              setState(() {
+                tempSearchResult.add({
+                  'id': result['id'],
+                  'poster_path': result['poster_path'],
+                  'backdrop_path': result['backdrop_path'],
+                  'vote_average': result['vote_average'],
+                  'release_date': result['release_date'],
+                  'media_type': result['media_type'],
+                  'popularity': result['popularity'],
+                  'overview': result['overview'],
+                  'vote_count': result['vote_count'],
+                  result.containsKey('title') ? 'title' : 'name':
+                      result.containsKey('title')
+                          ? result['title']
+                          : result['name'],
+                });
+
+                if (tempSearchResult.length > 5) {
+                  tempSearchResult.removeRange(5, tempSearchResult.length);
+                }
               });
-
-              if (tempSearchResult.length > 5) {
-                tempSearchResult.removeRange(5, tempSearchResult.length);
-              }
-            });
-          } else {
-            print('Erro ao buscar dados.');
+            } else {
+              print('Erro ao buscar dados.');
+            }
           }
-        }
 
+          setState(() {
+            searchResult = List.from(tempSearchResult);
+          });
+        }
         setState(() {
           searchResult = List.from(tempSearchResult);
         });
       }
     } catch (e) {
-      print('Error: $e');
+      //
     }
   }
 
@@ -123,33 +136,45 @@ class _SearchBarAppState extends State<SearchBarApp> {
               itemCount: searchResult.length,
               itemBuilder: (context, index) {
                 final result = searchResult[index];
-                return ListTile(
-                  leading: result['poster_path'] != null
-                      ? Image.network(
-                          'https://image.tmdb.org/t/p/w92${result['poster_path']}',
-                          width: 100,
-                          height: 100,
-                          fit: BoxFit.cover,
-                        )
-                      : const SizedBox(
-                          width: 100,
-                          height: 100,
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MovieDetailsScreen(
+                          item: Movie.fromMap(result),
                         ),
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        result.containsKey('title')
-                            ? result['title']
-                            : result['name'] ?? '',
-                        style: const TextStyle(
-                            fontSize: AppSize.s16, fontWeight: FontWeight.bold),
                       ),
-                      Text(
-                        'Rating: ${result['vote_average'].toStringAsFixed(1)}',
-                        style: const TextStyle(fontSize: AppSize.s14),
-                      ),
-                    ],
+                    );
+                  },
+                  child: ListTile(
+                    leading: result['poster_path'] != null
+                        ? Image.network(
+                            'https://image.tmdb.org/t/p/w92${result['poster_path']}',
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          )
+                        : const SizedBox(
+                            width: 100,
+                            height: 100,
+                          ),
+                    title: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          result.containsKey('title')
+                              ? result['title']
+                              : result['name'] ?? '',
+                          style: const TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          'Rating: ${result['vote_average'].toStringAsFixed(1)}',
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },

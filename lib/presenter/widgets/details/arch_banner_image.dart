@@ -12,6 +12,9 @@ class ArcBannerImage extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: 230.0,
       fit: BoxFit.cover,
+      errorBuilder: (context, error, stackTrace) {
+      return const Text('Falha ao carregar a imagem');
+    },
     );
   }
 }

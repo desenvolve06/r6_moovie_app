@@ -37,7 +37,8 @@ class MovieDetailsScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => FavoritesScreen()),
+                MaterialPageRoute(
+                    builder: (context) => const FavoritesScreen()),
               );
             },
           ),
@@ -45,9 +46,11 @@ class MovieDetailsScreen extends StatelessWidget {
       ),
       body: BlocBuilder<FavoriteBloc, FavoriteState>(
         builder: (context, state) {
+          // ignore: unused_local_variable
           bool isFavorite = false;
           if (state is FavoritesLoadedState) {
-            isFavorite = state.favoriteMovieIds.any((m) => m.id == movie.id);
+            isFavorite =
+                state.favoriteMovies.any((movie) => movie.id == movie.id);
           }
 
           return SingleChildScrollView(
@@ -59,7 +62,7 @@ class MovieDetailsScreen extends StatelessWidget {
                   child: MediaDetailHeader(
                     media: movie,
                     height: 250,
-                    action: FavoriteToggleButton(movie: movie),
+                    action: FavoriteToggleButton(media: movie),
                   ),
                 ),
                 InfoRow(
