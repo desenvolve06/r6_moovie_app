@@ -1,25 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:r6_moovie_app/presenter/widgets/details/cast.dart';
+import 'package:r6_moovie_app/presenter/widgets/details/review.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
-
 import '../../domain/entities/movie.dart';
 import '../bloc/favorites/favorite_bloc.dart';
 import '../bloc/favorites/favorite_state.dart';
 import '../widgets/details/info_row.dart';
 import '../widgets/details/media_detail_header.dart';
 import '../widgets/details/overview.dart';
-import '../widgets/details/text_list.dart';
 import '../widgets/home/favorite_toggle_button.dart';
 import 'favorites_screen.dart';
 
-class MovieDetailsScreen extends StatelessWidget {
+class MovieDetailsScreen extends StatefulWidget {
   final dynamic item;
 
   const MovieDetailsScreen({super.key, required this.item});
 
   @override
+  _MovieDetailsScreenState createState() => _MovieDetailsScreenState();
+}
+
+class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
+  int _selectedIndex = 0;
+
+  @override
   Widget build(BuildContext context) {
-    final Movie movie = item;
+    final Movie movie = widget.item;
 
     return Scaffold(
       appBar: AppBar(
@@ -45,7 +52,6 @@ class MovieDetailsScreen extends StatelessWidget {
       ),
       body: BlocBuilder<FavoriteBloc, FavoriteState>(
         builder: (context, state) {
-          // ignore: unused_local_variable
           bool isFavorite = false;
           if (state is FavoritesLoadedState) {
             isFavorite =
@@ -69,14 +75,65 @@ class MovieDetailsScreen extends StatelessWidget {
                     vote: movie.voteCount.toString(),
                     popularity: movie.popularity.toString()),
                 const SizedBox(height: 10),
-                const TextList(
-                  items: ["About Movie", "Review", "Cast"],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          _selectedIndex = 0;
+                        });
+                      },
+                      child: Text(
+                        AppStrings.aboutMovie,
+                        style: TextStyle(
+                          decoration: _selectedIndex == 0
+                              ? TextDecoration.underline
+                              : null,
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          _selectedIndex = 1;
+                        });
+                      },
+                      child: Text(
+                        AppStrings.reviews,
+                        style: TextStyle(
+                          decoration: _selectedIndex == 1
+                              ? TextDecoration.underline
+                              : null,
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          _selectedIndex = 2;
+                        });
+                      },
+                      child: Text(
+                        AppStrings.cast,
+                        style: TextStyle(
+                          decoration: _selectedIndex == 2
+                              ? TextDecoration.underline
+                              : null,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: OverView(movie.overview.isEmpty
-                      ? AppStrings.noLanguageMovie
-                      : movie.overview),
+                  child: _selectedIndex == 0
+                      ? OverView(movie.overview.isEmpty
+                          ? AppStrings.noLanguageMovie
+                          : movie.overview)
+                      : _selectedIndex == 1
+                          ? Review(movie.genreIds.toString())
+                          : Cast(movie.title),
                 ),
               ],
             ),
