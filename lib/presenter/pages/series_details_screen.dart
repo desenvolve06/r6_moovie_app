@@ -36,7 +36,8 @@ class SeriesDetailsScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => FavoritesSeriesScreen()),
+                MaterialPageRoute(
+                    builder: (context) => FavoritesSeriesScreen()),
               );
             },
           ),
@@ -47,7 +48,8 @@ class SeriesDetailsScreen extends StatelessWidget {
           // ignore: unused_local_variable
           bool isFavorite = false;
           if (state is FavoritesLoadedState) {
-            isFavorite = state.favoriteSeries.any((series) => series.id == series.id);
+            isFavorite =
+                state.favoriteSeries.any((series) => series.id == series.id);
           }
 
           return SingleChildScrollView(
@@ -63,17 +65,21 @@ class SeriesDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 InfoRow(
-                    releaseDate: series.firstAirDate,
-                    vote: series.name,
-                    popularity: series.name,
-                   ),
+                  overflow: TextOverflow.ellipsis,
+                  releaseDate: series.firstAirDate,
+                  vote: series.name,
+                  popularity: series.name,
+                ),
                 const SizedBox(height: 10),
                 const TextList(
+                  overflow: TextOverflow.ellipsis,
                   items: ["About Series", "Review", "Cast"],
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: OverView(series.overview.isEmpty ? AppStrings.noLanguageSerie : series.overview),
+                  child: OverView(series.overview.isEmpty
+                      ? AppStrings.noLanguageSerie
+                      : series.overview),
                 ),
               ],
             ),

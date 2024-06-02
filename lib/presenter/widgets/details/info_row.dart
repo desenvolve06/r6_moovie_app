@@ -10,6 +10,7 @@ class InfoRow extends StatelessWidget {
     required this.releaseDate,
     required this.vote,
     required this.popularity,
+    required TextOverflow overflow,
   });
 
   @override
@@ -18,7 +19,7 @@ class InfoRow extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: SizedBox(
-          height: 100,
+          height: 110,
           child: Row(
             children: [
               Expanded(

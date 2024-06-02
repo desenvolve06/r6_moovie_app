@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class TextList extends StatelessWidget {
   final List<String> items;
 
-  const TextList({super.key, required this.items});
+  const TextList(
+      {super.key, required this.items, required TextOverflow overflow});
 
   @override
   Widget build(BuildContext context) {
