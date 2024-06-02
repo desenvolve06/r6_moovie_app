@@ -51,6 +51,8 @@ class SeriesDetailsScreen extends StatelessWidget {
           if (state is FavoritesLoadedState) {
             isFavorite =
                 state.favoriteSeries.any((series) => series.id == series.id);
+            isFavorite =
+                state.favoriteSeries.any((series) => series.id == series.id);
           }
 
           return SingleChildScrollView(
