@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/presenter/pages/series/favorites_series_screen.dart';
+import 'package:r6_moovie_app/presenter/widgets/details/cast.dart';
+import 'package:r6_moovie_app/presenter/widgets/details/review.dart';
 
 import '../../domain/entities/series.dart';
 import '../../resources/app_strings.dart';
@@ -9,17 +11,23 @@ import '../bloc/favorites/favorite_state.dart';
 import '../widgets/details/info_row.dart';
 import '../widgets/details/media_detail_header.dart';
 import '../widgets/details/overview.dart';
-import '../widgets/details/text_list.dart';
 import '../widgets/home/favorite_toggle_button.dart';
 
-class SeriesDetailsScreen extends StatelessWidget {
+class SeriesDetailsScreen extends StatefulWidget {
   final dynamic item;
 
-  const SeriesDetailsScreen({super.key, required this.item});
+  const SeriesDetailsScreen({Key? key, required this.item}) : super(key: key);
+
+  @override
+  _SeriesDetailsScreenState createState() => _SeriesDetailsScreenState();
+}
+
+class _SeriesDetailsScreenState extends State<SeriesDetailsScreen> {
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    final Series series = item;
+    final Series series = widget.item;
 
     return Scaffold(
       appBar: AppBar(
@@ -70,15 +78,65 @@ class SeriesDetailsScreen extends StatelessWidget {
                   popularity: series.name,
                 ),
                 const SizedBox(height: 10),
-                const TextList(
-                  overflow: TextOverflow.ellipsis,
-                  items: ["About Series", "Review", "Cast"],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          _selectedIndex = 0;
+                        });
+                      },
+                      child: Text(
+                        AppStrings.aboutSerie,
+                        style: TextStyle(
+                          decoration: _selectedIndex == 0
+                              ? TextDecoration.underline
+                              : null,
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          _selectedIndex = 1;
+                        });
+                      },
+                      child: Text(
+                        AppStrings.reviews,
+                        style: TextStyle(
+                          decoration: _selectedIndex == 1
+                              ? TextDecoration.underline
+                              : null,
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          _selectedIndex = 2;
+                        });
+                      },
+                      child: Text(
+                        AppStrings.cast,
+                        style: TextStyle(
+                          decoration: _selectedIndex == 2
+                              ? TextDecoration.underline
+                              : null,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: OverView(series.overview.isEmpty
-                      ? AppStrings.noLanguageSerie
-                      : series.overview),
+                  padding: const EdgeInsets.all(10.0),
+                  child: _selectedIndex == 0
+                      ? OverView(series.overview.isEmpty
+                          ? AppStrings.noLanguageSerie
+                          : series.overview)
+                      : _selectedIndex == 1
+                          ? Review(series.voteAverage.toString())
+                          : Cast(series.name),
                 ),
               ],
             ),

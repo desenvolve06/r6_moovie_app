@@ -9,12 +9,12 @@ class AppStrings {
   static const String topRatedMovies = 'Top Filmes avaliados';
   static const String story = 'Story';
   static const String videos = 'Videos';
-  static const String reviews = 'Reviews';
+  static const String reviews = 'Analises';
   static const String similar = 'Similar';
   static const String showLess = 'Mostrar menos';
   static const String showMore = 'Mostrar mais';
   static const String movies = 'Filmes';
-  static const String cast = 'Cast';
+  static const String cast = 'Elenco';
   static const String shows = 'Shows';
   static const String search = 'Buscar';
   static const String watchlist = 'Watchlist';

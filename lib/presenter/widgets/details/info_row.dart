@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class InfoRow extends StatelessWidget {
   final String releaseDate;
@@ -22,7 +23,12 @@ class InfoRow extends StatelessWidget {
           child: Row(
             children: [
               Expanded(
-                child: _buildInfoItem(Icons.date_range, releaseDate),
+                child: _buildInfoItem(
+                    Icons.date_range,
+                    releaseDate.isNotEmpty
+                        ? DateFormat('dd/MM/yyyy')
+                            .format(DateTime.parse(releaseDate))
+                        : 'N/A'),
               ),
               _buildDivider(),
               Expanded(

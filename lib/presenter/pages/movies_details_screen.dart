@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/presenter/widgets/details/cast.dart';
@@ -39,7 +41,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.bookmark_sharp),
+            icon: const Icon(Icons.account_circle),
             onPressed: () {
               Navigator.push(
                 context,
@@ -74,7 +76,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                     releaseDate: movie.releaseDate,
                     vote: movie.voteCount.toString(),
                     popularity: movie.popularity.toString()),
-                const SizedBox(height: 10),
+                const SizedBox(height: 5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -87,6 +89,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                       child: Text(
                         AppStrings.aboutMovie,
                         style: TextStyle(
+                          fontSize: 15,
                           decoration: _selectedIndex == 0
                               ? TextDecoration.underline
                               : null,
@@ -102,6 +105,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                       child: Text(
                         AppStrings.reviews,
                         style: TextStyle(
+                          fontSize: 15,
                           decoration: _selectedIndex == 1
                               ? TextDecoration.underline
                               : null,
@@ -117,6 +121,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                       child: Text(
                         AppStrings.cast,
                         style: TextStyle(
+                          fontSize: 15,
                           decoration: _selectedIndex == 2
                               ? TextDecoration.underline
                               : null,
@@ -132,7 +137,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           ? AppStrings.noLanguageMovie
                           : movie.overview)
                       : _selectedIndex == 1
-                          ? Review(movie.genreIds.toString())
+                          ? Review(movie.voteAverage.toString())
                           : Cast(movie.title),
                 ),
               ],

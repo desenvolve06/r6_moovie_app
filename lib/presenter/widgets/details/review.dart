@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/resources/app_colors.dart';
 import 'package:r6_moovie_app/resources/app_values.dart';
 
-class Review extends StatelessWidget {
-  const Review(this.overview, {super.key});
-  final String overview;
+class Review extends StatefulWidget {
+  final String review;
 
+  const Review(this.review, {Key? key}) : super(key: key);
+
+  @override
+  _ReviewState createState() => _ReviewState();
+}
+
+class _ReviewState extends State<Review> {
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
@@ -15,7 +21,7 @@ class Review extends StatelessWidget {
       children: [
         const SizedBox(height: 8.0),
         Text(
-          overview,
+          widget.review,
           style: textTheme.bodyLarge?.copyWith(
               color: AppColors.secondaryText,
               fontSize: AppSize.s16,
