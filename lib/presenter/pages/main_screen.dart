@@ -52,15 +52,15 @@ class _MainScreenState extends State<MainScreen> {
                         MediaList(
                           title: "Recomendados",
                           mediaList: movieState.movies ?? [],
-                          movies: [],
-                          series: [],
+                          movies: const [],
+                          series: const [],
                         ),
                         const Padding(padding: EdgeInsets.all(6.0)),
                         MediaList(
                           title: "Series",
                           mediaList: serieState.series ?? [],
-                          movies: [],
-                          series: [],
+                          movies: const [],
+                          series: const [],
                         ),
                       ],
                     );

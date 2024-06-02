@@ -44,6 +44,7 @@ class SeriesDetailsScreen extends StatelessWidget {
       ),
       body: BlocBuilder<FavoriteBloc, FavoriteState>(
         builder: (context, state) {
+          // ignore: unused_local_variable
           bool isFavorite = false;
           if (state is FavoritesLoadedState) {
             isFavorite = state.favoriteSeries.any((series) => series.id == series.id);

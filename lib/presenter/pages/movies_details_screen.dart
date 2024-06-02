@@ -43,6 +43,7 @@ class MovieDetailsScreen extends StatelessWidget {
       ),
       body: BlocBuilder<FavoriteBloc, FavoriteState>(
         builder: (context, state) {
+          // ignore: unused_local_variable
           bool isFavorite = false;
           if (state is FavoritesLoadedState) {
             isFavorite = state.favoriteMovies.any((movie) => movie.id == movie.id);

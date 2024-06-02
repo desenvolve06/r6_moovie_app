@@ -64,7 +64,7 @@ class BannerList extends StatelessWidget {
                             placeholder: (context, url) =>
                                 const CircularProgressIndicator(),
                             errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
+                                const Icon(Icons.error),
                           ),
                         ),
                         Positioned(
@@ -82,7 +82,7 @@ class BannerList extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               banner is Movie
-                                  ? (banner as Movie).title.toString()
+                                  ? (banner).title.toString()
                                   : (banner as Series).name.toString(),
                               style: const TextStyle(
                                 color: Colors.white,

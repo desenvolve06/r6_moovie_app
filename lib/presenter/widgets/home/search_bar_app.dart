@@ -42,7 +42,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
         });
       }
     } catch (e) {
-      print('Error: $e');
+      //
     }
   }
 
@@ -96,7 +96,6 @@ class _SearchBarAppState extends State<SearchBarApp> {
               itemCount: searchResult.length,
               itemBuilder: (context, index) {
                 final result = searchResult[index];
-                final Movie movie = Movie.fromMap(result);
                 return GestureDetector(
                   onTap: () {
                     Navigator.push(

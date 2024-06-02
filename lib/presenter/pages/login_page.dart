@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import '../../main.dart';
 import '../../resources/app_colors.dart';
 import '../../resources/app_strings.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _LoginPageState createState() => _LoginPageState();
 }
 
@@ -127,7 +128,6 @@ class _LoginPageState extends State<LoginPage> {
                 children: <Widget>[
                   InkWell(
                     onTap: () {
-                      print('Login com Facebook');
                     },
                     child: Image.asset(
                       scale: 1.5,
@@ -139,7 +139,6 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(width: 20.0),
                   InkWell(
                     onTap: () {
-                      print('Login com Google');
                     },
                     child: Image.asset(
                       scale: 1.5,

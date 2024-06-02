@@ -18,7 +18,6 @@ class MediaDetailHeader<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var textTheme = Theme.of(context).textTheme;
     var title = media is Movie ? (media as Movie).title : (media as Series).name;
     var backdropPath = media is Movie ? (media as Movie).backdropPath : (media as Series).backdropPath;
 

@@ -25,7 +25,7 @@ class FavoriteRemovedState extends FavoriteState {
 class FavoriteCheckState extends FavoriteState {
   final bool isFavorite;
 
-  FavoriteCheckState(this.isFavorite);
+  const FavoriteCheckState(this.isFavorite);
 }
 
 class FavoritesInitialState extends FavoriteState {}

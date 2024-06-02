@@ -84,6 +84,7 @@ class MediaList extends StatelessWidget {
                           right: 8,
                           child: BlocBuilder<FavoriteBloc, FavoriteState>(
                             builder: (context, state) {
+                              // ignore: unused_local_variable
                               bool isFavorite = false;
                               if (state is FavoritesLoadedState) {
                                 if (media is Movie) {
