@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../domain/entities/movie.dart';
 import '../../domain/entities/series.dart';
 import '../bloc/favorites/favorite_bloc.dart';
