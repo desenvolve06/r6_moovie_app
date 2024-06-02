@@ -6,15 +6,14 @@ class Series {
   final double voteAverage;
   final String? posterPath;
   final String? backdropPath;
-  Series({
-    required this.id,
-    required this.name,
-    required this.overview,
-    required this.firstAirDate,
-    required this.voteAverage,
-    required this.posterPath,
-    required this.backdropPath
-  });
+  Series(
+      {required this.id,
+      required this.name,
+      required this.overview,
+      required this.firstAirDate,
+      required this.voteAverage,
+      required this.posterPath,
+      required this.backdropPath});
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -26,6 +25,7 @@ class Series {
       'backdropPath': backdropPath
     };
   }
+
   factory Series.fromJson(Map<String, dynamic> json) {
     return Series(
         id: json['id'],
@@ -34,7 +34,6 @@ class Series {
         firstAirDate: json['firstAirDate'],
         voteAverage: json['voteAverage'],
         posterPath: json['posterPath'],
-        backdropPath: json['backdropPath']
-    );
+        backdropPath: json['backdropPath']);
   }
 }

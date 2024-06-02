@@ -65,7 +65,6 @@ class SeriesDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 InfoRow(
-                  overflow: TextOverflow.ellipsis,
                   releaseDate: series.firstAirDate,
                   vote: series.name,
                   popularity: series.name,

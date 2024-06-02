@@ -10,7 +10,6 @@ class InfoRow extends StatelessWidget {
     required this.releaseDate,
     required this.vote,
     required this.popularity,
-    required TextOverflow overflow,
   });
 
   @override

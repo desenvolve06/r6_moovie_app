@@ -71,7 +71,6 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                   ),
                 ),
                 InfoRow(
-                    overflow: TextOverflow.ellipsis,
                     releaseDate: movie.releaseDate,
                     vote: movie.voteCount.toString(),
                     popularity: movie.popularity.toString()),

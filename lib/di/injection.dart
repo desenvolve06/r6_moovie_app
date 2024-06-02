@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../data/network/api_client.dart';
-import '../data/network/source/local/movies/local_data_source.dart';
 import '../data/network/source/local/movies/local_data_source_impl.dart';
+import '../data/network/source/local/movies/local_data_source_movies.dart';
 import '../data/network/source/local/series/local_data_source_impl.dart';
 import '../data/network/source/local/series/local_data_source_series.dart';
 import '../data/network/source/remote/movie_data_source.dart';
@@ -38,8 +39,8 @@ void setupMoviesDependencies() {
   getIt.registerSingleton<MovieDataSource>(
       MovieDataSourceImpl(getIt<MovieServiceApi>()));
 
-  getIt.registerSingleton<MoviesRepository>(
-      MoviesRepositoryImpl(getIt<MovieDataSource>(), getIt<LocalDataSource>()));
+  getIt.registerSingleton<MoviesRepository>(MoviesRepositoryImpl(
+      getIt<MovieDataSource>(), getIt<LocalDataSourceMovies>()));
 
   getIt.registerSingleton<GetPopularMoviesUseCase>(
       GetPopularMoviesUseCase(getIt<MoviesRepository>()));
@@ -102,7 +103,7 @@ void setupDependencies() async {
 
   final sharedPreferences = await SharedPreferences.getInstance();
   getIt.registerSingleton<SharedPreferences>(sharedPreferences);
-  getIt.registerSingleton<LocalDataSource>(LocalDataSourceImpl());
+  getIt.registerSingleton<LocalDataSourceMovies>(LocalDataSourceMoviesImpl());
   getIt.registerSingleton<LocalDataSourceSeries>(LocalDataSourceSeriesImpl());
 
   setupMoviesDependencies();

@@ -1,7 +1,6 @@
 import '../../../../../domain/entities/movie.dart';
 
-abstract class LocalDataSource {
-
+abstract class LocalDataSourceMovies {
   Future<List<Movie>> getFavorites();
 
   Future<void> addToFavorites(Movie movie);
@@ -10,4 +9,3 @@ abstract class LocalDataSource {
 
   Future<void> removeFromFavorites(Movie movie);
 }
-
