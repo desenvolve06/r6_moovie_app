@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../domain/entities/series.dart';
@@ -11,7 +12,7 @@ class LocalDataSourceSeriesImpl implements LocalDataSourceSeries {
   Future<void> addToFavorites(Series series) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     List<Series> favorites = await getFavorites();
-    if (!favorites.any((favseries) => favseries.id == series.id)) {
+    if (!favorites.any((favoriteSerie) => favoriteSerie.id == series.id)) {
       favorites.add(series);
       String jsonFavorites =
           jsonEncode(favorites.map((series) => series.toJson()).toList());
@@ -23,7 +24,7 @@ class LocalDataSourceSeriesImpl implements LocalDataSourceSeries {
   Future<void> removeFromFavorites(Series series) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     List<Series> favorites = await getFavorites();
-    favorites.removeWhere((favseries) => favseries.id == series.id);
+    favorites.removeWhere((favoriteSerie) => favoriteSerie.id == series.id);
     String jsonFavorites =
         jsonEncode(favorites.map((series) => series.toJson()).toList());
     await prefs.setString(_favoritesSeriesKey, jsonFavorites);

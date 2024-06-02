@@ -51,7 +51,6 @@ class Movie {
     };
   }
 
-  
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
       adult: json['adult'],
