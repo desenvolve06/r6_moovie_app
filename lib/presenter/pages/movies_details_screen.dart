@@ -2,9 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:r6_moovie_app/resources/app_strings.dart';
+import 'package:r6_moovie_app/utils/utils.dart';
 import 'package:r6_moovie_app/presenter/widgets/details/cast.dart';
 import 'package:r6_moovie_app/presenter/widgets/details/review.dart';
-import 'package:r6_moovie_app/resources/app_strings.dart';
 import '../../domain/entities/movie.dart';
 import '../bloc/favorites/favorite_bloc.dart';
 import '../bloc/favorites/favorite_state.dart';
@@ -73,7 +74,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                   ),
                 ),
                 InfoRow(
-                    releaseDate: movie.releaseDate,
+                    releaseDate: Utils.formatDateToBrazilian(movie.releaseDate),
                     vote: movie.voteCount.toString(),
                     popularity: movie.popularity.toString()),
                 const SizedBox(height: 5),

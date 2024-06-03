@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:r6_moovie_app/resources/app_colors.dart';
 
 class InfoRow extends StatelessWidget {
   final String releaseDate;
@@ -24,11 +24,9 @@ class InfoRow extends StatelessWidget {
             children: [
               Expanded(
                 child: _buildInfoItem(
-                    Icons.date_range,
-                    releaseDate.isNotEmpty
-                        ? DateFormat('dd/MM/yyyy')
-                            .format(DateTime.parse(releaseDate))
-                        : 'N/A'),
+                  Icons.date_range,
+                  releaseDate,
+                ),
               ),
               _buildDivider(),
               Expanded(
@@ -50,12 +48,12 @@ class InfoRow extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          Icon(icon, color: Colors.grey.shade600),
+          Icon(icon, color: AppColors.greyDark1Color),
           const SizedBox(height: 8),
           Text(
             text,
             textAlign: TextAlign.center,
-            style: const TextStyle(color: Colors.grey),
+            style: const TextStyle(color: AppColors.greyLight2Color),
           ),
         ],
       ),
@@ -67,7 +65,8 @@ class InfoRow extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 8.0),
       child: Text(
         "|",
-        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
+        style: TextStyle(
+            fontWeight: FontWeight.bold, color: AppColors.greyLight2Color),
       ),
     );
   }

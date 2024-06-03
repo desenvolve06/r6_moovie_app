@@ -15,89 +15,53 @@ class NavBarMain extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           const SizedBox(height: 60),
-          ListTile(
-            title: const Text(
-              'Home',
-              style: TextStyle(
-                fontSize: AppSize.s30,
-                color: AppColors.primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+          _buildNavItem(
+            title: AppStrings.home,
             onTap: () {},
           ),
-          ListTile(
-            title: const Text(
-              AppStrings.myProfile,
-              style: TextStyle(
-                fontSize: AppSize.s30,
-                color: AppColors.primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+          _buildNavItem(
+            title: AppStrings.myProfile,
             onTap: () {},
           ),
-          ListTile(
-            title: const Text(
-              AppStrings.downloads,
-              style: TextStyle(
-                fontSize: AppSize.s30,
-                color: AppColors.primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const FavoritesScreen()),
-              );
-            },
-          ),
-          ListTile(
-            title: const Text(
-              AppStrings.popular,
-              style: TextStyle(
-                fontSize: AppSize.s30,
-                color: AppColors.primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+          _buildNavItem(
+            title: AppStrings.populars,
             onTap: () {},
           ),
-          ListTile(
-            title: const Text(
-              AppStrings.suggestions,
-              style: TextStyle(
-                fontSize: AppSize.s30,
-                color: AppColors.primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>  const FavoritesScreen()),
-              );
-            },
+          _buildNavItem(
+            title: AppStrings.recommended,
+            onTap: () {},
           ),
-          ListTile(
-            title: const Text(
-              AppStrings.options,
-              style: TextStyle(
-                fontSize: AppSize.s30,
-                color: AppColors.primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>  const FavoritesScreen()),
-              );
-            },
+          _buildNavItem(
+            title: AppStrings.myFavorites,
+            onTap: () => _navigateToScreen(context, const FavoritesScreen()),
+          ),
+          _buildNavItem(
+            title: AppStrings.about,
+            onTap: () {},
           ),
         ],
       ),
     );
+  }
+
+  ListTile _buildNavItem({
+    required String title,
+    required VoidCallback onTap,
+  }) {
+    return ListTile(
+      title: Text(
+        title,
+        style: const TextStyle(
+          fontSize: AppSize.s30,
+          color: AppColors.primaryColor,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      onTap: onTap,
+    );
+  }
+
+  void _navigateToScreen(BuildContext context, Widget screen) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
   }
 }

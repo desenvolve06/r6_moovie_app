@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/presenter/pages/series/favorites_series_screen.dart';
+import 'package:r6_moovie_app/utils/utils.dart';
 import 'package:r6_moovie_app/presenter/widgets/details/cast.dart';
 import 'package:r6_moovie_app/presenter/widgets/details/review.dart';
 
@@ -58,6 +59,8 @@ class _SeriesDetailsScreenState extends State<SeriesDetailsScreen> {
           if (state is FavoritesLoadedState) {
             isFavorite =
                 state.favoriteSeries.any((series) => series.id == series.id);
+            isFavorite =
+                state.favoriteSeries.any((series) => series.id == series.id);
           }
 
           return SingleChildScrollView(
@@ -73,8 +76,8 @@ class _SeriesDetailsScreenState extends State<SeriesDetailsScreen> {
                   ),
                 ),
                 InfoRow(
-                  releaseDate: series.firstAirDate,
-                  vote: series.name,
+                  releaseDate: Utils.formatDateToBrazilian(series.firstAirDate),
+                  vote: series.voteAverage.toString(),
                   popularity: series.name,
                 ),
                 const SizedBox(height: 10),

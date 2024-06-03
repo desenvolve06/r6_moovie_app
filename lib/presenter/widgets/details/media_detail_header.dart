@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:r6_moovie_app/resources/app_values.dart';
+
 import '../../../../domain/entities/movie.dart';
 import '../../../../domain/entities/series.dart';
 import 'arch_banner_image.dart';
@@ -18,12 +19,21 @@ class MediaDetailHeader<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var title = media is Movie ? (media as Movie).title : (media as Series).name;
-    var backdropPath = media is Movie ? (media as Movie).backdropPath : (media as Series).backdropPath;
+    final title =
+        media is Movie ? (media as Movie).title : (media as Series).name;
+    final backdropPath = media is Movie
+        ? (media as Movie).backdropPath
+        : (media as Series).backdropPath;
 
-    String backdropPathItem = "https://image.tmdb.org/t/p/w500$backdropPath";
-    
-    var mediaInformation = Column(
+    final posterPath = media is Movie
+        ? (media as Movie).posterPath
+        : (media as Series).posterPath;   
+
+    var backdropPathItem = "https://image.tmdb.org/t/p/w500$backdropPath";
+    var posterPathItem = "https://image.tmdb.org/t/p/w500$posterPath";
+
+
+    final mediaInformation = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
@@ -44,20 +54,20 @@ class MediaDetailHeader<T> extends StatelessWidget {
         ),
         Positioned(
           bottom: 0.0,
-          left: 16.0,
-          right: 16.0,
+          left: AppPadding.p16,
+          right: AppPadding.p16,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.network(
-                  backdropPathItem,
+                  posterPathItem,
                   fit: BoxFit.cover,
                   height: 100,
                 ),
               ),
-              const SizedBox(width: 16.0),
+              const SizedBox(width: 40),
               Expanded(child: mediaInformation),
             ],
           ),
