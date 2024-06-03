@@ -14,35 +14,63 @@ class SearchBarApp extends StatefulWidget {
 }
 
 class _SearchBarAppState extends State<SearchBarApp> {
-  final TextEditingController searchText = TextEditingController();
   List<Map<String, dynamic>> searchResult = [];
   bool showSearchResults = false;
 
   Future<void> searchListFunction(String val) async {
-    final dio = Dio();
-    final apiKey = dotenv.env['API_KEY'];
-    final searchUrl =
+    List<Map<String, dynamic>> tempSearchResult = [];
+
+    var dio = Dio();
+    var apiKey = dotenv.env['API_KEY'];
+    var searchUrl =
         'https://api.themoviedb.org/3/search/multi?api_key=$apiKey&query=$val';
-
     try {
-      final searchResponse = await dio.get(searchUrl);
+      var searchResponse = await dio.get(searchUrl);
       if (searchResponse.statusCode == 200) {
-        final tempData = searchResponse.data;
-        final searchJson = tempData['results'];
+        var tempData = searchResponse.data;
+        var searchJson = tempData['results'];
 
-        final filteredResults = searchJson
+        var filteredResults = searchJson
             .where((result) => result['media_type'] != 'person')
             .toList();
 
-        final tempSearchResult =
-            filteredResults.map((result) => Movie.fromMap(result)).toList();
+        for (var result in filteredResults) {
+          if (result['id'] != null &&
+              result['poster_path'] != null &&
+              result['vote_average'] != null &&
+              result['media_type'] != null &&
+              result['media_type'] != 'person') {
+            setState(() {
+              tempSearchResult.add({
+                'id': result['id'],
+                'poster_path': result['poster_path'],
+                'backdrop_path': result['backdrop_path'],
+                'vote_average': result['vote_average'],
+                'release_date': result['release_date'],
+                'media_type': result['media_type'],
+                'popularity': result['popularity'],
+                'overview': result['overview'],
+                'vote_count': result['vote_count'],
+                result.containsKey('title') ? 'title' : 'name':
+                    result.containsKey('title')
+                        ? result['title']
+                        : result['name'],
+              });
+
+              if (tempSearchResult.length > 5) {
+                tempSearchResult.removeRange(5, tempSearchResult.length);
+              }
+            });
+          } else {
+          }
+        }
 
         setState(() {
-          searchResult = tempSearchResult.take(5).toList();
+          searchResult = List.from(tempSearchResult);
         });
       }
     } catch (e) {
-      print('Error: $e');
+      //
     }
   }
 
