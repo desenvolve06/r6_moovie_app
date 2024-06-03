@@ -29,7 +29,6 @@ class _SearchBarAppState extends State<SearchBarApp> {
       if (searchResponse.statusCode == 200) {
         var tempData = searchResponse.data;
         var searchJson = tempData['results'];
-
         var filteredResults = searchJson
             .where((result) => result['media_type'] != 'person')
             .toList();
@@ -74,6 +73,8 @@ class _SearchBarAppState extends State<SearchBarApp> {
     }
   }
 
+  final TextEditingController searchText = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -85,6 +86,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
             GestureDetector(
               onTap: () {
                 FocusManager.instance.primaryFocus?.unfocus();
+                print("click test");
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -101,7 +103,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
                           decoration: BoxDecoration(
                             border:
                                 Border.all(color: AppColors.primaryColorLight),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(30),
                           ),
                           child: SearchBar(
                             hintText: AppStrings.search,
@@ -124,6 +126,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
               itemCount: searchResult.length,
               itemBuilder: (context, index) {
                 final result = searchResult[index];
+                final Movie movie = Movie.fromMap(result);
                 return GestureDetector(
                   onTap: () {
                     Navigator.push(
