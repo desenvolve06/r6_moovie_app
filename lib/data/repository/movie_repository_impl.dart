@@ -16,7 +16,6 @@ class MoviesRepositoryImpl implements MoviesRepository {
     try {
       final movies = await localDataSourceMovies.getPopularMovies();
       if (movies.isEmpty) {
-        // Se não houver filmes localmente, pegue os filmes da fonte remota
         final remoteMovies = await moviesDataSource.getPopularMovies();
         await saveMovies(remoteMovies);
         logger.i('Movies retrieved from repository: ${remoteMovies}');
