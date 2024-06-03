@@ -1,9 +1,5 @@
 <h1 align="center" style="font-weight: bold;">KorúFlix</h1>
 
-<h1 align="center">
-    <img alt="KoruFlix Logo" src="./src/assets/splash_image6.png" />
-    </br>
-</h1> 
 
 ![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
 ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
@@ -140,10 +136,7 @@ $ flutter run
 O KoruFlix é uma prova de conceito que demonstra a aplicação eficaz dos princípios SOLID e Clean na codificação e organização de um aplicativo Dart Flutter. A implementação do padrão BLoC contribui para a separação da lógica de negócio da interface do usuário, resultando em um código mais modular e testável. Este projeto exemplifica como a adoção desses princípios e padrões pode levar a um software robusto e eficiente.
 
 ## Screenshot
-<img src = "https://github.com/desenvolve06/r6_moovie_app/assets/101668192/61e05bbd-5082-45f7-a5c8-59b87dcf385f" width ="280" height="600"> 
-<img src = "images/screenshot_1.png" width ="280" height="600"> 
-<img src = "images/screenshot_2.png" width ="280" height="600"> 
-<img src = "images/screenshot_3.png" width ="280" height="600"> 
+<img src = "https://github.com/desenvolve06/r6_moovie_app/assets/101668192/61e05bbd-5082-45f7-a5c8-59b87dcf385f" width ="280" height="600">
 
 
 <h2 id="colab">🤝 Colaboradores</h2>

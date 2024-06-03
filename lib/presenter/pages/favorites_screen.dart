@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:r6_moovie_app/presenter/widgets/home/favorite_toggle_button.dart';
 import '../../domain/entities/movie.dart';
 import '../../domain/entities/series.dart';
 import '../bloc/favorites/favorite_bloc.dart';
@@ -57,24 +58,33 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   Widget _buildMovieCard(Movie movie) {
     return Card(
       margin: const EdgeInsets.all(8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      child: Stack(
         children: [
-          Image.network(
-            'https://image.tmdb.org/t/p/w500${movie.backdropPath}',
-            height: 150,
-            width: 200,
-            fit: BoxFit.cover,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: Text(
-              movie.title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Image.network(
+                'https://image.tmdb.org/t/p/w500${movie.backdropPath}',
+                height: 150,
+                width: 200,
+                fit: BoxFit.cover,
               ),
-            ),
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Text(
+                  movie.title,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Positioned(
+            top: 8,
+            right: 8,
+            child: FavoriteToggleButton(media: movie),
           ),
         ],
       ),
@@ -84,24 +94,33 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   Widget _buildSeriesCard(Series series) {
     return Card(
       margin: const EdgeInsets.all(8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      child: Stack(
         children: [
-          Image.network(
-            'https://image.tmdb.org/t/p/w500${series.backdropPath}',
-            height: 150,
-            width: 200,
-            fit: BoxFit.cover,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: Text(
-              series.name,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Image.network(
+                'https://image.tmdb.org/t/p/w500${series.backdropPath}',
+                height: 150,
+                width: 200,
+                fit: BoxFit.cover,
               ),
-            ),
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Text(
+                  series.name,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Positioned(
+            top: 8,
+            right: 8,
+            child: FavoriteToggleButton(media: series),
           ),
         ],
       ),
