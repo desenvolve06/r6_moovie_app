@@ -22,3 +22,4 @@ class ToggleFavoriteEvent extends MovieEvent {
   @override
   List<Object> get props => [];
 }
+class LoadPopularMovies extends MovieEvent {}

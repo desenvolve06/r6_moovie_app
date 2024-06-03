@@ -31,7 +31,6 @@ class Movie {
     required this.voteCount,
   });
 
-  // Método para converter um objeto Movie em um mapa JSON
   Map<String, dynamic> toJson() {
     return {
       'adult': adult,
@@ -53,20 +52,20 @@ class Movie {
 
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
-      adult: json['adult'],
+      adult: json['adult'] ?? false,
       backdropPath: json['backdropPath'],
-      genreIds: List<int>.from(json['genreIds']),
-      id: json['id'],
-      originalLanguage: json['originalLanguage'],
-      originalTitle: json['originalTitle'],
-      overview: json['overview'],
-      popularity: json['popularity'].toDouble(),
+      genreIds: List<int>.from(json['genreIds'] ?? []),
+      id: json['id'] ?? 0,
+      originalLanguage: json['originalLanguage'] ?? '',
+      originalTitle: json['originalTitle'] ?? '',
+      overview: json['overview'] ?? '',
+      popularity: json['popularity'] ?? 0.0,
       posterPath: json['posterPath'],
-      releaseDate: json['releaseDate'],
-      title: json['title'],
-      video: json['video'],
-      voteAverage: json['voteAverage'].toDouble(),
-      voteCount: json['voteCount'],
+      releaseDate: json['releaseDate'] ?? '',
+      title: json['title'] ?? '',
+      video: json['video'] ?? false,
+      voteAverage: json['voteAverage'] ?? 0.0,
+      voteCount: json['voteCount'] ?? 0,
     );
   }
 
@@ -87,5 +86,10 @@ class Movie {
       video: map['video'] ?? false,
       voteCount: map['vote_count'] ?? 0,
     );
+  }
+
+  @override
+  String toString() {
+    return '{id: $id, title: $title, posterPath:$posterPath}';
   }
 }

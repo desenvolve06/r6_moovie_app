@@ -14,10 +14,12 @@ class InitialState extends MovieState {}
 class LoadingState extends MovieState {}
 
 class LoadedSuccessState extends MovieState {
+  final List<Movie> movies;
 
-  final List<Movie>? movies;
+  const LoadedSuccessState({required this.movies});
 
-  const LoadedSuccessState({this.movies});
+  @override
+  List<Object> get props => [movies];
 }
 
 class ErrorState extends MovieState {
