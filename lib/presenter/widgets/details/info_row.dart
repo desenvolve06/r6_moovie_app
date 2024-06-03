@@ -19,11 +19,14 @@ class InfoRow extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: SizedBox(
-          height: 100,
+          height: 110,
           child: Row(
             children: [
               Expanded(
-                child: _buildInfoItem(Icons.date_range, releaseDate),
+                child: _buildInfoItem(
+                  Icons.date_range,
+                  releaseDate,
+                ),
               ),
               _buildDivider(),
               Expanded(
@@ -62,7 +65,8 @@ class InfoRow extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 8.0),
       child: Text(
         "|",
-        style: TextStyle(fontWeight: FontWeight.bold, color: AppColors.greyLight2Color),
+        style: TextStyle(
+            fontWeight: FontWeight.bold, color: AppColors.greyLight2Color),
       ),
     );
   }

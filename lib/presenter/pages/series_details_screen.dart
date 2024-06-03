@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/presenter/pages/series/favorites_series_screen.dart';
+import 'package:r6_moovie_app/resources/app_colors.dart';
 import 'package:r6_moovie_app/utils/utils.dart';
+import 'package:r6_moovie_app/presenter/widgets/details/cast.dart';
+import 'package:r6_moovie_app/presenter/widgets/details/review.dart';
 
 import '../../domain/entities/series.dart';
 import '../../resources/app_strings.dart';
@@ -10,17 +13,23 @@ import '../bloc/favorites/favorite_state.dart';
 import '../widgets/details/info_row.dart';
 import '../widgets/details/media_detail_header.dart';
 import '../widgets/details/overview.dart';
-import '../widgets/details/text_list.dart';
 import '../widgets/home/favorite_toggle_button.dart';
 
-class SeriesDetailsScreen extends StatelessWidget {
+class SeriesDetailsScreen extends StatefulWidget {
   final dynamic item;
 
-  const SeriesDetailsScreen({super.key, required this.item});
+  const SeriesDetailsScreen({Key? key, required this.item}) : super(key: key);
+
+  @override
+  _SeriesDetailsScreenState createState() => _SeriesDetailsScreenState();
+}
+
+class _SeriesDetailsScreenState extends State<SeriesDetailsScreen> {
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    final Series series = item;
+    final Series series = widget.item;
 
     return Scaffold(
       appBar: AppBar(
@@ -68,19 +77,106 @@ class SeriesDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 InfoRow(
-                  releaseDate: Utils.formatDateString(series.firstAirDate),
+                  releaseDate: Utils.formatDateToBrazilian(series.firstAirDate),
                   vote: series.voteAverage.toString(),
                   popularity: series.name,
                 ),
                 const SizedBox(height: 10),
-                const TextList(items: [
-                  AppStrings.aboutSerie,
-                  AppStrings.reviews,
-                  AppStrings.cast
-                ]),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          _selectedIndex = 0;
+                        });
+                      },
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                            if (_selectedIndex == 0) {
+                              return AppColors.primaryBackgroundColor;
+                            }
+                            return AppColors.secondaryBackgroundColor;
+                          },
+                        ),
+                      ),
+                      child: Text(
+                        AppStrings.aboutSerie,
+                        style: TextStyle(
+                          color: _selectedIndex == 0
+                              ? AppColors.primaryText
+                              : AppColors.secondaryText,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          _selectedIndex = 1;
+                        });
+                      },
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                            if (_selectedIndex == 1) {
+                              return AppColors.primaryBackgroundColor;
+                            }
+                            return AppColors.secondaryBackgroundColor;
+                          },
+                        ),
+                      ),
+                      child: Text(
+                        AppStrings.reviews,
+                        style: TextStyle(
+                          color: _selectedIndex == 1
+                              ? AppColors.primaryText
+                              : AppColors.secondaryText,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          _selectedIndex = 2;
+                        });
+                      },
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                            if (_selectedIndex == 2) {
+                              return AppColors.primaryBackgroundColor;
+                            }
+                            return AppColors.secondaryBackgroundColor;
+                          },
+                        ),
+                      ),
+                      child: Text(
+                        AppStrings.cast,
+                        style: TextStyle(
+                          color: _selectedIndex == 2
+                              ? AppColors.primaryText
+                              : AppColors.secondaryText,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
                 Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: OverView(series.overview),
+                  padding: const EdgeInsets.all(10.0),
+                  child: _selectedIndex == 0
+                      ? OverView(series.overview.isEmpty
+                          ? AppStrings.noLanguageSerie
+                          : series.overview)
+                      : _selectedIndex == 1
+                          ? Review(series.voteAverage.toString())
+                          : Cast(series.name),
                 ),
               ],
             ),

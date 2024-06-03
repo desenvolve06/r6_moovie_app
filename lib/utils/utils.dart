@@ -1,14 +1,13 @@
+import 'package:intl/intl.dart';
 class Utils {
-  static String formatDateString(String dateString) {
-    final dateParts = dateString.split('-');
-    if (dateParts.length == 3) {
-      final year = dateParts[0];
-      final month = dateParts[1];
-      final day = dateParts[2];
-      return '$day-$month-$year';
-    } else {
-      return 'Data inválida';
-    }
+  
+  static String formatDateToBrazilian(String dateAmerican) {
+    
+    DateTime parsedDate = DateTime.parse(dateAmerican);
+  
+    String dateBrazilian = DateFormat('dd-MM-yyyy').format(parsedDate);
+  
+    return dateBrazilian;
   }
 
   String removeWhitespace(String value) {

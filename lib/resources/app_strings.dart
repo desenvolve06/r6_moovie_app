@@ -16,7 +16,7 @@ class AppStrings {
   static const String topRatedMovies = 'Top Filmes avaliados';
   static const String story = 'Story';
   static const String videos = 'Videos';
-  static const String reviews = 'Reviews';
+  static const String reviews = 'Analises';
   static const String similar = 'Similar';
   static const String showLess = 'Mostrar menos';
   static const String showMore = 'Mostrar mais';
@@ -60,4 +60,8 @@ class AppStrings {
   static const String forgotPassword = 'Esqueceu a senha?';
   static const String noAccount = 'Não tem uma conta?';
   static const String signUp = 'Cadastre-se';
+  static const String noLanguageSerie =
+      'Esta série não está disponível em seu idioma ou não há uma descrição disponível.';
+  static const String noLanguageMovie =
+      'Este filme não está disponível em seu idioma ou não há uma descrição disponível.';
 }
