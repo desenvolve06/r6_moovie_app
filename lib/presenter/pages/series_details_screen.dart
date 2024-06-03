@@ -18,9 +18,10 @@ import '../widgets/home/favorite_toggle_button.dart';
 class SeriesDetailsScreen extends StatefulWidget {
   final dynamic item;
 
-  const SeriesDetailsScreen({Key? key, required this.item}) : super(key: key);
+  const SeriesDetailsScreen({super.key, required this.item});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SeriesDetailsScreenState createState() => _SeriesDetailsScreenState();
 }
 

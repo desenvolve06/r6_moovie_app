@@ -5,9 +5,10 @@ import 'package:r6_moovie_app/resources/app_values.dart';
 class Review extends StatefulWidget {
   final String review;
 
-  const Review(this.review, {Key? key}) : super(key: key);
+  const Review(this.review, {super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ReviewState createState() => _ReviewState();
 }
 

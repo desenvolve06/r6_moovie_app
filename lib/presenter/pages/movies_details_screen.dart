@@ -22,6 +22,7 @@ class MovieDetailsScreen extends StatefulWidget {
   const MovieDetailsScreen({super.key, required this.item});
 
   @override
+  // ignore: library_private_types_in_public_api
   _MovieDetailsScreenState createState() => _MovieDetailsScreenState();
 }
 

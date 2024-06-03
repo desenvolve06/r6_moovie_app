@@ -42,7 +42,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
         });
       }
     } catch (e) {
-      print('Error: $e');
+      //
     }
   }
 
