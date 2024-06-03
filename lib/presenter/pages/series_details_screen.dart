@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/presenter/pages/series/favorites_series_screen.dart';
+import 'package:r6_moovie_app/resources/app_colors.dart';
 import 'package:r6_moovie_app/utils/utils.dart';
 import 'package:r6_moovie_app/presenter/widgets/details/cast.dart';
 import 'package:r6_moovie_app/presenter/widgets/details/review.dart';
@@ -84,48 +85,78 @@ class _SeriesDetailsScreenState extends State<SeriesDetailsScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    InkWell(
-                      onTap: () {
+                    ElevatedButton(
+                      onPressed: () {
                         setState(() {
                           _selectedIndex = 0;
                         });
                       },
-                      child: Text(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                            if (_selectedIndex == 0) {
+                              return AppColors.primaryBackgroundColor;
+                            }
+                            return AppColors.secondaryBackgroundColor;
+                          },
+                        ),
+                      ),
+                      child: const Text(
                         AppStrings.aboutSerie,
                         style: TextStyle(
-                          decoration: _selectedIndex == 0
-                              ? TextDecoration.underline
-                              : null,
+                          color: AppColors.primaryText,
+                          fontSize: 14,
                         ),
                       ),
                     ),
-                    InkWell(
-                      onTap: () {
+                    ElevatedButton(
+                      onPressed: () {
                         setState(() {
                           _selectedIndex = 1;
                         });
                       },
-                      child: Text(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                            if (_selectedIndex == 1) {
+                              return AppColors.primaryBackgroundColor;
+                            }
+                            return AppColors.secondaryBackgroundColor;
+                          },
+                        ),
+                      ),
+                      child: const Text(
                         AppStrings.reviews,
                         style: TextStyle(
-                          decoration: _selectedIndex == 1
-                              ? TextDecoration.underline
-                              : null,
+                          color: AppColors.primaryText,
+                          fontSize: 14,
                         ),
                       ),
                     ),
-                    InkWell(
-                      onTap: () {
+                    ElevatedButton(
+                      onPressed: () {
                         setState(() {
                           _selectedIndex = 2;
                         });
                       },
-                      child: Text(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                            if (_selectedIndex == 2) {
+                              return AppColors.primaryBackgroundColor;
+                            }
+                            return AppColors.secondaryBackgroundColor;
+                          },
+                        ),
+                      ),
+                      child: const Text(
                         AppStrings.cast,
                         style: TextStyle(
-                          decoration: _selectedIndex == 2
-                              ? TextDecoration.underline
-                              : null,
+                          color: AppColors.primaryText,
+                          fontSize: 14,
                         ),
                       ),
                     ),
