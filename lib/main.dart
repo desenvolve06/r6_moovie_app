@@ -81,7 +81,14 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: const AppBarMain(),
       drawer: const NavBarMain(),
-      body: _screens[_currentIndex],
+      body: Column(
+        children: [
+          const SearchBarApp(),
+          Expanded(
+            child: _screens[_currentIndex],
+          ),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
