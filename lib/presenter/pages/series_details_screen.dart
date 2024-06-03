@@ -102,10 +102,12 @@ class _SeriesDetailsScreenState extends State<SeriesDetailsScreen> {
                           },
                         ),
                       ),
-                      child: const Text(
+                      child: Text(
                         AppStrings.aboutSerie,
                         style: TextStyle(
-                          color: AppColors.primaryText,
+                          color: _selectedIndex == 0
+                              ? AppColors.primaryText
+                              : AppColors.secondaryText,
                           fontSize: 14,
                         ),
                       ),
@@ -127,10 +129,12 @@ class _SeriesDetailsScreenState extends State<SeriesDetailsScreen> {
                           },
                         ),
                       ),
-                      child: const Text(
+                      child: Text(
                         AppStrings.reviews,
                         style: TextStyle(
-                          color: AppColors.primaryText,
+                          color: _selectedIndex == 1
+                              ? AppColors.primaryText
+                              : AppColors.secondaryText,
                           fontSize: 14,
                         ),
                       ),
@@ -152,10 +156,12 @@ class _SeriesDetailsScreenState extends State<SeriesDetailsScreen> {
                           },
                         ),
                       ),
-                      child: const Text(
+                      child: Text(
                         AppStrings.cast,
                         style: TextStyle(
-                          color: AppColors.primaryText,
+                          color: _selectedIndex == 2
+                              ? AppColors.primaryText
+                              : AppColors.secondaryText,
                           fontSize: 14,
                         ),
                       ),
