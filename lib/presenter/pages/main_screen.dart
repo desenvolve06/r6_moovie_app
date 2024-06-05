@@ -10,6 +10,7 @@ import '../bloc/series/series_event.dart';
 import '../bloc/series/series_state.dart';
 import '../widgets/home/banner_list.dart';
 import '../widgets/home/media_list.dart';
+import '../widgets/home/search_bar_app.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -40,6 +41,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: ListView(
         children: [
+          const SearchBarApp(),
           BlocBuilder<MovieBloc, MovieState>(
             bloc: _movieBloc,
             builder: (context, movieState) {
