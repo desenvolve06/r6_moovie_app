@@ -83,7 +83,6 @@ class _MyHomePageState extends State<MyHomePage> {
       drawer: const NavBarMain(),
       body: Column(
         children: [
-          const SearchBarApp(),
           Expanded(
             child: _screens[_currentIndex],
           ),
