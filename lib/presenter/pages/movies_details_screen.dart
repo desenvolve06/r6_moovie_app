@@ -72,7 +72,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                   child: MediaDetailHeader(
                     media: movie,
                     height: 250,
-                    action: FavoriteToggleButton(media: movie),
+                    action: FavoriteToggleButton(media: movie, isFavorite: isFavorite),
                   ),
                 ),
                 InfoRow(

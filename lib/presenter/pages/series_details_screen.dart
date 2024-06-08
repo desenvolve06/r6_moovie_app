@@ -74,7 +74,7 @@ class _SeriesDetailsScreenState extends State<SeriesDetailsScreen> {
                   child: MediaDetailHeader(
                     media: series,
                     height: 250,
-                    action: FavoriteToggleButton(media: series),
+                    action: FavoriteToggleButton(media: series, isFavorite: isFavorite),
                   ),
                 ),
                 InfoRow(
