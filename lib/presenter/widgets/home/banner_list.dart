@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import '../../../resources/app_values.dart';
+import 'package:r6_moovie_app/domain/entities/movie.dart';
+import 'package:r6_moovie_app/resources/app_values.dart';
+
+import '../../../domain/entities/series.dart';
 import '../../pages/series_details_screen.dart';
-import '../home/card_image.dart';
-import '../home/card_image_text.dart';
 
 class BannerList extends StatelessWidget {
   final List<dynamic>? bannerList;
@@ -52,12 +54,45 @@ class BannerList extends StatelessWidget {
                     width: 400,
                     child: Stack(
                       children: [
-                        CardImage(media: banner),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: CachedNetworkImage(
+                            imageUrl:
+                                "https://image.tmdb.org/t/p/w500${banner.backdropPath}",
+                            fit: BoxFit.cover,
+                            height: double.infinity,
+                            width: double.infinity,
+                            placeholder: (context, url) =>
+                                const CircularProgressIndicator(),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
+                          ),
+                        ),
                         Positioned(
                           bottom: 0,
                           left: 0,
                           right: 0,
-                          child: CardImageText(media: banner),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.5),
+                              borderRadius: const BorderRadius.only(
+                                bottomLeft: Radius.circular(10.0),
+                                bottomRight: Radius.circular(10.0),
+                              ),
+                            ),
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              banner is Movie
+                                  ? (banner).title.toString()
+                                  : (banner as Series).name.toString(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
                         ),
                       ],
                     ),
