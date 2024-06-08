@@ -32,7 +32,7 @@ void main() {
   });
 
   group('AddToFavoriteUseCase:', () {
-    test('Should add a film in favorites', () async {
+    test('Should add a movie in favorites', () async {
       
       when(() => moviesRepository.addToFavorites(movie)).thenAnswer((_) => Future.value(),);
 
