@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
-import '../../../domain/entities/movie.dart';
-import '../../../domain/entities/series.dart';
 import '../../bloc/favorites/favorite_bloc.dart';
 import '../../bloc/favorites/favorite_event.dart';
 import '../../bloc/favorites/favorite_state.dart';
 
 class FavoriteToggleButton extends StatelessWidget {
   final dynamic media;
+  final bool isFavorite;
 
-  const FavoriteToggleButton({super.key, required this.media});
+  const FavoriteToggleButton({
+    Key? key,
+    required this.media,
+    required this.isFavorite,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +26,6 @@ class FavoriteToggleButton extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        bool isFavorite = false;
-        if (state is FavoritesLoadedState) {
-          if (media is Movie) {
-            isFavorite = state.favoriteMovies.any((movie) => movie.id == media.id);
-          } else if (media is Series) {
-            isFavorite = state.favoriteSeries.any((series) => series.id == media.id);
-          }
-        }
         return IconButton(
           icon: Icon(
             isFavorite ? Icons.favorite : Icons.favorite_border,

@@ -74,7 +74,7 @@ class _SeriesDetailsScreenState extends State<SeriesDetailsScreen> {
                   child: MediaDetailHeader(
                     media: series,
                     height: 250,
-                    action: FavoriteToggleButton(media: series),
+                    action: FavoriteToggleButton(media: series, isFavorite: isFavorite),
                   ),
                 ),
                 InfoRow(
@@ -94,8 +94,8 @@ class _SeriesDetailsScreenState extends State<SeriesDetailsScreen> {
                       },
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.resolveWith<Color>(
-                          (Set<MaterialState> states) {
+                            WidgetStateProperty.resolveWith<Color>(
+                          (Set<WidgetState> states) {
                             if (_selectedIndex == 0) {
                               return AppColors.primaryBackgroundColor;
                             }
@@ -121,8 +121,8 @@ class _SeriesDetailsScreenState extends State<SeriesDetailsScreen> {
                       },
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.resolveWith<Color>(
-                          (Set<MaterialState> states) {
+                            WidgetStateProperty.resolveWith<Color>(
+                          (Set<WidgetState> states) {
                             if (_selectedIndex == 1) {
                               return AppColors.primaryBackgroundColor;
                             }
@@ -148,8 +148,8 @@ class _SeriesDetailsScreenState extends State<SeriesDetailsScreen> {
                       },
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.resolveWith<Color>(
-                          (Set<MaterialState> states) {
+                            WidgetStateProperty.resolveWith<Color>(
+                          (Set<WidgetState> states) {
                             if (_selectedIndex == 2) {
                               return AppColors.primaryBackgroundColor;
                             }

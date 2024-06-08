@@ -35,15 +35,15 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           if (state is FavoritesLoadedState) {
             return ListView.builder(
               itemCount:
-                  state.favoriteMovies.length + state.favoriteSeries.length,
+              state.favoriteMovies.length + state.favoriteSeries.length,
               itemBuilder: (context, index) {
                 if (index < state.favoriteMovies.length) {
                   final movie = state.favoriteMovies[index];
-                  return _buildMovieCard(movie);
+                  return _buildMovieCard(movie, true);
                 } else {
                   final seriesIndex = index - state.favoriteMovies.length;
                   final series = state.favoriteSeries[seriesIndex];
-                  return _buildSeriesCard(series);
+                  return _buildSeriesCard(series, true);
                 }
               },
             );
@@ -57,7 +57,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     );
   }
 
-  Widget _buildMovieCard(Movie movie) {
+  Widget _buildMovieCard(Movie movie, bool isFavorite) {
     return Card(
       margin: const EdgeInsets.all(8),
       child: Stack(
@@ -86,14 +86,14 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           Positioned(
             top: 8,
             right: 8,
-            child: FavoriteToggleButton(media: movie),
+            child: FavoriteToggleButton(media: movie, isFavorite: isFavorite),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildSeriesCard(Series series) {
+  Widget _buildSeriesCard(Series series, bool isFavorite) {
     return Card(
       margin: const EdgeInsets.all(8),
       child: Stack(
@@ -122,7 +122,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           Positioned(
             top: 8,
             right: 8,
-            child: FavoriteToggleButton(media: series),
+            child: FavoriteToggleButton(media: series, isFavorite: isFavorite),
           ),
         ],
       ),
