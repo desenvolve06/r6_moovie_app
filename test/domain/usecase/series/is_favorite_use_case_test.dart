@@ -15,7 +15,8 @@ void main() {
 
   group('IsFavoriteUseCase', () {
     test('Should return true if a serie is favorite', () async {
-      when(() => seriesRepository.isFavorite(1)).thenAnswer((_) => Future.value(true));
+      when(() => seriesRepository.isFavorite(1))
+          .thenAnswer((_) => Future.value(true));
 
       final result = await isFavoriteSeriesUseCase.isFavorite(1);
 

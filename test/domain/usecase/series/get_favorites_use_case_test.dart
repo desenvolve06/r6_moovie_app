@@ -10,7 +10,6 @@ void main() {
   late GetFavoritesSeriesUseCase getFavoritesSeriesUseCase;
   late SeriesRepository seriesRepository;
 
-
   setUpAll(() {
     seriesRepository = SeriesRepositoryMock();
     getFavoritesSeriesUseCase = GetFavoritesSeriesUseCase(seriesRepository);

@@ -19,11 +19,10 @@ void main() {
     test('Should return a list of series', () async {
       when(() => seriesRepository.getPopularSeries())
           .thenAnswer((_) => Future.value([series]));
-       
-          
+
       final result = await getPopularSeriesUseCase.invoke();
 
       expect(result, [series]);
-  });
+    });
   });
 }
