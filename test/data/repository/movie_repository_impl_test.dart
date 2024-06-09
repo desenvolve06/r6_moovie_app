@@ -3,9 +3,9 @@ import 'package:mocktail/mocktail.dart';
 import 'package:r6_moovie_app/data/network/source/local/movies/local_data_source_movies.dart';
 import 'package:r6_moovie_app/data/network/source/remote/movie_data_source.dart';
 import 'package:r6_moovie_app/data/repository/movie_repository_impl.dart';
-import 'package:r6_moovie_app/domain/entities/movie.dart';
 
 import '../../utils/class_mock.dart';
+import '../../utils/stubs.dart';
 
 void main() {
   group('MoviesRepositoryImpl', () {
@@ -13,21 +13,6 @@ void main() {
     late MovieDataSource movieDataSource;
     late LocalDataSourceMovies localDataSourceMovies;
 
-    final movie = Movie(
-        adult: true,
-        backdropPath: '',
-        genreIds: [1, 2],
-        id: 1,
-        originalLanguage: 'en',
-        originalTitle: '',
-        overview: '',
-        popularity: 2.5,
-        posterPath: '',
-        releaseDate: '',
-        title: '',
-        video: true,
-        voteAverage: 3.1,
-        voteCount: 3);
 
     setUp(() {
       movieDataSource = MockMovieDataSource();

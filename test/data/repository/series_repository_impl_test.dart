@@ -3,8 +3,8 @@ import 'package:mocktail/mocktail.dart';
 import 'package:r6_moovie_app/data/network/source/local/series/local_data_source_series.dart';
 import 'package:r6_moovie_app/data/network/source/remote/series_data_source.dart';
 import 'package:r6_moovie_app/data/repository/series_repository_impl.dart';
-import 'package:r6_moovie_app/domain/entities/series.dart';
 import '../../utils/class_mock.dart';
+import '../../utils/stubs.dart';
 
 void main() {
   group('SeriesRepositoryImpl', () {
@@ -12,14 +12,6 @@ void main() {
     late SeriesDatasource seriesDatasource;
     late LocalDataSourceSeries localDataSourceSeries;
 
-    final series = Series(
-        id: 1,
-        name: '',
-        overview: '',
-        firstAirDate: '',
-        voteAverage: 2.5,
-        posterPath: '',
-        backdropPath: '');
 
     setUp(() {
       seriesDatasource = MockSeriesDatasource();
