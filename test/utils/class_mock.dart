@@ -17,3 +17,4 @@ class MockMovieDataSource extends Mock implements MovieDataSource {}
 class MockLocalDataSourceMovies extends Mock implements LocalDataSourceMovies {}
 
 class SeriesRepositoryMock extends Mock implements SeriesRepository {}
+
