@@ -9,8 +9,8 @@ import '../../utils/class_mock.dart';
 void main() {
   group('SeriesRepositoryImpl', () {
     late SeriesRepositoryImpl seriesRepository;
-    late SeriesDatasource mockSeriesDatasource;
-    late LocalDataSourceSeries mockLocalDataSourceSeries;
+    late SeriesDatasource seriesDatasource;
+    late LocalDataSourceSeries localDataSourceSeries;
 
     final series = Series(
         id: 1,
@@ -22,17 +22,17 @@ void main() {
         backdropPath: '');
 
     setUp(() {
-      mockSeriesDatasource = MockSeriesDatasource();
-      mockLocalDataSourceSeries = MockLocalDataSourceSeries();
+      seriesDatasource = MockSeriesDatasource();
+      localDataSourceSeries = MockLocalDataSourceSeries();
       seriesRepository = SeriesRepositoryImpl(
-        mockSeriesDatasource,
-        mockLocalDataSourceSeries,
+        seriesDatasource,
+        localDataSourceSeries,
       );
     });
 
     test('getPopularSeries should return a list of Series', () async {
       
-      when(() => mockSeriesDatasource.getPopularMSeries())
+      when(() => seriesDatasource.getPopularMSeries())
           .thenAnswer((_) async => Future.value([series]));
 
       
@@ -45,7 +45,7 @@ void main() {
     test('addToFavorites should call localDataSourceSeries.addToFavorites',
         () async {
       
-      when(() => mockLocalDataSourceSeries.addToFavorites(series)).thenAnswer(
+      when(() => localDataSourceSeries.addToFavorites(series)).thenAnswer(
         (_) async => Future.value(),
       );
 
@@ -53,12 +53,12 @@ void main() {
       await seriesRepository.addToFavorites(series);
 
       
-      verify(() => mockLocalDataSourceSeries.addToFavorites(series)).called(1);
+      verify(() => localDataSourceSeries.addToFavorites(series)).called(1);
     });
 
     test('getFavorites should return a list of Series', () async {
       
-      when(() => mockLocalDataSourceSeries.getFavorites())
+      when(() => localDataSourceSeries.getFavorites())
           .thenAnswer((_) async => Future.value([series]));
 
       
@@ -72,7 +72,7 @@ void main() {
         () async {
       
 
-      when(() => mockLocalDataSourceSeries.isFavorite(series.id))
+      when(() => localDataSourceSeries.isFavorite(series.id))
           .thenAnswer((_) async => true);
 
       
@@ -86,7 +86,7 @@ void main() {
         'RemoveFromFavorites should call localDataSourceSeries.removeFromFavorites',
         () async {
       
-      when(() => mockLocalDataSourceSeries.removeFromFavorites(series))
+      when(() => localDataSourceSeries.removeFromFavorites(series))
           .thenAnswer(
         (_) async => Future.value(),
       );
@@ -95,7 +95,7 @@ void main() {
       await seriesRepository.removeFromFavorites(series);
 
       
-      verify(() => mockLocalDataSourceSeries.removeFromFavorites(series))
+      verify(() => localDataSourceSeries.removeFromFavorites(series))
           .called(1);
     });
   });
