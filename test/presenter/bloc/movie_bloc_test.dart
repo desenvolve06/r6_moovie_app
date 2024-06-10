@@ -7,7 +7,7 @@ import 'package:r6_moovie_app/presenter/bloc/movies/movie_state.dart';
 import 'package:r6_moovie_app/domain/usecase/movies/get_popular_movie_use_case.dart';
 
 import '../../utils/class_mock.dart';
-import '../../utils/mock_movies.dart';
+import '../../utils/mock_movies_list.dart';
 
 void main() {
   late MoviesRepositoryMock moviesRepositoryMock;

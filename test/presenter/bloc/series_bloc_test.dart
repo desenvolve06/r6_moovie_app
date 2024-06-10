@@ -8,7 +8,7 @@ import 'package:r6_moovie_app/domain/usecase/series/get_popular_series_use_case.
 import 'package:r6_moovie_app/resources/app_strings.dart';
 
 import '../../utils/class_mock.dart';
-import '../../utils/mock_series.dart';
+import '../../utils/mock_series_list.dart';
 
 void main() {
   late SeriesRepositoryMock seriesRepositoryMock;
