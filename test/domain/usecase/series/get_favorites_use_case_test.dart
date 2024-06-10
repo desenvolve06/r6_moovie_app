@@ -1,23 +1,16 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:r6_moovie_app/domain/entities/series.dart';
 import 'package:r6_moovie_app/domain/repository/series_repository.dart';
 import 'package:r6_moovie_app/domain/usecase/series/get_favorites_use_case.dart';
 
+import '../../../stubs/stub.dart';
 import '../../../utils/class_mock.dart';
 
 void main() {
   late GetFavoritesSeriesUseCase getFavoritesSeriesUseCase;
   late SeriesRepository seriesRepository;
 
-  final series = Series(
-      id: 1,
-      name: '',
-      overview: '',
-      firstAirDate: '',
-      voteAverage: 2.5,
-      posterPath: '',
-      backdropPath: '');
+  final series = seriesMock;
 
   setUpAll(() {
     seriesRepository = SeriesRepositoryMock();

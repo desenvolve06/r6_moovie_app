@@ -1,7 +1,7 @@
 import 'package:r6_moovie_app/domain/entities/movie.dart';
 import 'package:r6_moovie_app/domain/entities/series.dart';
 
-final movieMock = Movie(
+final moviesMock = Movie(
     adult: true,
     backdropPath: 'godzilla.jpg',
     genreIds: [1, 2],

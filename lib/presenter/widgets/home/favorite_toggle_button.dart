@@ -10,10 +10,10 @@ class FavoriteToggleButton extends StatelessWidget {
   final bool isFavorite;
 
   const FavoriteToggleButton({
-    Key? key,
+    super.key,
     required this.media,
     required this.isFavorite,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
