@@ -19,7 +19,7 @@ void main() {
     });
 
     
-     test('Falha ao criar uma instância com campos que existem', () {
+     test('Fails to create an instance with existing fields', () {
       final seriesWithIncorrectValues = Series(
         id: 909090,
         name: 'Esse não é o godzilla',

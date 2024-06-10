@@ -18,7 +18,7 @@ void main() {
       expect(movie.voteAverage, 3.1);
     });
 
-    test('Deve falhar ao criar uma instância de Movie com valores corretos', () {
+    test('It should fail to create an instance of Movie with correct values', () {
       final movieWithIncorrectValues = Movie(
         id: 3000,
         title: 'Tartarugas mecanicas',
