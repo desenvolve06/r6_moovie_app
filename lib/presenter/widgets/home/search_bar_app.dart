@@ -86,7 +86,6 @@ class _SearchBarAppState extends State<SearchBarApp> {
             GestureDetector(
               onTap: () {
                 FocusManager.instance.primaryFocus?.unfocus();
-                print("click test");
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -126,6 +125,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
               itemCount: searchResult.length,
               itemBuilder: (context, index) {
                 final result = searchResult[index];
+                // ignore: unused_local_variable
                 final Movie movie = Movie.fromMap(result);
                 return GestureDetector(
                   onTap: () {

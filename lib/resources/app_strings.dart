@@ -64,4 +64,5 @@ class AppStrings {
       'Esta série não está disponível em seu idioma ou não há uma descrição disponível.';
   static const String noLanguageMovie =
       'Este filme não está disponível em seu idioma ou não há uma descrição disponível.';
+  static const String errorMessageSeries = "Failure to get series. Is your device online?";
 }
