@@ -17,7 +17,7 @@ void main() {
   }
 
   group('AppBarMain Tests', () {
-    testWidgets('AppBarMain has a logo and an account icon', (WidgetTester tester) async {
+    testWidgets('AppBarMain has a logo', (WidgetTester tester) async {
       // Build the AppBarMain widget
       await buildApp(tester);
 
