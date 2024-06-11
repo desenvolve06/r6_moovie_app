@@ -56,6 +56,10 @@ void main() {
 
           expect(find.byIcon(Icons.favorite_border), findsOneWidget);
           expect(find.byIcon(Icons.favorite), findsNothing);
+void testFavoriteIcon(WidgetTester tester, bool isFavorite, IconData expectedIcon, IconData unexpectedIcon) async {
+//Implementação dos expects
+
+}
         });
 
     testWidgets('adds event to favorites on press', (WidgetTester tester) async {
