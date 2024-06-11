@@ -23,7 +23,7 @@ void main() {
 
   group('CardTextWidget:', () {
     testWidgets('Should render movie card text widget', (tester) async {
-      final dynamic testMedia = movieMock;
+      final dynamic testMedia = moviesMock;
       await buildApp(tester, testMedia);
 
       final textWidget = find.descendant(of: find.byType(CardText),
