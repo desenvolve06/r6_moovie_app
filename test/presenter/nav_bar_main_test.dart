@@ -25,8 +25,12 @@ void main() {
     for (final item in navItems) {
       final Finder navItemFinder = find.text(item);
 
-      // Verify if the navigation item is present
       expect(navItemFinder, findsOneWidget);
+
+      final textWidget = tester.widget<Text>(navItemFinder);
+      expect(textWidget.style!.fontSize, equals(AppSize.s30.toDouble()));
+      expect(textWidget.style!.color, equals(AppColors.primaryColor));
+      expect(textWidget.style!.fontWeight, equals(FontWeight.bold));
     }
 
     await tester.tap(find.text(AppStrings.myFavorites));
