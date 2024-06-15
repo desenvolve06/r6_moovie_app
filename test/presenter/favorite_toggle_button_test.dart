@@ -45,7 +45,7 @@ void main() {
             (WidgetTester tester) async {
           await buildApp(tester,anything, true);
 
-          expect(find.byIcon(Icons.favorite), findsOneWidget);
+         _verifyIcon(tester, Icons.favorite, Icons.favorite_border);
         });
 
     testWidgets('shows border icon when isFavorite is false',
