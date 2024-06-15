@@ -37,7 +37,7 @@ void main() {
         ),
       ),
     );
-    await tester.pump();
+   
   }
 
   group('FavoriteToggleButton', () {
@@ -45,8 +45,7 @@ void main() {
             (WidgetTester tester) async {
           await buildApp(tester,anything, true);
 
-          expect(find.byIcon(Icons.favorite), findsOneWidget);
-          expect(find.byIcon(Icons.favorite_border), findsNothing);
+         _verifyIcon(tester, Icons.favorite, Icons.favorite_border);
         });
 
     testWidgets('shows border icon when isFavorite is false',
@@ -54,8 +53,9 @@ void main() {
 
           await buildApp(tester, anything, false);
 
-          expect(find.byIcon(Icons.favorite_border), findsOneWidget);
-          expect(find.byIcon(Icons.favorite), findsNothing);
+          _verifyIcon(tester, Icons.favorite_border, Icons.favorite);
+//Implementação dos expects
+
         });
 
     testWidgets('adds event to favorites on press', (WidgetTester tester) async {
@@ -76,4 +76,9 @@ void main() {
       verify(() => mockFavoriteBloc.add(const RemoveFromFavoritesEvent(anything))).called(1);
     });
   });
+}
+
+void _verifyIcon(WidgetTester tester, IconData expectedIcon, IconData unexpectedIcon) {
+  expect(find.byIcon(expectedIcon), findsOneWidget);
+  expect(find.byIcon(unexpectedIcon), findsNothing);
 }

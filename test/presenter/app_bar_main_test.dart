@@ -17,7 +17,7 @@ void main() {
   }
 
   group('AppBarMain Tests', () {
-    testWidgets('AppBarMain has a logo and an account icon', (WidgetTester tester) async {
+    testWidgets('AppBarMain has a logo', (WidgetTester tester) async {
       // Build the AppBarMain widget
       await buildApp(tester);
 
@@ -27,7 +27,15 @@ void main() {
       ), findsOneWidget);
 
       // Verify if the account icon is present
+      testWidgets('AppBarMain has a logo', (tester) async {
+      await buildApp(tester);
+      expect(find.byType(SvgPicture), findsOneWidget);
+    });
+
+    testWidgets('AppBarMain has an account icon', (tester) async {
+      await buildApp(tester);
       expect(find.byIcon(Icons.account_circle), findsOneWidget);
+    });
     });
   });
 }
