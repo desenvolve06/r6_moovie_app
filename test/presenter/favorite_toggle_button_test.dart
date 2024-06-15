@@ -54,7 +54,7 @@ void main() {
 
           await buildApp(tester, anything, false);
 
-          expect(find.byIcon(Icons.favorite_border), findsOneWidget);
+          _verifyIcon(tester, Icons.favorite_border, Icons.favorite);
           expect(find.byIcon(Icons.favorite), findsNothing);
 //Implementação dos expects
 
