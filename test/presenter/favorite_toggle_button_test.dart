@@ -81,3 +81,8 @@ void testFavoriteIcon(WidgetTester tester, bool isFavorite, IconData expectedIco
     });
   });
 }
+
+void _verifyIcon(WidgetTester tester, IconData expectedIcon, IconData unexpectedIcon) {
+  expect(find.byIcon(expectedIcon), findsOneWidget);
+  expect(find.byIcon(unexpectedIcon), findsNothing);
+}
