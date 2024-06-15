@@ -3,7 +3,7 @@ import 'package:r6_moovie_app/domain/entities/series.dart';
 
 final moviesMock = Movie(
     adult: true,
-    backdropPath: 'godzilla.jpg',
+    backdropPath: '/tMefBSflR6PGQLv7WvFPpKLZkyk.jpg',
     genreIds: [1, 2],
     id: 1,
     originalLanguage: 'en',
@@ -24,4 +24,4 @@ final seriesMock = Series(
     firstAirDate: 'firstAirDate',
     voteAverage: 1.0,
     posterPath: 'posterPath',
-    backdropPath: 'backdropPath');
+    backdropPath: '/tMefBSflR6PGQLv7WvFPpKLZkyk.jpg');
