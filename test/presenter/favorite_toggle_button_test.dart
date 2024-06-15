@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:r6_moovie_app/presenter/bloc/favorites/favorite_bloc.dart';
 import 'package:r6_moovie_app/presenter/bloc/favorites/favorite_event.dart';
@@ -40,6 +41,10 @@ void main() {
    
   }
 
+  setUpAll(() async {
+    await loadAppFonts();
+  });
+
   group('FavoriteToggleButton', () {
     testWidgets('shows favorite icon when isFavorite is true',
             (WidgetTester tester) async {
@@ -54,8 +59,6 @@ void main() {
           await buildApp(tester, anything, false);
 
           _verifyIcon(tester, Icons.favorite_border, Icons.favorite);
-//Implementação dos expects
-
         });
 
     testWidgets('adds event to favorites on press', (WidgetTester tester) async {
@@ -75,7 +78,9 @@ void main() {
 
       verify(() => mockFavoriteBloc.add(const RemoveFromFavoritesEvent(anything))).called(1);
     });
+
   });
+
 }
 
 void _verifyIcon(WidgetTester tester, IconData expectedIcon, IconData unexpectedIcon) {
