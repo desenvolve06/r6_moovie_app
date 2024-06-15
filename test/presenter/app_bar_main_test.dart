@@ -24,6 +24,11 @@ void main() {
       expect(find.byWidgetPredicate(
               (widget) => widget is SvgPicture && widget.semanticsLabel == 'KoruFlix Logo',
         ), findsOneWidget);
+
+      await expectLater(
+        find.byType(IconButton),
+        matchesGoldenFile('golden_image/app_bar_main_logo.png'),
+      );
     });
 
     testWidgets('AppBarMain has an account icon', (WidgetTester tester) async {
