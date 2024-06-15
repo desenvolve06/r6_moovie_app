@@ -27,7 +27,15 @@ void main() {
       ), findsOneWidget);
 
       // Verify if the account icon is present
+      testWidgets('AppBarMain has a logo', (tester) async {
+      await buildApp(tester);
+      expect(find.byType(SvgPicture), findsOneWidget);
+    });
+
+    testWidgets('AppBarMain has an account icon', (tester) async {
+      await buildApp(tester);
       expect(find.byIcon(Icons.account_circle), findsOneWidget);
+    });
     });
   });
 }
