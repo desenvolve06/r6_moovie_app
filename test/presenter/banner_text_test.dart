@@ -19,5 +19,8 @@ void main() {
     expect(textStyle?.fontSize, equals(AppSize.s20));
     expect(textStyle?.fontWeight, equals(FontWeight.bold));
 
+    final textWidget = tester.widget<Text>(find.byType(Text));
+    expect(textWidget.maxLines, equals(2));
+    expect(textWidget.overflow, equals(TextOverflow.ellipsis));
   });
 }
