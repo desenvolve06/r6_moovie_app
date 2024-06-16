@@ -40,7 +40,7 @@ void main() {
   }
 
   testWidgets('FavoriteBlocBuilder shows FavoriteToggleButton with isFavorite true when media is in favorites', (WidgetTester tester) async {
-    when(() => mockFavoriteBloc.state).thenReturn( FavoritesLoadedState([moviesMock], []));
+    when(() => mockFavoriteBloc.state).thenReturn( FavoritesLoadedState([moviesMock], const []));
 
     await tester.pumpWidget(buildTestableWidget(FavoriteBlocBuilder(media: moviesMock)));
 
