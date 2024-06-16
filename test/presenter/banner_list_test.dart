@@ -24,5 +24,6 @@ void main() {
 
     expect(find.text('Test Banner List'), findsOneWidget);
 
+    expect(find.byType(BannerItem), findsNWidgets(bannerList.length));
   });
 }
