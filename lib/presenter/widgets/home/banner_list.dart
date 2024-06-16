@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'BannerItem.dart';
+import 'banner_item.dart';
 import 'banner_text.dart';
 
 class BannerList extends StatelessWidget {
