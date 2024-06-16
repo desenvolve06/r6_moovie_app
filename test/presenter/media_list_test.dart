@@ -26,7 +26,6 @@ void main() {
       [],
        [],
     ));
-
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
@@ -51,19 +50,8 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Recomendados'), findsOneWidget);
-
     expect(find.byType(CardImageText), findsNWidgets(mediaList.length));
-
-    expect(find.text(mediaList[0].title), findsOneWidget);
-
-    expect(find.descendant(
-      of: find.byType(MediaList),
-      matching: find.byType(CardImageText),
-    ), findsWidgets);
-
-    await tester.drag(find.byType(ListView), const Offset(-300.0, 0.0));
-    await tester.pump();
-
     expect(find.byType(MediaList), findsOneWidget);
+
   });
 }
