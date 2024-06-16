@@ -26,7 +26,7 @@ void main() {
 
   group('CardImageWidget movie', () {
     testWidgets('Should render card image widget', (tester) async {
-      final dynamic media = movieMock;
+      final dynamic media = moviesMock;
       await buildApp(tester, media);
       expect(find.byType(Image), findsOneWidget);
     });

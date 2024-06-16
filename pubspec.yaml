@@ -83,6 +83,7 @@ dev_dependencies:
   built_value_generator: ^8.9.2
   mocktail: ^1.0.3
   network_image_mock: ^2.1.1
+  bloc_test: ^9.1.7
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:r6_moovie_app/presenter/widgets/home/favorite_bloc_builder.dart';
 
 import '../../../domain/entities/movie.dart';
 import '../../../domain/entities/series.dart';
@@ -50,19 +50,7 @@ class CardImageText extends StatelessWidget {
               Positioned(
                 top: 8,
                 right: 8,
-                child: BlocBuilder<FavoriteBloc, FavoriteState>(
-                  builder: (context, state) {
-                    bool isFavorite = false;
-                    if (state is FavoritesLoadedState) {
-                      if (media is Movie) {
-                        isFavorite = state.favoriteMovies.any((movie) => movie.id == media.id);
-                      } else if (media is Series) {
-                        isFavorite = state.favoriteSeries.any((series) => series.id == media.id);
-                      }
-                    }
-                    return FavoriteToggleButton(media: media, isFavorite: isFavorite);
-                  },
-                ),
+                child: FavoriteBlocBuilder(media: media),
               ),
               Positioned(
                 bottom: 0,
