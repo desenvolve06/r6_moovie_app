@@ -21,21 +21,21 @@ void main() {
       // Build the AppBarMain widget
       await buildApp(tester);
 
-      // Verify if the logo is present
       expect(find.byWidgetPredicate(
-              (widget) => widget is SvgPicture && widget.semanticsLabel == 'KoruFlix Logo'
-      ), findsOneWidget);
+              (widget) => widget is SvgPicture && widget.semanticsLabel == 'KoruFlix Logo',
+        ), findsOneWidget);
 
-      // Verify if the account icon is present
-      testWidgets('AppBarMain has a logo', (tester) async {
-      await buildApp(tester);
-      expect(find.byType(SvgPicture), findsOneWidget);
+      await expectLater(
+        find.byType(IconButton),
+        matchesGoldenFile('golden_image/app_bar_main_logo.png'),
+      );
     });
 
-    testWidgets('AppBarMain has an account icon', (tester) async {
+    testWidgets('AppBarMain has an account icon', (WidgetTester tester) async {
       await buildApp(tester);
-      expect(find.byIcon(Icons.account_circle), findsOneWidget);
-    });
+      expect(find.byType(IconButton),
+          findsOneWidget);
+
     });
   });
 }

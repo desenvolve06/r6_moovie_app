@@ -3,7 +3,7 @@ import 'package:r6_moovie_app/domain/entities/series.dart';
 
 final moviesMock = Movie(
     adult: true,
-    backdropPath: 'godzilla.jpg',
+    backdropPath: '/tMefBSflR6PGQLv7WvFPpKLZkyk.jpg',
     genreIds: [1, 2],
     id: 1,
     originalLanguage: 'en',
@@ -24,4 +24,24 @@ final seriesMock = Series(
     firstAirDate: 'firstAirDate',
     voteAverage: 1.0,
     posterPath: 'posterPath',
-    backdropPath: 'backdropPath');
+    backdropPath: '/tMefBSflR6PGQLv7WvFPpKLZkyk.jpg');
+
+final List<Movie> moviesMockList = [
+  Movie(
+    adult: true,
+    backdropPath: '/tMefBSflR6PGQLv7WvFPpKLZkyk.jpg',
+    genreIds: [1, 2],
+    id: 1,
+    originalLanguage: 'en',
+    originalTitle: '',
+    overview: '',
+    popularity: 2.5,
+    posterPath: '',
+    releaseDate: '',
+    title: 'Godzilla',
+    video: true,
+    voteAverage: 3.1,
+    voteCount: 3,
+  ),
+  // Adicione mais filmes se necessário
+];
