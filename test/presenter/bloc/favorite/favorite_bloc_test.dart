@@ -3,38 +3,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:r6_moovie_app/domain/entities/movie.dart';
 import 'package:r6_moovie_app/domain/entities/series.dart';
-import 'package:r6_moovie_app/domain/usecase/movies/add_to_favorites_use_case.dart';
-import 'package:r6_moovie_app/domain/usecase/movies/get_favorites_use_case.dart';
-import 'package:r6_moovie_app/domain/usecase/movies/is_favorite_use_case.dart';
-import 'package:r6_moovie_app/domain/usecase/movies/remove_from_favorite_use_case.dart';
-import 'package:r6_moovie_app/domain/usecase/series/add_to_favorites_use_case.dart';
-import 'package:r6_moovie_app/domain/usecase/series/get_favorites_use_case.dart';
-import 'package:r6_moovie_app/domain/usecase/series/is_favorite_use_case.dart';
-import 'package:r6_moovie_app/domain/usecase/series/remove_from_favorite_use_case.dart';
 import 'package:r6_moovie_app/presenter/bloc/favorites/favorite_bloc.dart';
 import 'package:r6_moovie_app/presenter/bloc/favorites/favorite_event.dart';
 import 'package:r6_moovie_app/presenter/bloc/favorites/favorite_state.dart';
 
-class MockAddToFavoritesUseCase extends Mock implements AddToFavoritesUseCase {}
-
-class MockRemoveFromFavoriteUseCase extends Mock
-    implements RemoveFromFavoriteUseCase {}
-
-class MockIsFavoriteUseCase extends Mock implements IsFavoriteUseCase {}
-
-class MockGetFavoritesUseCase extends Mock implements GetFavoritesUseCase {}
-
-class MockAddToFavoritesSeriesUseCase extends Mock
-    implements AddToFavoritesSeriesUseCase {}
-
-class MockRemoveFromFavoriteSeriesUseCase extends Mock
-    implements RemoveFromFavoriteSeriesUseCase {}
-
-class MockIsFavoriteSeriesUseCase extends Mock
-    implements IsFavoriteSeriesUseCase {}
-
-class MockGetFavoritesSeriesUseCase extends Mock
-    implements GetFavoritesSeriesUseCase {}
+import '../../../stubs/stub.dart';
+import '../../../utils/class_mock.dart';
 
 class FakeMovie extends Fake implements Movie {}
 
@@ -51,32 +25,9 @@ void main() {
   late MockIsFavoriteSeriesUseCase mockIsFavoriteSeriesUseCase;
   late MockGetFavoritesSeriesUseCase mockGetFavoritesSeriesUseCase;
 
-  final movie = Movie(
-    adult: false,
-    backdropPath: 'path',
-    genreIds: [1, 2],
-    id: 1,
-    originalLanguage: 'en',
-    originalTitle: 'Test Movie',
-    overview: 'Overview',
-    popularity: 10.0,
-    posterPath: 'path',
-    releaseDate: '2021-01-01',
-    title: 'Test Movie',
-    video: false,
-    voteAverage: 5.0,
-    voteCount: 100,
-  );
+  final movie = moviesMock;
 
-  final series = Series(
-    id: 1,
-    name: 'Test Series',
-    overview: 'Overview',
-    firstAirDate: '2021-01-01',
-    voteAverage: 5.0,
-    posterPath: 'path',
-    backdropPath: 'path',
-  );
+  final series = seriesMock;
 
   setUpAll(() {
     registerFallbackValue(FakeMovie());
