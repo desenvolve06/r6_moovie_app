@@ -5,7 +5,7 @@ import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:r6_moovie_app/presenter/bloc/favorites/favorite_bloc.dart';
 import 'package:r6_moovie_app/presenter/bloc/favorites/favorite_state.dart';
-import 'package:r6_moovie_app/presenter/widgets/home/card_image.dart';
+import 'package:r6_moovie_app/presenter/widgets/home/card_image_text.dart';
 import 'package:r6_moovie_app/presenter/widgets/home/media_list.dart';
 import 'package:r6_moovie_app/resources/app_strings.dart';
 
@@ -14,9 +14,6 @@ import 'favorite_bloc_builder_test.dart';
 
 void main() {
   final mockFavoriteBloc = MockFavoriteBloc(); // Replace with your actual mock type
-  final List<dynamic> mediaList = [
-    moviesMock
-  ];
 
   setUpAll(() async {
     registerFallbackValue(const FavoritesLoadedState([], []));
@@ -34,7 +31,7 @@ void main() {
               child: Container(
                 color: Colors.grey[200],
                 child: MediaList(
-                  mediaList: mediaList,
+                  mediaList: List.generate(index, (index) => moviesMock),
                   title: AppStrings.recommended,
                   movies: [moviesMock],
                   series: [seriesMock],
@@ -56,15 +53,15 @@ void main() {
     await buildApp(tester, index: 3);
 
     expect(find.text(AppStrings.recommended), findsOneWidget);
-    expect(find.byType(CardImage), findsWidgets);
+    expect(find.byType(CardImageText), findsWidgets);
     expect(find.byType(MediaList), findsOneWidget);
   });
 
-  testWidgets('MediaList widget golden test movies three', (WidgetTester tester) async {
+  testGoldens('MediaList widget golden test movies three', (WidgetTester tester) async {
     await buildApp(tester, index: 3);
 
     await expectLater(
-      find.byType(CardImage),
+      find.byType(MediaList),
       matchesGoldenFile('golden_image/media_list_three.png'),
     );
   });
@@ -73,7 +70,7 @@ void main() {
     await buildApp(tester, index: 6);
 
     expect(find.text(AppStrings.recommended), findsOneWidget);
-    expect(find.byType(CardImage), findsWidgets);
+    expect(find.byType(CardImageText), findsWidgets);
     expect(find.byType(MediaList), findsOneWidget);
   });
 
@@ -81,7 +78,7 @@ void main() {
     await buildApp(tester, index: 6);
 
     await expectLater(
-      find.byType(CardImage),
+        find.byType(MediaList),
       matchesGoldenFile('golden_image/media_list_seven.png'),
     );
   });
