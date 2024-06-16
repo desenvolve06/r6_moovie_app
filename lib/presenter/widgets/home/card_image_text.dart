@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r6_moovie_app/presenter/widgets/home/favorite_bloc_builder.dart';
 
 import '../../../domain/entities/movie.dart';
 import '../../../domain/entities/series.dart';
-import '../../bloc/favorites/favorite_bloc.dart';
-import '../../bloc/favorites/favorite_state.dart';
 import '../../pages/movies_details_screen.dart';
 import '../../pages/series_details_screen.dart';
 import 'card_image.dart';
 import 'card_text.dart';
-import 'favorite_toggle_button.dart';
 
 class CardImageText extends StatelessWidget {
   final dynamic media;

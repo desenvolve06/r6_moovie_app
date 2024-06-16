@@ -119,7 +119,7 @@ void main() {
       act: (bloc) => bloc.add(RemoveFromFavoritesEvent(movie)),
       expect: () => [
         FavoriteLoadingState(),
-        FavoritesLoadedState([], [series]),
+        FavoritesLoadedState(const [], [series]),
       ],
       verify: (_) {
         verify(() => mockRemoveFromFavoritesUseCase.removeFromFavorite(movie)).called(1);
