@@ -103,4 +103,44 @@ void main() {
       ],
     );
   });
+
+  group('RemoveFromFavoritesEvent', () {
+    blocTest<FavoriteBloc, FavoriteState>(
+      'emits [FavoriteLoadingState, FavoritesLoadedState] when successful',
+      build: () {
+        when(() => mockRemoveFromFavoritesUseCase.removeFromFavorite(any()))
+            .thenAnswer((_) async {});
+        when(() => mockGetFavoritesUseCase.getFavorites())
+            .thenAnswer((_) async => []);
+        when(() => mockGetFavoritesSeriesUseCase.getFavorites())
+            .thenAnswer((_) async => [series]);
+        return favoriteBloc;
+      },
+      act: (bloc) => bloc.add(RemoveFromFavoritesEvent(movie)),
+      expect: () => [
+        FavoriteLoadingState(),
+        FavoritesLoadedState([], [series]),
+      ],
+      verify: (_) {
+        verify(() => mockRemoveFromFavoritesUseCase.removeFromFavorite(movie)).called(1);
+        verify(() => mockGetFavoritesUseCase.getFavorites()).called(1);
+        verify(() => mockGetFavoritesSeriesUseCase.getFavorites()).called(1);
+      },
+    );
+
+    blocTest<FavoriteBloc, FavoriteState>(
+        'emits [FavoriteLoadingState, FavoriteErrorState] when unsuccessful',
+        build: () {
+          when(() => mockRemoveFromFavoritesUseCase.removeFromFavorite(any()))
+              .thenThrow(Exception('Failed to remove favorite'));
+          return favoriteBloc;
+        },
+        act: (bloc) => bloc.add(RemoveFromFavoritesEvent(movie)),
+        expect: () => [
+          FavoriteLoadingState(),
+          const FavoriteErrorState('Exception: Failed to remove favorite'),
+        ],
+      );
+  });
+
 }
