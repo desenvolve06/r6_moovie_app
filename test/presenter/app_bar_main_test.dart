@@ -18,9 +18,13 @@ void main() {
 
   group('AppBarMain Tests', () {
     testWidgets('AppBarMain has a logo', (WidgetTester tester) async {
-      // Build the AppBarMain widget
+      // Arrange
       await buildApp(tester);
 
+      // Act
+      await tester.pump();
+
+      // Assert
       expect(find.byWidgetPredicate(
               (widget) => widget is SvgPicture && widget.semanticsLabel == 'KoruFlix Logo',
         ), findsOneWidget);
@@ -32,7 +36,13 @@ void main() {
     });
 
     testWidgets('AppBarMain has an account icon', (WidgetTester tester) async {
+     // Arrange
       await buildApp(tester);
+
+      // Act
+      await tester.pump();
+
+      // Assert
       expect(find.byType(IconButton),
           findsOneWidget);
 
