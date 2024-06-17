@@ -4,15 +4,19 @@ import 'package:r6_moovie_app/presenter/widgets/home/banner_text.dart';
 import 'package:r6_moovie_app/resources/app_values.dart';
 
 void main() {
+  //
   testWidgets('BannerText widget test', (WidgetTester tester) async {
+   // Arrange
     const String title = 'Test Title';
 
+    // Act
     await tester.pumpWidget(const MaterialApp(
       home: Scaffold(
         body: BannerText(title: title),
       ),
     ));
 
+    // Assert
     expect(find.text(title), findsOneWidget);
 
     final textStyle = tester.widget<Text>(find.byType(Text)).style;
