@@ -1,5 +1,3 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
@@ -36,11 +34,13 @@ void main() {
       ];
 
       for (final item in navItems) {
-        verifyNavItemStyle(tester, item, AppSize.s30.toDouble(), AppColors.primaryColor, FontWeight.bold);
+        verifyNavItemStyle(tester, item, AppSize.s30.toDouble(),
+            AppColors.primaryColor, FontWeight.bold);
       }
     });
 
-    testGoldens('Should render Golden Test nav item ', (WidgetTester tester) async {
+    testGoldens('Should render Golden Test nav item ',
+        (WidgetTester tester) async {
       await tester.pumpWidgetBuilder(buildMaterialApp(const NavBarMain()));
       await tester.pumpAndSettle();
 
@@ -53,12 +53,12 @@ void main() {
 }
 
 void verifyNavItemStyle(
-    WidgetTester tester,
-    String item,
-    double expectedFontSize,
-    Color expectedColor,
-    FontWeight expectedFontWeight,
-    ) {
+  WidgetTester tester,
+  String item,
+  double expectedFontSize,
+  Color expectedColor,
+  FontWeight expectedFontWeight,
+) {
   final Finder navItemFinder = find.text(item);
 
   expect(navItemFinder, findsOneWidget);

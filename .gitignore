@@ -3,6 +3,7 @@
 *.log
 *.pyc
 *.swp
+*.lock
 .DS_Store
 .atom/
 .buildlog/
@@ -30,6 +31,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+.env
 
 # Symbolication related
 app.*.symbols
@@ -42,6 +44,7 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-.env
-/lib/
-/coverage
+# Test
+coverage/
+test/**/failures
+pubspec.lock
