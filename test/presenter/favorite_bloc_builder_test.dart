@@ -40,25 +40,29 @@ void main() {
   }
 
   testWidgets('FavoriteBlocBuilder shows FavoriteToggleButton with isFavorite true when media is in favorites', (WidgetTester tester) async {
+    // Arrange
     when(() => mockFavoriteBloc.state).thenReturn( FavoritesLoadedState([moviesMock], const []));
+    final toggleButtonFinder = find.byType(FavoriteToggleButton);
 
+    // Act
     await tester.pumpWidget(buildTestableWidget(FavoriteBlocBuilder(media: moviesMock)));
 
-    final toggleButtonFinder = find.byType(FavoriteToggleButton);
+    // Assert
     expect(toggleButtonFinder, findsOneWidget);
-
     final favoriteToggleButton = tester.widget<FavoriteToggleButton>(toggleButtonFinder);
     expect(favoriteToggleButton.isFavorite, true);
   });
 
   testWidgets('FavoriteBlocBuilder shows FavoriteToggleButton with isFavorite false when media is not in favorites', (WidgetTester tester) async {
+    // Arrange
     when(() => mockFavoriteBloc.state).thenReturn(const FavoritesLoadedState([], []));
+    final toggleButtonFinder = find.byType(FavoriteToggleButton);
 
+    // Act
     await tester.pumpWidget(buildTestableWidget(FavoriteBlocBuilder(media: moviesMock)));
 
-    final toggleButtonFinder = find.byType(FavoriteToggleButton);
+    // Assert
     expect(toggleButtonFinder, findsOneWidget);
-
     final favoriteToggleButton = tester.widget<FavoriteToggleButton>(toggleButtonFinder);
     expect(favoriteToggleButton.isFavorite, false);
   });

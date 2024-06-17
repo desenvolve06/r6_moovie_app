@@ -27,14 +27,17 @@ void main() {
 
   group('CardTextWidget:', () {
     testWidgets('Should render movie card text widget', (tester) async {
+     // Arrange
       final dynamic testMedia = moviesMock;
-      await buildApp(tester, testMedia);
-
       final textWidget = find.descendant(
         of: find.byType(CardText),
         matching: find.byType(Text),
       );
 
+      // Act
+      await buildApp(tester, testMedia);
+
+    // Assert
       expect(textWidget, findsOneWidget);
       expect((tester.widget(textWidget) as Text).data, 'Godzilla');
 
@@ -58,9 +61,13 @@ void main() {
 
     testWidgets('Should match golden file for movies card text widget',
         (tester) async {
+      // Arrange
       final dynamic testMedia = moviesMock;
+
+      // Act
       await buildApp(tester, testMedia);
 
+      // Assert
       await expectLater(
         find.byType(CardText),
         matchesGoldenFile('golden_image/card_text_movies.png'),
@@ -70,14 +77,17 @@ void main() {
 
   group('CardTextWidget:', () {
     testWidgets('Should render series card text widget', (tester) async {
+      // Arrange
       final dynamic testMedia = seriesMock;
-      await buildApp(tester, testMedia);
-
       final textWidget = find.descendant(
         of: find.byType(CardText),
         matching: find.byType(Text),
       );
 
+      // Act
+      await buildApp(tester, testMedia);
+
+      // Assert
       expect(textWidget, findsOneWidget);
       expect((tester.widget(textWidget) as Text).data, 'Mad');
 
@@ -101,9 +111,13 @@ void main() {
 
     testWidgets('Should match golden file for series card text widget',
         (tester) async {
+      // Arrange
       final dynamic testMedia = seriesMock;
+
+      // Act
       await buildApp(tester, testMedia);
 
+      // Assert
       await expectLater(
         find.byType(CardText),
         matchesGoldenFile('golden_image/card_text_series.png'),

@@ -10,6 +10,7 @@ import '../utils/favorite_bloc_mock.dart';
 
 void main() {
   testWidgets('BannerItem widget test', (WidgetTester tester) async {
+    // Arrange
     final banner = seriesMock;
     final mockFavoriteBloc = FavoriteBlocMock();
 
@@ -23,11 +24,10 @@ void main() {
     );
 
     final cachedNetworkImageFinder = find.byType(CachedNetworkImage);
+    final CachedNetworkImage cachedNetworkImage = tester.widget(cachedNetworkImageFinder);
+
+    // Assert
     expect(cachedNetworkImageFinder, findsOneWidget);
-
-
-    final CachedNetworkImage cachedNetworkImage =
-    tester.widget(cachedNetworkImageFinder);
     expect(
       cachedNetworkImage.imageUrl,
       'https://image.tmdb.org/t/p/w500${banner.backdropPath}',

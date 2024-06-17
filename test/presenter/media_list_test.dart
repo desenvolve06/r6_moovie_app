@@ -45,21 +45,25 @@ void main() {
 
     await tester.pumpAndSettle();
   }
-
+    // Assert
   testWidgets('MediaList widget test movies three', (WidgetTester tester) async {
+    // Arrange
     when(() => mockFavoriteBloc.state).thenReturn(
         const FavoritesLoadedState([], []));
-
+    // Act
     await buildApp(tester, index: 3);
 
+    // Assert
     expect(find.text(AppStrings.recommended), findsOneWidget);
     expect(find.byType(CardImageText), findsWidgets);
     expect(find.byType(MediaList), findsOneWidget);
   });
 
   testGoldens('MediaList widget golden test movies three', (WidgetTester tester) async {
+   // Act
     await buildApp(tester, index: 3);
 
+    // Assert
     await expectLater(
       find.byType(MediaList),
       matchesGoldenFile('golden_image/media_list_three.png'),
@@ -67,16 +71,20 @@ void main() {
   });
 
   testWidgets('MediaList widget test movies seven', (WidgetTester tester) async {
+    // Act
     await buildApp(tester, index: 6);
 
+    // Assert
     expect(find.text(AppStrings.recommended), findsOneWidget);
     expect(find.byType(CardImageText), findsWidgets);
     expect(find.byType(MediaList), findsOneWidget);
   });
 
   testGoldens('MediaList widget golden test movies seven', (WidgetTester tester) async {
+    // Act
     await buildApp(tester, index: 6);
 
+    // Assert
     await expectLater(
         find.byType(MediaList),
       matchesGoldenFile('golden_image/media_list_seven.png'),

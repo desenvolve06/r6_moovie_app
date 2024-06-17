@@ -22,8 +22,7 @@ void main() {
 
   group('NavBarMain Tests', () {
     testWidgets('Should render nav Items texts', (WidgetTester tester) async {
-      await tester.pumpWidget(buildMaterialApp(const NavBarMain()));
-
+      // Arrange
       final List<String> navItems = [
         AppStrings.home,
         AppStrings.myProfile,
@@ -32,7 +31,10 @@ void main() {
         AppStrings.myFavorites,
         AppStrings.about,
       ];
+      // Act
+      await tester.pumpWidget(buildMaterialApp(const NavBarMain()));
 
+      // Assert
       for (final item in navItems) {
         verifyNavItemStyle(tester, item, AppSize.s30.toDouble(),
             AppColors.primaryColor, FontWeight.bold);
@@ -41,9 +43,11 @@ void main() {
 
     testGoldens('Should render Golden Test nav item ',
         (WidgetTester tester) async {
+      // Act
       await tester.pumpWidgetBuilder(buildMaterialApp(const NavBarMain()));
       await tester.pumpAndSettle();
 
+      // Assert
       await expectLater(
         find.byType(NavBarMain),
         matchesGoldenFile('golden_image/nav_bar_main.png'),
@@ -59,11 +63,14 @@ void verifyNavItemStyle(
   Color expectedColor,
   FontWeight expectedFontWeight,
 ) {
-  final Finder navItemFinder = find.text(item);
 
+  // Arrange
+  final Finder navItemFinder = find.text(item);
+  final textWidget = tester.widget<Text>(navItemFinder);
+
+// Assert
   expect(navItemFinder, findsOneWidget);
 
-  final textWidget = tester.widget<Text>(navItemFinder);
   expect(textWidget.style!.fontSize, equals(expectedFontSize));
   expect(textWidget.style!.color, equals(expectedColor));
   expect(textWidget.style!.fontWeight, equals(expectedFontWeight));

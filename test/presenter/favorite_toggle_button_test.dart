@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:r6_moovie_app/presenter/bloc/favorites/favorite_bloc.dart';
@@ -23,10 +23,10 @@ void main() {
   });
 
   Future<void> buildApp(
-      WidgetTester tester,
-      dynamic media,
-      bool isFavorite,
-      ) async {
+    WidgetTester tester,
+    dynamic media,
+    bool isFavorite,
+  ) async {
     await tester.pumpWidget(
       MaterialApp(
         home: BlocProvider<FavoriteBloc>.value(
@@ -38,7 +38,6 @@ void main() {
         ),
       ),
     );
-   
   }
 
   setUpAll(() async {
@@ -47,43 +46,52 @@ void main() {
 
   group('FavoriteToggleButton', () {
     testWidgets('shows favorite icon when isFavorite is true',
-            (WidgetTester tester) async {
-          await buildApp(tester,anything, true);
+        (WidgetTester tester) async {
+      // Act
+      await buildApp(tester, anything, true);
 
-         _verifyIcon(tester, Icons.favorite, Icons.favorite_border);
-        });
+      // Assert
+      _verifyIcon(tester, Icons.favorite, Icons.favorite_border);
+    });
 
     testWidgets('shows border icon when isFavorite is false',
-            (WidgetTester tester) async {
-
-          await buildApp(tester, anything, false);
-
-          _verifyIcon(tester, Icons.favorite_border, Icons.favorite);
-        });
-
-    testWidgets('adds event to favorites on press', (WidgetTester tester) async {
+        (WidgetTester tester) async {
+      // Act
       await buildApp(tester, anything, false);
 
+      // Assert
+      _verifyIcon(tester, Icons.favorite_border, Icons.favorite);
+    });
+
+    testWidgets('adds event to favorites on press',
+        (WidgetTester tester) async {
+      // Act
+      await buildApp(tester, anything, false);
       await tester.tap(find.byIcon(Icons.favorite_border));
       await tester.pump();
 
-      verify(() => mockFavoriteBloc.add(const AddToFavoritesEvent(anything))).called(1);
+      // Assert
+      verify(() => mockFavoriteBloc.add(const AddToFavoritesEvent(anything)))
+          .called(1);
     });
 
-    testWidgets('adds event on press when isFavorite is true', (WidgetTester tester) async {
+    testWidgets('adds event on press when isFavorite is true',
+        (WidgetTester tester) async {
+      // Act
       await buildApp(tester, anything, true);
-
       await tester.tap(find.byIcon(Icons.favorite));
       await tester.pump();
 
-      verify(() => mockFavoriteBloc.add(const RemoveFromFavoritesEvent(anything))).called(1);
+      // Assert
+      verify(() =>
+              mockFavoriteBloc.add(const RemoveFromFavoritesEvent(anything)))
+          .called(1);
     });
-
   });
-
 }
 
-void _verifyIcon(WidgetTester tester, IconData expectedIcon, IconData unexpectedIcon) {
+void _verifyIcon(
+    WidgetTester tester, IconData expectedIcon, IconData unexpectedIcon) {
   expect(find.byIcon(expectedIcon), findsOneWidget);
   expect(find.byIcon(unexpectedIcon), findsNothing);
 }
