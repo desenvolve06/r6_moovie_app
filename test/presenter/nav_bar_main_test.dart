@@ -63,6 +63,7 @@ void verifyNavItemStyle(
   Color expectedColor,
   FontWeight expectedFontWeight,
 ) {
+
   // Arrange
   final Finder navItemFinder = find.text(item);
   final textWidget = tester.widget<Text>(navItemFinder);
