@@ -22,8 +22,13 @@ void main() {
       ),
     ));
 
+    // Arrange
     expect(find.text('Test Banner List'), findsOneWidget);
 
+    // Act
+    await tester.pump();
+
+    // Assert
     expect(find.byType(BannerItem), findsNWidgets(bannerList.length));
   });
 }
