@@ -13,8 +13,6 @@ void main() {
     // Arrange
     final banner = seriesMock;
     final mockFavoriteBloc = FavoriteBlocMock();
-    final cachedNetworkImageFinder = find.byType(CachedNetworkImage);
-    final CachedNetworkImage cachedNetworkImage = tester.widget(cachedNetworkImageFinder);
 
     await tester.pumpWidget(
       MaterialApp(
@@ -25,6 +23,8 @@ void main() {
       ),
     );
 
+    final cachedNetworkImageFinder = find.byType(CachedNetworkImage);
+    final CachedNetworkImage cachedNetworkImage = tester.widget(cachedNetworkImageFinder);
 
     // Assert
     expect(cachedNetworkImageFinder, findsOneWidget);
