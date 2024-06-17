@@ -132,16 +132,35 @@ $ flutter pub get
 
 # Executar o app
 $ flutter run
-```
 
+# Para rodar os goldens testes da view
+$ flutter test --update-goldens
+```
+## Bibliotecas e ferramentas Utilizadas no projeto
+Camada Data
+* Bloc : para gerenciamento de estados, Usado para separar a lógica de negócios da UI, lidar com eventos e estados, e facilitar a reatividade e a atualização da 
+* Bloc provider:  Uma extensão do Bloc que fornece widgets de Flutter para injetar e acessar blocos em toda a árvore de widgets
+interface do usuário com base nas mudanças de estado.
+* Json annotation: Uma biblioteca Dart que fornece anotações para ajudar na serialização e desserialização de objetos Dart para JSON e vice-versa.
+* Retrofit:  define os serviços REST e a serialização de respostas de API.
+* Build runner e Built value: ferramenta de linha de comando que facilita a execução de tarefas de build em projetos Dart/Flutter, como a geração de código baseado em 
+anotações, usado em conjunto com built_value e build_runner para automatizar a geração de código repetitivo em classes Dart, melhorando a legibilidade e a manutenção 
+do código.
+* Dio: utilizado para fazer requisições HTTP de forma eficiente, lidar com respostas JSON, e interagir com APIs de forma assíncrona
+* Shared Preferences: biblioteca permite armazenar dados persistente localmente.
+* GetIt: gerenciamento de dependências (Dependency Injection - DI), Usado para registrar e recuperar instâncias de serviços e objetos em toda a aplicação, 
+* seguindo o princípio de Injeção de Dependência.
+* Toolkit golden: Ferramenta de Flutter para testes de regressão visual
+* Mocktail: biblioteca de mocks para testes unitários e de integração em Dart e Flutter. 
+* Equatable: biblioteca Dart que facilita a implementação de classes de modelo que precisam de métodos == e hashCode baseados em uma lista fixa de campos.
 
 ## Conclusão
 
-O KoruFlix é uma prova de conceito que demonstra a aplicação eficaz dos princípios SOLID e Clean na codificação e organização de um aplicativo Dart Flutter. A implementação do padrão BLoC contribui para a separação da lógica de negócio da interface do usuário, resultando em um código mais modular e testável. Este projeto exemplifica como a adoção desses princípios e padrões pode levar a um software robusto e eficiente.
+O KoruFlix é uma prova de conceito que demonstra a aplicação eficaz dos princípios SOLID e Clean na codificação e organização de um aplicativo Dart Flutter. 
+A implementação do padrão BLoC contribui para a separação da lógica de negócio da interface do usuário, resultando em um código mais modular e testável. Este projeto exemplifica como a adoção desses princípios e padrões pode levar a um software robusto e eficiente.
 
 ## Screenshot
 <img src = "https://github.com/desenvolve06/r6_moovie_app/assets/101668192/61e05bbd-5082-45f7-a5c8-59b87dcf385f" width ="280" height="600"> 
-
 
 <h2 id="colab">🤝 Colaboradores</h2>
 
